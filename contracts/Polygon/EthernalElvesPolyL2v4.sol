@@ -350,13 +350,19 @@ contract PolyEthernalElvesV4 is PolyERC721 {
 
                         (elf.level, actions.reward, elf.timestamp, elf.inventory) = _campaignsEngine(campaign_, sector_, elf.level, elf.attackPoints, elf.healthPoints, elf.inventory, useItem);
 
+                             if(rollWeapons) (elf.primaryWeapon, elf.weaponTier) = _rollWeapon(elf.level, id_, rand, 3);
+                             if(rollItems) elf.inventory = _rollitems(id_);
+                        
+                        /*
+                        
                         if(rollWeapons && rollItems){
                         (elf.weaponTier, elf.primaryWeapon, elf.inventory) = DataStructures.roll(id_, elf.level, _rand(), 3, elf.weaponTier, elf.primaryWeapon, elf.inventory);  
                         }else if(rollWeapons){
+                            
                         (elf.weaponTier, elf.primaryWeapon, elf.inventory) = DataStructures.roll(id_, elf.level, _rand(), 1, elf.weaponTier, elf.primaryWeapon, elf.inventory);  
                         }else if(rollItems){
                         (elf.weaponTier, elf.primaryWeapon, elf.inventory) = DataStructures.roll(id_, elf.level, _rand(), 2, elf.weaponTier, elf.primaryWeapon, elf.inventory);  
-                        }
+                        }*/
 
                         emit Campaigns(elfOwner, actions.reward, campaign_, sector_, id_);                 
 
@@ -1164,6 +1170,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 ▄▀█ █▀▄ █▀▄▀█ █ █▄░█   █▀▀ █░█ █▄░█ █▀▀ ▀█▀ █ █▀█ █▄░█ █▀
 █▀█ █▄▀ █░▀░█ █ █░▀█   █▀░ █▄█ █░▀█ █▄▄ ░█░ █ █▄█ █░▀█ ▄█
 */
+/*
 function addCamp(uint256 id, uint16 baseRewards_, uint16 creatureCount_, uint16 expPoints_, uint16 creatureHealth_, uint16 minLevel_, uint16 maxLevel_) external      
     {
         onlyOwner();
@@ -1223,7 +1230,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
        
     }
 
-
+*/
     function flipActiveStatus() external {
         onlyOwner();
         isGameActive = !isGameActive;
