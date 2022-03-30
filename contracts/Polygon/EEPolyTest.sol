@@ -2,6 +2,7 @@
 pragma solidity 0.8.7;
 
 import "./EthernalElvesPolyL2v4.sol";
+import "hardhat/console.sol";
 
 /*
 ███████╗████████╗██╗░░██╗███████╗██████╗░███╗░░██╗░█████╗░██╗░░░░░  ███████╗██╗░░░░░██╗░░░██╗███████╗░██████╗
@@ -78,6 +79,17 @@ contract EETest is PolyEthernalElvesV4 {
        TIME_CONSTANT = 1 hours; 
        REGEN_TIME = 300 hours; 
 
-    }   
+    }
+
+     function flipActiveStatus() external {
+        onlyOwner();
+        isGameActive = !isGameActive;
+        }
+
+
+        function flipTerminal() external {
+        onlyOwner();
+        isTerminalOpen = !isTerminalOpen;
+        }   
 
 }

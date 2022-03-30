@@ -148,7 +148,7 @@ describe("Ethernal Elves Contracts", function () {
 
 
         //mint some elves 
-        let level = [77,10,54,99,100,60,45]
+        let level = [54,80,100,99,100,60,45]
         let sentineClass = [0,1,2]
         let race = [0,1,2,3]
         let axa = [0,1,2,3,4,5,]
@@ -158,16 +158,18 @@ describe("Ethernal Elves Contracts", function () {
       
        
           await elves.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[1], item[3], weapon[0], weaponTier[0]);
-          await elves.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
-          await elves.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
+          await elves.connect(addr3).mint(level[1],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
+          await elves.connect(addr3).mint(level[2],axa[0],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
         
         
         await elves.addRampage(4,5,30,65, 0, 1, 100,0,100)
+        await elves.addRampage(3,5,30,65, 0, 1, 100,600,100)
       
         let fundRen = "100000000000000000000000"
         await elves.setAccountBalance(addr3.address, fundRen)
-
-
+      
+        await elves.addScolls([10, 2], [addr3.address, addr4.address])
+        
   
   });
 
@@ -186,8 +188,8 @@ describe("Ethernal Elves Contracts", function () {
        let rampage = 4
 
        await elves.connect(addr3).rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
-       increaseWorldTimeinSeconds(36* 24 * 60 * 60, true)
-       await elves.connect(addr3).bloodThirst([1], tryAxa, useItem,addr3.address);
+       //increaseWorldTimeinSeconds(36* 24 * 60 * 60, true)
+       await elves.connect(addr3).bloodThirst([2], tryAxa, useItem,addr3.address);
        await elves.connect(addr3).heal([3],[1],addr3.address);
 
        
@@ -207,7 +209,7 @@ describe("Ethernal Elves Contracts", function () {
         await elves.connect(addr3).merchant([1], addr3.address);
         //increaseWorldTimeinSeconds(100, true)
         //await elves.connect(addr3).bloodThirst([1], true, false, addr3.address)
-        increaseWorldTimeinSeconds(10000000, true)
+        //increaseWorldTimeinSeconds(10000000, true)
         //await elves.rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
        
        }
@@ -259,20 +261,74 @@ describe("Ethernal Elves Contracts", function () {
 
     it("Add scrolls, go on crusade", async function () {
 
-      await elves.addScolls([10], [addr3.address])
+     
       expect(parseInt(await elves.scrolls(addr3.address))).to.equal(10)
 
+    
+
       await elves.connect(addr3).sendCrusade([1],addr3.address);
+      await elves.connect(addr3).sendCrusade([2],addr3.address);
+      await elves.connect(addr3).sendCrusade([3],addr3.address);
 
-      expect(parseInt(await elves.scrolls(addr3.address))).to.equal(9)
+      expect(parseInt(await elves.scrolls(addr3.address))).to.equal(10-3)
+      
+      console.log("ts1:", await elves.elves(1))
+      console.log("ts2:", await elves.elves(2))
+      console.log("ts3:", await elves.elves(3))
+      //await elves.connect(addr3).heal(3,1, addr3.address);
 
+     
       increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-
       await elves.connect(addr3).returnCrusade([1],addr3.address);
+      await elves.connect(addr3).returnCrusade([2],addr3.address);
+      await elves.connect(addr3).returnCrusade([3],addr3.address);
+
+     
      
       console.log("Artifacts got", await elves.artifacts(addr3.address))
      
- 
+      
+
+     })
+
+
+     
+    it("Test REN costs for each function", async function () {
+
+      await elves.connect(addr4).mint(10,1,1,1,0,1,1);
+      await elves.connect(addr4).mint(10,1,1,0,0,1,1); //DRUID
+
+      await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("200"))
+
+      await elves.connect(owner).forging([4], addr4.address)
+      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
+
+      await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("10"))
+
+      await elves.connect(owner).merchant([4], addr4.address)
+      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
+
+      let tryAxa = true
+      let useItem = true
+      let tryWeapon = true
+      let rampage = 3
+
+      await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("600"))
+      
+      await elves.connect(owner).rampage([4],rampage,tryWeapon, tryAxa, useItem,addr4.address);
+
+      await elves.connect(owner).heal([5],[4], addr4.address);
+
+      await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("5"))
+
+      await elves.connect(owner).synergize([5], addr4.address);
+
+      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
+
+      await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("1500"))
+      await elves.connect(owner).sendCrusade([4], addr4.address)
+      
+      expect(parseInt(await elves.bankBalances(addr4.address))).to.equal(0)
      })
 
 
@@ -459,12 +515,12 @@ describe("Ethernal Elves Contracts", function () {
 
 */
 
-
+ /*
   describe("Deployment and ERC20 and ERC721 Minting", function () {
     it("Check contract deployer is owner", async function () {
       expect(await elves.admin()).to.equal(owner.address); 
     })
- /*   it("Mint entire NFT collection", async function () {
+   it("Mint entire NFT collection", async function () {
 
       await ren.mint(beff.address,  ethers.BigNumber.from("6000000000000000000000")); 
       await ren.mint(addr3.address, ethers.BigNumber.from("6000000000000000000000")); 
@@ -512,10 +568,11 @@ describe("Ethernal Elves Contracts", function () {
       }
      
       expect(parseInt(await elves.totalSupply())).to.equal(maxSupply);
-    })*/   
+    }  
 
         
   })
+  )*/ 
 
   /*
 
