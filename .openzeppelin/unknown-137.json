@@ -7427,6 +7427,88 @@
           }
         }
       }
+    },
+    "4ed76c708dc8b86705a43d593d298a2fb1dd4657e2106d7e15d3e9e9822a285d": {
+      "address": "0x884A55Ce022B7F5c26e04ddb4af86d972c5cCF87",
+      "txHash": "0x88b31d19d8c569de064009f01986ec09dd877f34cf124245127d4169fc8a0cda",
+      "layout": {
+        "storage": [
+          {
+            "label": "impl_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:9"
+          },
+          {
+            "label": "manager",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:10"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:11"
+          },
+          {
+            "label": "race",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint8,t_address)",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:20"
+          },
+          {
+            "label": "hair",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_uint8,t_address)",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:21"
+          },
+          {
+            "label": "primaryWeapon",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint8,t_address)",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:22"
+          },
+          {
+            "label": "accessories",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint8,t_address)",
+            "contract": "ElfMetadataHandlerV2",
+            "src": "contracts\\ElfInventoryManager.sol:23"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint8,t_address)": {
+            "label": "mapping(uint8 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
     }
   }
 }

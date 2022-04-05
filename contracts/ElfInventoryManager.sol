@@ -43,6 +43,18 @@ contract ElfMetadataHandlerV2 {
         manager = msg.sender;
         initialized = true;
     }
+
+    function getName(uint8 accessories_, uint16 id_)  public pure returns (string memory)  {
+        
+        string memory name = string(abi.encodePacked("Elf #",toString(id_))); 
+        //one for ones
+        if(accessories_ == 6 || accessories_ == 12 || accessories_ == 13 || accessories_ == 14 || accessories_ == 19 || accessories_ == 20 || accessories_ == 21){
+          name = string(abi.encodePacked("Elf #",toString(id_),", ", getAccessoriesName(accessories_)));
+        }
+
+        return name;
+
+    }
    
     function getSVG(
         uint8 race_,
@@ -128,8 +140,9 @@ contract ElfMetadataHandlerV2 {
                     Base64.encode(
                         bytes(
                             abi.encodePacked(
-                                '{"name":"Elf #',
-                                toString(id_),
+                                '{"name":"',
+                                //toString(id_),
+                                getName(token.accessories, id_),
                                 '", "description":"EthernalElves is a collection of 6666 Sentinel Elves racing to awaken the Elders. These Elves are 100% on-chain. Play EthernalElves to upgrade your abilities and grow your army. !onward", "image": "',
                                 "data:image/svg+xml;base64,",
                                 svg,
@@ -499,7 +512,7 @@ contract ElfMetadataHandlerV2 {
             return
                 id == 27 ? "Blades of Illhaladan" : id == 28
                     ? "Twin Blades of Behemoth"
-                    : "Luficers Glaives";
+                    : "Lucifers Glaives";
         }
         if (id <= 35) {
             if (id < 33) {

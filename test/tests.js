@@ -65,7 +65,9 @@ describe("Ethernal Elves Contracts", function () {
   const Accessories = await ethers.getContractFactory("Accessories1");
   const Accessories3 = await ethers.getContractFactory("Accessories3");
   const Accessories4 = await ethers.getContractFactory("Accessories4"); 
-  const Accessories5 = await ethers.getContractFactory("Accessories5"); //THIS IS NOT FINAL
+  const Accessories5 = await ethers.getContractFactory("Accessories5"); 
+  const Accessories6 = await ethers.getContractFactory("Accessories6"); 
+  const Accessories7 = await ethers.getContractFactory("Accessories7"); 
 
   const hair = await Hair.deploy();
   const race1 = await Race1.deploy();
@@ -80,6 +82,9 @@ describe("Ethernal Elves Contracts", function () {
   const accessories3 = await Accessories3.deploy();
   const accessories4 = await Accessories4.deploy();
   const accessories5 = await Accessories5.deploy();
+  const accessories6 = await Accessories6.deploy();
+  const accessories7 = await Accessories7.deploy();
+
   
   ///Body x 3, Hair x 3, Weapons x 3, 
   
@@ -130,7 +135,10 @@ describe("Ethernal Elves Contracts", function () {
   await inventory.setAccessories([15,16,4,5,8,9,1,2,3,6,7,10,11,12,13,14,17,18,19,20,21], accessories.address)
   await inventory.setAccessories([2,3], accessories3.address)
   await inventory.setAccessories([10,11,17,18], accessories4.address)  
-  await inventory.setAccessories([6,13,20], accessories5.address)
+  await inventory.setAccessories([6,12,13], accessories5.address)
+  await inventory.setAccessories([14,19], accessories6.address)
+  await inventory.setAccessories([20,21], accessories7.address)
+  
    
 //  await campaigns.initialize(elves.address);
 
@@ -151,7 +159,7 @@ describe("Ethernal Elves Contracts", function () {
         let level = [54,80,100,99,100,60,45]
         let sentineClass = [0,1,2]
         let race = [0,1,2,3]
-        let axa = [0,1,2,3,4,5,]
+        let axa = [0,1,2,3,4,5,6]
         let item = [0,1,2,3,4,5,6]
         let weapon = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
         let weaponTier = [1,2,3,4,5]
@@ -159,8 +167,14 @@ describe("Ethernal Elves Contracts", function () {
        
           await elves.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[1], item[3], weapon[0], weaponTier[0]);
           await elves.connect(addr3).mint(level[1],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
-          await elves.connect(addr3).mint(level[2],axa[0],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
-        
+          await elves.connect(addr3).mint(level[2],axa[1],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
+          
+          await elves.connect(addr4).mint(10,1,1,1,0,1,1);
+          await elves.connect(addr4).mint(10,1,1,0,0,1,1); //DRUID
+          
+          await elves.connect(addr3).mint(level[0],axa[5],race[0],sentineClass[0], item[3], weapon[0], weaponTier[0]);
+          await elves.connect(addr3).mint(level[1],axa[6],race[0],sentineClass[1], item[2], weapon[0], weaponTier[0]);
+          await elves.connect(addr3).mint(level[2],axa[6],race[0],sentineClass[2], item[6], weapon[0], weaponTier[0]);
         
         await elves.addRampage(4,5,30,65, 0, 1, 100,0,100)
         await elves.addRampage(3,5,30,65, 0, 1, 100,600,100)
@@ -168,7 +182,7 @@ describe("Ethernal Elves Contracts", function () {
         let fundRen = "100000000000000000000000"
         await elves.setAccountBalance(addr3.address, fundRen)
       
-        await elves.addScolls([10, 2], [addr3.address, addr4.address])
+        await elves.addScrolls([10, 2], [addr3.address, addr4.address])
         
   
   });
@@ -295,8 +309,7 @@ describe("Ethernal Elves Contracts", function () {
      
     it("Test REN costs for each function", async function () {
 
-      await elves.connect(addr4).mint(10,1,1,1,0,1,1);
-      await elves.connect(addr4).mint(10,1,1,0,0,1,1); //DRUID
+     
 
       await elves.setAccountBalance(addr4.address, ethers.utils.parseEther("200"))
 
@@ -329,6 +342,18 @@ describe("Ethernal Elves Contracts", function () {
       await elves.connect(owner).sendCrusade([4], addr4.address)
       
       expect(parseInt(await elves.bankBalances(addr4.address))).to.equal(0)
+     })
+
+
+     it("Test 1/1 Metadata", async function () {
+
+     
+      
+   
+      console.log("token 6  ", await elves.tokenURI(6))
+      console.log("token 7  ", await elves.tokenURI(7))
+      console.log("token 8  ", await elves.tokenURI(8))
+
      })
 
 
