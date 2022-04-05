@@ -709,7 +709,6 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
     function burnBeffsElf() external {
         require(block.timestamp > 1650428400, "not yet"); //420timestamp
         require(msg.sender == 0x92DC59566CC193211bCB43b1325a1f1d5BC10b96, "not razuki"); //razuki.eth
-        ren.mint(dev2Address, 100000000); //ren to give beff back for burn
         isPlayer(); //require not contract        
         _burn(6667);
     }
