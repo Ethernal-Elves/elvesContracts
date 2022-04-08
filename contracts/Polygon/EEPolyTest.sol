@@ -44,7 +44,7 @@ contract EETest is PolyEthernalElvesV4 {
                 elf.level = _level;
 
                 elf.sentinelClass = _class;
-
+                console.log("elf.sentinelClass", elf.sentinelClass);
                 elf.race = _race;
 
                 elf.hair = elf.race == 3 ? 0 : uint16(_randomize(rand, "Hair", id)) % 3;            

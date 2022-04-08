@@ -2,7 +2,7 @@
 pragma solidity 0.8.7;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "./ERC721.sol"; 
+import "./PolyElvesERC721.sol"; 
 import "./../DataStructures.sol";
 import "./../Interfaces.sol";
 //import "hardhat/console.sol";
@@ -26,9 +26,9 @@ contract PolyEthernalElvesV4 is PolyERC721 {
     function name() external pure returns (string memory) { return "Polygon Ethernal Elves"; }
     function symbol() external pure returns (string memory) { return "pELV"; }
        
-    using DataStructures for DataStructures.ActionVariables;
+    //using DataStructures for DataStructures.ActionVariables;
     using DataStructures for DataStructures.Elf;
-    using DataStructures for DataStructures.Token; 
+    //using DataStructures for DataStructures.Token; 
 
     IElfMetaDataHandler elfmetaDataHandler;
         
@@ -119,14 +119,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
     mapping(address => uint256) public artifacts; //memory slot for artifact mint           ///
     mapping(uint256 => uint256) public onCrusade;                                           /// 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    function addScrolls(uint256[] calldata qty, address[] memory owners) external {
-        onlyOwner();
-        for(uint256 i = 0; i < qty.length; i++) {
-            if(qty[i] > 0) {
-                 scrolls[owners[i]] = qty[i];
-            }
-        }
-    }
+    
    
     /*
     function initialize() public {
@@ -329,7 +322,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
              
             
             //Set special abilities when we retrieve the elf so they can be used in the rest of the game loop.            
-            (elf.attackPoints, actions) = _getAbilities(elf.attackPoints, elf.accessories, elf.sentinelClass, actions);
+            (elf.attackPoints, actions) = _getAbilities(elf.attackPoints, elf.accessories, elf.sentinelClass);
 
             uint256 rand = _rand();
                 
@@ -349,7 +342,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                     require(elf.timestamp < block.timestamp, "elfBusy");
                     require(elf.action != 3, "exitPassive"); 
 
-                        (elf.level, actions.reward, elf.timestamp, elf.inventory) = _campaignsEngine(campaign_, sector_, elf.level, elf.attackPoints, elf.healthPoints, elf.inventory, useItem);
+                        (elf.level, actions.reward, elf.timestamp, elf.inventory) = _campaigns(campaign_, sector_, elf.level, elf.attackPoints, elf.healthPoints, elf.inventory, useItem);
 
                              if(rollWeapons) (elf.primaryWeapon, elf.weaponTier) = _rollWeapon(elf.level, id_, rand, 3);
                              if(rollItems) elf.inventory = _rollitems(id_);                       
@@ -513,11 +506,13 @@ contract PolyEthernalElvesV4 is PolyERC721 {
 
                   }
              
+           
             actions.traits   = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
             actions.class    = DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-
-            //Buffer overun protection
+           
+            //Buffer overun protection for Ranger 
             actions.class = actions.class == 256 ? 255 : actions.class;           
+           
 
             elf.healthPoints = DataStructures.calcHealthPoints(elf.sentinelClass, elf.level); 
             elf.attackPoints = DataStructures.calcAttackPoints(elf.sentinelClass, elf.weaponTier);  
@@ -530,7 +525,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
 
     
 
-function _campaignsEngine(uint256 _campId, uint256 _sector, uint256 _level, uint256 _attackPoints, uint256 _healthPoints, uint256 _inventory, bool _useItem) internal
+function _campaigns(uint256 _campId, uint256 _sector, uint256 _level, uint256 _attackPoints, uint256 _healthPoints, uint256 _inventory, bool _useItem) internal
  
  returns(uint256 level, uint256 rewards, uint256 timestamp, uint256 inventory){
   
@@ -582,7 +577,7 @@ function _instantKill(uint256 timestamp, uint256 weaponTier, address elfOwner, u
     }else{
         timestamp_ = timestamp;
     } 
-
+    //console.log("Instant Kill Chance: " , chance , " Kill Chance: " , killChance);
     emit RollOutcome(id, chance, 10);
     
 
@@ -756,15 +751,23 @@ function _useInventory(uint256 _inventory, uint256 _level, uint256 _attackPoints
 }
 
 
-function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sentinelClass, GameVariables memory _actions) 
-        private pure returns (uint256 attackPoints_, GameVariables memory actions_) {
+function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sentinelClass) 
+        private view returns (uint256 attackPoints_, GameVariables memory actions_) {
 
  attackPoints_ = _attackPoints;
  actions_.healTime = 12 hours;
- actions_.instantKillModifier = 0;
+ actions_.instantKillModifier = 0;      
 
  _accesssories = ((7 * sentinelClass) + _accesssories) + 1;
 
+
+
+        /*console.log("Abilities Check, Ability:", _accesssories);            
+        
+        console.log("AP BEFORE: ",_attackPoints);
+        console.log("heal time BEFORE", actions_.healTime/3600 , " hours");
+        console.log("IKM BEFORE:", actions_.instantKillModifier); 
+        */
 
         //if Druid 
         if(_accesssories == 2){
@@ -793,6 +796,13 @@ function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sen
         //if Ranger 4 El Machina
             attackPoints_ = _attackPoints * 125/100;             
 
+        }
+
+        if(_accesssories == 6){
+            //Druid 1/1
+            attackPoints_ = _attackPoints + 20;
+            actions_.healTime = 4 hours;        
+
         }        
 
         //1 for 1 special abilities
@@ -803,6 +813,13 @@ function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sen
             //Ranger
             attackPoints_ = _attackPoints * 135/100;
         }  
+        /*
+        console.log("AFTER", _accesssories);            
+        
+        console.log("AP After: ",attackPoints_);
+        console.log("heal time After", actions_.healTime/3600 , " hours");
+        console.log("IKM After:", actions_.instantKillModifier); 
+        */
 
 }
 
@@ -907,6 +924,8 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
                 
     }
 
+    /////FUNCTIONS THAT IMPACT STATE ///////////////
+
     function _buyItem(uint buyItemIndex, address elfOwner) internal returns (uint256 newInventory) {
             //SHOP IS BUYING
             PawnItems memory _pawnItemsBuy = pawnItems[buyItemIndex]; //get item being sold
@@ -926,6 +945,8 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
         return newInventory;      
         
     }
+
+    
 
     function _sellItem(uint sellItemIndex, address elfOwner) internal returns (uint256 newInventory) {
                //SHOP IS SELLING
@@ -1003,7 +1024,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
     return uint256(keccak256(abi.encode(ran,dom,ness)));}
 
     function _rand() internal view returns (uint256) {
-    return uint256(keccak256(abi.encodePacked(msg.sender, block.difficulty, block.timestamp, block.basefee, ketchup)));}
+    return uint256(keccak256(abi.encodePacked(msg.sender, block.difficulty, block.timestamp, block.basefee, block.coinbase)));}
 
 /*
 █▀█ █░█ █▄▄ █░░ █ █▀▀   █░█ █ █▀▀ █░█░█ █▀
@@ -1034,10 +1055,10 @@ function getSentinel(uint256 _id) external view returns(uint256 sentinel){
 }
 
 
-function getToken(uint256 _id) external view returns(DataStructures.Token memory token){
+/*function getToken(uint256 _id) external view returns(DataStructures.Token memory token){
    
     return DataStructures.getToken(sentinels[_id]);
-}
+}*/
 
 function elves(uint256 _id) external view returns(address owner, uint timestamp, uint action, uint healthPoints, uint attackPoints, uint primaryWeapon, uint level) {
 
@@ -1059,13 +1080,13 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 █░▀░█ █▄█ █▄▀ █ █▀░ █ ██▄ █▀▄ ▄█
 */
 
-    function isPlayer() internal {    
+    /*function isPlayer() internal {    
         uint256 size = 0;
         address acc = msg.sender;
         assembly { size := extcodesize(acc)}
         require((msg.sender == tx.origin && size == 0));
         ketchup = keccak256(abi.encodePacked(acc, block.coinbase));
-    }
+    }*/
 
     function onlyOperator() internal view {    
        require(msg.sender == operator || auth[msg.sender] == true);
@@ -1181,6 +1202,14 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 ▄▀█ █▀▄ █▀▄▀█ █ █▄░█   █▀▀ █░█ █▄░█ █▀▀ ▀█▀ █ █▀█ █▄░█ █▀
 █▀█ █▄▀ █░▀░█ █ █░▀█   █▀░ █▄█ █░▀█ █▄▄ ░█░ █ █▄█ █░▀█ ▄█
 */
+function addScrolls(uint256[] calldata qty, address[] memory owners) external {
+        onlyOwner();
+        for(uint256 i = 0; i < qty.length; i++) {
+            if(qty[i] > 0) {
+                 scrolls[owners[i]] = qty[i];
+            }
+        }
+}
 
 function addCamp(uint256 id, uint16 baseRewards_, uint16 creatureCount_, uint16 expPoints_, uint16 creatureHealth_, uint16 minLevel_, uint16 maxLevel_) external      
     {
@@ -1250,7 +1279,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function setElfManually(uint id, uint8 _primaryWeapon, uint8 _weaponTier, uint8 _attackPoints, uint8 _healthPoints, uint8 _level, uint8 _inventory, uint8 _race, uint8 _class, uint8 _accessories, address _elfOwner) external {
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
 
         elf.owner           = _elfOwner;
         elf.timestamp       = elf.timestamp;
@@ -1276,7 +1305,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
        
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
         require(accessoryIndex <=7, "outOfRange");
 
         elf.accessories = accessoryIndex;
@@ -1293,7 +1322,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function changeElfOwner(address elfOwner, uint id) external {
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
 
         elf.owner           = elfOwner;
        
@@ -1310,7 +1339,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
        
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
         require(level <=255, "level out of range");
 
         elf.level = level;
@@ -1326,7 +1355,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
        
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
         require(inventory <=6, "item index out of range");
 
         elf.inventory = inventory;
@@ -1341,7 +1370,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function changeElfWeapons(uint id, uint8 _primaryWeapon, uint8 _weaponTier, uint8 _attackPoints) external {
         onlyOwner();
         DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        DataStructures.ActionVariables memory actions;
+        GameVariables memory actions;
 
         elf.attackPoints    = _attackPoints;
         elf.primaryWeapon   = _primaryWeapon;
