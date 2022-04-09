@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.7;
 
-import "./EthernalElvesPolyL2v4.sol";
+import "./EthernalElvesPolyL2v5.sol";
 import "hardhat/console.sol";
 
 /*
@@ -18,7 +18,7 @@ import "hardhat/console.sol";
 // Version 4.0.0
 // Release notes: Adding Rampage and new abilities based on accessories 
 
-contract EETest is PolyEthernalElvesV4 {
+contract EETest is PolyEthernalElvesV5 {
  bool private initialized;
 /////////THIS CODE IS NOT TO BE USED IN PROD
  function mint(uint8 _level, uint8 _accessories, uint8 _race, uint8 _class, uint8 _item, uint8 _weapon, uint8 _weaponTier) public returns (uint16 id) {

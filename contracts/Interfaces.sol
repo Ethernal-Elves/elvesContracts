@@ -18,6 +18,7 @@ function gameEngine(uint256 _campId, uint256 _sector, uint256 _level, uint256 _a
 returns(uint256 level, uint256 rewards, uint256 timestamp, uint256 inventory);
 }
 
+/*
 interface ITunnel {
     function sendMessage(bytes calldata message_) external;
 }
@@ -26,12 +27,26 @@ interface ITerminus {
     function pullCallback(address owner, uint256[] calldata ids) external;
     
 }
+*/
 
-interface IElves {
-    function getSentinel(uint256 _id) external view returns(uint256 sentinel);
-    function modifyElfDNA(uint256 id, uint256 sentinel) external;
-    function pull(address owner_, uint256[] calldata ids) external;
-    function transfer(address to, uint256 id) external;
+interface IElders {
+
+
+}
+
+interface IArtifacts {
+
+    
+}
+
+interface IElves {    
+    function prismBridge(uint256[] calldata id, uint256[] calldata sentinel, address owner) external;    
+    function exitElf(uint256[] ids, address owner) external;
+    function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external;
+    function bankBalances(address owner) external returns (uint256 balance);
+    function moonBalances(address owner) external returns (uint256 balance);
+    function artifacts(address owner) external returns (uint256 balance);    
+    function sentinels(uint256 _id) external returns(uint256 sentinel);
 }
 
 interface IERC721Lite {
@@ -41,6 +56,8 @@ interface IERC721Lite {
     function mint(address to, uint256 tokenid) external;
 }
 
+/*
 interface IEthernalElves {
 function presale(uint256 _reserveAmount, address _whitelister) external payable returns (uint256 id);
 }
+*/

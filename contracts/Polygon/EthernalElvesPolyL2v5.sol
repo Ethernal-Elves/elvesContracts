@@ -18,10 +18,10 @@ import "./../Interfaces.sol";
 
 // We are the Ethernal. The Ethernal Elves         
 // Written by 0xHusky & Beff Jezos. Everything is on-chain for all time to come.
-// Version 4.0.1
-// Release notes: Adding Rampage and new abilities based on accessories e
+// Version 5.0.0
+// Release notes: Adding moon and moon bridge
 
-contract PolyEthernalElvesV4 is PolyERC721 {
+contract PolyEthernalElvesV5 is PolyERC721 {
 
     function name() external pure returns (string memory) { return "Polygon Ethernal Elves"; }
     function symbol() external pure returns (string memory) { return "pELV"; }
@@ -119,8 +119,8 @@ contract PolyEthernalElvesV4 is PolyERC721 {
     mapping(address => uint256) public artifacts; //memory slot for artifact mint           ///
     mapping(uint256 => uint256) public onCrusade;                                           /// 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    
-   
+    mapping(address => uint256) public moonBalances;     
+
     /*
     function initialize() public {
     
@@ -174,6 +174,10 @@ contract PolyEthernalElvesV4 is PolyERC721 {
     event RollOutcome(uint256 indexed tokenId, uint256 roll, uint256 action);
     event ArtifactFound(address indexed from, uint256 artifacts, uint256 indexed tokenId);
     event ArtifactsMinted(address indexed from, uint256 artifacts, uint256 timestamp);
+    event MoonTransferedIn(address indexed from, uint256 renAmount); 
+    event MoonTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);   
+    event MoonBalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
+
        
 
 
@@ -349,7 +353,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
 
                         emit Campaigns(elfOwner, actions.reward, campaign_, sector_, id_);                 
 
-                     _setAccountBalance(elfOwner, actions.reward, false);
+                     _setAccountBalance(elfOwner, actions.reward, false, 0);
                  
                 
                 }else if(action == 3){//passive campaign
@@ -372,7 +376,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                     checkRen(elfOwner, 200 ether);
                     require(elf.action != 3, "exitPassive");  //Cant roll in passve mode  
 
-                    _setAccountBalance(elfOwner, 200 ether, true);
+                    _setAccountBalance(elfOwner, 200 ether, true, 0);
                     (elf.primaryWeapon, elf.weaponTier) = _rollWeapon(elf.level, id_, rand, 3);
    
                 
@@ -382,7 +386,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                     checkRen(elfOwner, 10 ether);
                     require(elf.action != 3, "exitPassive");  //Cant roll in passve mode
                   
-                    _setAccountBalance(elfOwner, 10 ether, true);
+                    _setAccountBalance(elfOwner, 10 ether, true, 0);
                      elf.inventory = _rollitems(id_);
                     //(elf.weaponTier, elf.primaryWeapon, elf.inventory) = DataStructures.roll(id_, elf.level, rand, 2, elf.weaponTier, elf.primaryWeapon, elf.inventory);                      
 
@@ -434,7 +438,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                     require(elf.sentinelClass == 0, "notDruid"); 
                     require(elf.action != 3, "exitPassive"); //Cant heal in passve mode
                     
-                    _setAccountBalance(elfOwner, 5 ether, true);
+                    _setAccountBalance(elfOwner, 5 ether, true, 0);
                     elf.timestamp = _rollCooldown(elf.timestamp, id_, rand);
 
                 }else if(action == 10){//Bloodthirst
@@ -458,7 +462,7 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                        }
                 
 
-                       _setAccountBalance(elfOwner, actions.reward, false);                 
+                       _setAccountBalance(elfOwner, actions.reward, false, 0);                 
                     
                 
                 }else if(action == 11){//Rampage
@@ -481,15 +485,22 @@ contract PolyEthernalElvesV4 is PolyERC721 {
                      require(elf.action != 3, "exitPassive"); 
                      require(elf.timestamp < block.timestamp, "elfBusy");      
                      require(scrolls[elfOwner] > 0, "noScrolls");
-                     //require(bankBalances[elfOwner] >= 1500 ether, "notEnoughRen");
-                     checkRen(elfOwner, 1500 ether);
+                     uint256 crusadeCost = 1500 ether;
+                      
+                    if(useItem){
+                      //used 5 moon to reduce the cost of crusade by 250 ren  
+                      checkMoon(elfOwner, 5 ether);
+                      _setAccountBalance(elfOwner, 5 ether, true, 1); 
+                      crusadeCost = 1250 ether;
+                    }
+                    checkRen(elfOwner, crusadeCost);
+
+                    
                      
-                     _setAccountBalance(elfOwner, 1500 ether, true); // take ren from buyer
+                     _setAccountBalance(elfOwner, crusadeCost, true, 0); // take ren from buyer
                      scrolls[elfOwner] = scrolls[elfOwner] - 1;
                      onCrusade[id_] = 1;
-
-                    uint16 chance = uint16(_randomize(rand, "Inventory", id_));
-
+                  
                              if(elf.level < 70){
                         
                                  elf.timestamp = block.timestamp + (9 days);
@@ -641,7 +652,7 @@ function _rampage(
         
        
          rampages[_campId].count = rampage.count - 1;
-        _setAccountBalance(elfOwner, rampageCost, true);
+        _setAccountBalance(elfOwner, rampageCost, true, 0);
 
         uint256 cooldown = 36 hours;
         uint256 levelsGained = rampage.levelsGained;
@@ -844,7 +855,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
                         level = 100;
                     }
                     
-                    _setAccountBalance(_owner, rewards, false);
+                    _setAccountBalance(_owner, rewards, false, 0);
 
     }
 
@@ -936,7 +947,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
             uint256 buyPrice = uint256(_pawnItemsBuy.buyPrice); 
             buyPrice = buyPrice * (1 ether); 
  
-            _setAccountBalance(elfOwner, buyPrice, false); // pay the seller
+            _setAccountBalance(elfOwner, buyPrice, false, 0); // pay the seller
             newInventory = 0; // take their item
        
             pawnItems[buyItemIndex].currentInventory = _pawnItemsBuy.currentInventory + 1; //add item to elf pawn stock
@@ -961,7 +972,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
              checkRen(elfOwner, salePrice);
             
 
-            _setAccountBalance(elfOwner, salePrice, true); // take ren from buyer
+            _setAccountBalance(elfOwner, salePrice, true, 0); // take ren from buyer
             newInventory = sellItemIndex; //give item to buyer
             
             pawnItems[sellItemIndex].currentInventory = _pawnItems.currentInventory - 1; //reduce our stocks        
@@ -1013,10 +1024,20 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
     
     
 
-    function _setAccountBalance(address _owner, uint256 _amount, bool _subtract) private {
+    function _setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) private {
             
-            _subtract ? bankBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
-            emit BalanceChanged(_owner, _amount, _subtract);
+            if(_index == 0){
+                //0 = REN
+                _subtract ? bankBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
+                emit BalanceChanged(_owner, _amount, _subtract);
+
+            }else if(_index == 1){
+                //1 = MOON
+                _subtract ? moonBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
+                emit MoonBalanceChanged(_owner, _amount, _subtract);
+
+            }
+            
     }
 
 
@@ -1055,11 +1076,6 @@ function getSentinel(uint256 _id) external view returns(uint256 sentinel){
 }
 
 
-/*function getToken(uint256 _id) external view returns(DataStructures.Token memory token){
-   
-    return DataStructures.getToken(sentinels[_id]);
-}*/
-
 function elves(uint256 _id) external view returns(address owner, uint timestamp, uint action, uint healthPoints, uint attackPoints, uint primaryWeapon, uint level) {
 
     uint256 character = sentinels[_id];
@@ -1080,14 +1096,6 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 █░▀░█ █▄█ █▄▀ █ █▀░ █ ██▄ █▀▄ ▄█
 */
 
-    /*function isPlayer() internal {    
-        uint256 size = 0;
-        address acc = msg.sender;
-        assembly { size := extcodesize(acc)}
-        require((msg.sender == tx.origin && size == 0));
-        ketchup = keccak256(abi.encodePacked(acc, block.coinbase));
-    }*/
-
     function onlyOperator() internal view {    
        require(msg.sender == operator || auth[msg.sender] == true);
 
@@ -1098,105 +1106,13 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
     }
 
     function checkRen(address elfOwner, uint256 amount) internal view {    
-
-        require(bankBalances[elfOwner] >= amount, "notEnoughRen");
-        
+        require(bankBalances[elfOwner] >= amount, "notEnoughRen");        
+    }
+    
+    function checkMoon(address elfOwner, uint256 amount) internal view {    
+        require(moonBalances[elfOwner] >= amount, "notEnoughMoon");        
     }
 
-
-/*
-█▀█ █▀█ █ █▀ █▀▄▀█   █▄▄ █▀█ █ █▀▄ █▀▀ █▀▀
-█▀▀ █▀▄ █ ▄█ █░▀░█   █▄█ █▀▄ █ █▄▀ █▄█ ██▄
-*/
-
-
-        function checkIn(uint256[] calldata ids, uint256 renAmount, address owner) public returns (bool) {
-            
-                onlyOperator();
-                require(isTerminalOpen, "terminalClosed");         
-                uint256 travelers = ids.length;
-                if (travelers > 0) {
-
-                            for (uint256 index = 0; index < ids.length; index++) {  
-                                _actions(ids[index], 0, owner, 0, 0, false, false, false, 0);
-                                emit CheckIn(owner, block.timestamp, ids[index], sentinels[ids[index]]);
-                                sentinels[ids[index]] = 0; //scramble their bwainz
-                            }
-                        
-                }
-
-                    if (renAmount > 0) {
-
-                            if(bankBalances[owner] - renAmount >= 0) {                      
-                                _setAccountBalance(owner, renAmount, true);
-                                emit RenTransferOut(owner,block.timestamp,renAmount);
-                            }
-                    }
-            
-
-        }
-
-        function checkOutRen(uint256[] calldata renAmounts, bytes[] memory renSignatures, uint256[] calldata timestamps, address[] calldata owners) public returns (bool) {
-        
-        onlyOperator();
-            require(isTerminalOpen, "terminalClosed"); 
-            
-
-                for(uint i = 0; i < owners.length; i++){
-                    require(usedRenSignatures[renSignatures[i]] == 0, "Signature already used");   
-                    require(_isSignedByValidator(encodeRenForSignature(renAmounts[i], owners[i], timestamps[i]),renSignatures[i]), "incorrect signature");
-                    usedRenSignatures[renSignatures[i]] = 1;
-                    
-                    bankBalances[owners[i]] += renAmounts[i];     
-                    emit RenTransferedIn(owners[i], renAmounts[i]);    
-                }            
-            
-            }
-            
-
-
-        function encodeRenForSignature(uint256 renAmount, address owner, uint256 timestamp) public pure returns (bytes32) {
-            return keccak256(
-                    abi.encodePacked("\x19Ethereum Signed Message:\n32", 
-                        keccak256(
-                                abi.encodePacked(renAmount, owner, timestamp))
-                                )
-                            );
-        }  
-        
-        function _isSignedByValidator(bytes32 _hash, bytes memory _signature) private view returns (bool) {
-            
-            bytes32 r;
-            bytes32 s;
-            uint8 v;
-                assembly {
-                        r := mload(add(_signature, 0x20))
-                        s := mload(add(_signature, 0x40))
-                        v := byte(0, mload(add(_signature, 0x60)))
-                    }
-                
-                    address signer = ecrecover(_hash, v, r, s);
-                    return signer == polyValidator;
-        
-        }
-
-
-    function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel) external {
-        require (msg.sender == operator || admin == msg.sender || auth[msg.sender] == true, "not allowed");
-        require(isTerminalOpen);
-        
-        for(uint i = 0; i < ids.length; i++){
-
-            DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);            
-            require(elf.owner == address(0), "Already in Polygon");
-            
-            sentinels[ids[i]] = sentinel[i];
-            
-            emit ElfTransferedIn(ids[i], sentinel[i]);
-
-        }       
-        
-    }
 
 /*
 ▄▀█ █▀▄ █▀▄▀█ █ █▄░█   █▀▀ █░█ █▄░█ █▀▀ ▀█▀ █ █▀█ █▄░█ █▀
@@ -1271,7 +1187,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     }
 
 
-   function setAccountBalance(address _owner, uint256 _amount) public {                
+   function adminSetAccountBalance(address _owner, uint256 _amount) public {                
         onlyOwner();
         bankBalances[_owner] += _amount;
     }
@@ -1384,29 +1300,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     }
 
     */
-  
-
-    function modifyElfDNA(uint256[] calldata ids, uint256[] calldata sentinel) external {
-       onlyOwner();  
-        
-        for(uint i = 0; i < ids.length; i++){
-            
-            sentinels[ids[i]] = sentinel[i];
-            
-            emit ElfTransferedIn(ids[i], sentinel[i]);
-
-        }        
-        
-    } 
-
-      function setAuth(address[] calldata adds_, bool status) public {
-       onlyOwner();
-       
-        for (uint256 index = 0; index < adds_.length; index++) {
-            auth[adds_[index]] = status;
-        }
-    }
-
+ 
     
     function setAddresses(address _inventory, address _operator)  public {
        onlyOwner();
@@ -1417,6 +1311,14 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function setValidator(address _validator)  public {
        onlyOwner();
        polyValidator = _validator;
+    }
+    
+    function setAuth(address[] calldata adds_, bool status) public {
+       onlyOwner();
+       
+        for (uint256 index = 0; index < adds_.length; index++) {
+            auth[adds_[index]] = status;
+        }
     }     
     /*
         function flipActiveStatus() external {
@@ -1432,5 +1334,60 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
 
     */
     
+     //Bridge
+
+    function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel, address owner) external {
+      onlyOperator();
+        
+        for(uint i = 0; i < ids.length; i++){
+            
+            DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);            
+            require(elf.owner == address(0), "Already in Polygon");
+            
+            sentinels[ids[i]] = sentinel[i];
+            
+        }        
+        
+    }
+
+    function exitElf(uint256[] calldata ids, address owner) external {
+      onlyOperator();
+        
+        for(uint i = 0; i < ids.length; i++){
+            
+           _actions(ids[i], 0, owner, 0, 0, false, false, false, 0);
+           sentinels[ids[i]] = 0; //scramble their bwainz.. muahaha.
+
+        }        
+        
+    } 
+
+     
+    function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external {
+            
+            onlyOperator();
+
+            if(_index == 0){
+                //0 = REN
+                _subtract ? bankBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
+                emit BalanceChanged(_owner, _amount, _subtract);
+                
+            }else if(_index == 1){
+                //1 = MOON
+                _subtract ? moonBalances[_owner] -= _amount : moonBalances[_owner] += _amount;
+                emit MoonBalanceChanged(_owner, _amount, _subtract);
+
+            }else if(_index == 2){
+                //2 = Artifacts
+                _subtract ? artifacts[_owner] -= _amount : artifacts[_owner] += _amount;
+
+            }
+            
+    }
+
+
+
 
 }
+
+
