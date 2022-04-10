@@ -74,6 +74,7 @@ module.exports = {
       apiKey: {
          mainnet: ETHERSCAN_API,
          polygon: POLYSCAN_API,
+         rinkeby: ETHERSCAN_API,
       },
          
     },

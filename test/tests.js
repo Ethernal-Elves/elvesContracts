@@ -13,7 +13,6 @@ const increaseWorldTimeinSeconds = async (seconds, mine = false) => {
   }
 };
 
-const mintPrice = ".088"
 const validator = "0x80861814a8775de20F9506CF41932E95f80f7035"
 
 
@@ -25,13 +24,13 @@ describe("Ethernal Elves Contracts", function () {
   let addr5;
   let addrs;
   let ren
-  let elves
   let ethElves
   let inventory
   let campaigns
   let bridge
   let artifacts
   let moon
+  let dao
 
 
   // `beforeEach` will run before each test, re-deploying the contract every
@@ -52,6 +51,9 @@ describe("Ethernal Elves Contracts", function () {
   const Campaigns = await ethers.getContractFactory("ElfCampaignsV3");
   const Artifacts = await ethers.getContractFactory("ElvesArtifacts");
   const Bridge = await ethers.getContractFactory("PrismBridge");
+  const ElvenDao = await ethers.getContractFactory("ElvenDao");
+
+  
 
   ///Deploy art contracts
   const Hair = await ethers.getContractFactory("Hair");
@@ -89,8 +91,12 @@ describe("Ethernal Elves Contracts", function () {
   
   ren = await Miren.deploy(); 
   moon = await Moon.deploy(); 
+  moon.deployed();
+
   artifacts = await Artifacts.deploy();
   bridge = await upgrades.deployProxy(Bridge);
+  
+  dao = ElvenDao.deploy(moon.address);
 
 
   ethElves = await upgrades.deployProxy(Elves, [owner.address, beff.address]);
