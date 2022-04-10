@@ -992,6 +992,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
             require(elf.action == 14, "!onCruasde"); 
            
             elf.action = 15;
+            //add MOON reduction here
 
             uint256 chance = _randomize(_rand(), "Crusade", id_) % 100;
             uint256 artifactsReceived = 1;
@@ -1111,6 +1112,9 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
     
     function checkMoon(address elfOwner, uint256 amount) internal view {    
         require(moonBalances[elfOwner] >= amount, "notEnoughMoon");        
+    }
+    function checkArtifacts(address elfOwner, uint256 amount) internal view {    
+        require(artifacts[elfOwner] >= amount, "notEnoughArtifacts");        
     }
 
 
@@ -1320,21 +1324,8 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
             auth[adds_[index]] = status;
         }
     }     
-    /*
-        function flipActiveStatus() external {
-        onlyOwner();
-        isGameActive = !isGameActive;
-        }
-
-
-        function flipTerminal() external {
-        onlyOwner();
-        isTerminalOpen = !isTerminalOpen;
-        }
-
-    */
     
-     //Bridge
+    //Bridge
 
     function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel, address owner) external {
       onlyOperator();
@@ -1366,20 +1357,63 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external {
             
             onlyOperator();
+            if(_subtract){
+               
+                    if(_index == 0){
+                        checkRen(_owner, _amount);
+                        bankBalances[_owner] -= _amount;
+
+                    }else if (_index == 1){
+                        checkMoon(_owner, _amount);
+                        moonBalances[_owner] -= _amount; 
+
+                    }else if (_index == 1){
+                        checkArtifacts(_owner, _amount);
+                        artifacts[_owner] -= _amount; 
+                    }
+                    
+
+            }else{
+                
+                    if(_index == 0){
+                        //0 = REN
+                        bankBalances[_owner] += _amount;
+                        emit BalanceChanged(_owner, _amount, _subtract);
+                            
+                    }else if(_index == 1){
+                        //1 = MOON
+                        moonBalances[_owner] += _amount;
+                        emit MoonBalanceChanged(_owner, _amount, _subtract);
+
+                    }else if(_index == 2){
+                        //2 = Artifacts
+                        artifacts[_owner] += _amount;
+                        
+                    }   
+
+            }
+
+            
+            
+    }
+
+    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance) {
 
             if(_index == 0){
                 //0 = REN
-                _subtract ? bankBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
-                emit BalanceChanged(_owner, _amount, _subtract);
+                return bankBalances[_owner];                
                 
             }else if(_index == 1){
                 //1 = MOON
-                _subtract ? moonBalances[_owner] -= _amount : moonBalances[_owner] += _amount;
-                emit MoonBalanceChanged(_owner, _amount, _subtract);
+                return moonBalances[_owner];                
 
             }else if(_index == 2){
                 //2 = Artifacts
-                _subtract ? artifacts[_owner] -= _amount : artifacts[_owner] += _amount;
+                return artifacts[_owner];
+
+            }else if(_index == 3){
+                //3 = Scrolls
+                return scrolls[_owner];
 
             }
             

@@ -55,27 +55,13 @@ contract EthernalElvesV5 is ERC721 {
     mapping(bytes => uint16)  public usedRenSignatures; 
     mapping(bytes => uint16)  public usedSentinelSignatures; 
 /////NEW STORAGE FROM THIS LINE V5///////////////////////////////////////////////////////
-
-
-    /*   function initialize(address _dev1Address, address _dev2Address) public {
-    
-       require(!initialized, "Already initialized");
-       admin                = msg.sender;   
-       dev1Address          = _dev1Address;
-       dev2Address          = _dev2Address;
-       maxSupply            = 6666; 
-       INIT_SUPPLY          = 3300; 
-       initialized          = true;
-       price                = .088 ether;  
-       _remaining           = [250,660,2500]; //[200, 600, 2500]; //this is the supply of each whitelist role
-       validator            = 0x80861814a8775de20F9506CF41932E95f80f7035;
-       
-    }
-*/
-    function setAddresses(address _ren, address _terminus)  public {
+    IERC20Lite public moon;
+   
+    function setAddresses(address _ren, address _terminus, address _moon)  public {
        onlyOwner();
        ren                  = IERC20Lite(_ren); 
-       terminus             = _terminus;       
+       terminus             = _terminus;   
+       moon                 = IERC20Lite(_moon);    
     }    
     
     function setAuth(address[] calldata adds_, bool status) public {
@@ -91,33 +77,9 @@ contract EthernalElvesV5 is ERC721 {
     event Action(address indexed from, uint256 indexed action, uint256 indexed tokenId);         
     event BalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
     event Campaigns(address indexed owner, uint256 amount, uint256 indexed campaign, uint256 sector, uint256 indexed tokenId);
+    event MoonBalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
  
- //DELETE
-    event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
-    event CheckOut(address indexed to, uint256 timestamp, uint256 indexed tokenId);      
-    event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);  
-    event RenTransferIn(address indexed from, uint256 timestamp, uint256 indexed renAmount); 
-
    
-   
-    function mint() external payable  returns (uint256 id) {
-        isPlayer();
-        require(isMintOpen, "Minting is closed");
-        uint256 cost;
-        (cost,) = getMintPriceLevel();
-        
-        if (totalSupply <= INIT_SUPPLY) {            
-             require(msg.value >= cost, "NotEnoughEther");
-        }else{
-            bankBalances[msg.sender] >= cost ? _setAccountBalance(msg.sender, cost, true) :  ren.burn(msg.sender, cost);
-        }
-
-        return _mintElf(msg.sender);
-
-    }
-
-
-
 //GAMEPLAY//
 
     function unStake(uint256[] calldata ids) external  {
@@ -196,47 +158,7 @@ contract EthernalElvesV5 is ERC721 {
 
 //INTERNALS
     
-        function _mintElf(address _to) private returns (uint16 id) {
         
-            uint256 rand = _rand();
-          
-            
-            {        
-                DataStructures.Elf memory elf;
-                id = uint16(totalSupply + 1);   
-                        
-                elf.owner = address(0);
-                elf.timestamp = block.timestamp;
-                
-                elf.action = elf.weaponTier = elf.inventory = 0;
-                
-                elf.primaryWeapon = 69; //69 is the default weapon - fists.
-
-                (,elf.level) = getMintPriceLevel();
-
-                elf.sentinelClass = uint16(_randomize(rand, "Class", id)) % 3;
-
-                elf.race = rand % 100 > 97 ? 3 : uint16(_randomize(rand, "Race", id)) % 3;
-
-                elf.hair = elf.race == 3 ? 0 : uint16(_randomize(rand, "Hair", id)) % 3;            
-
-                elf.accessories = elf.sentinelClass == 0 ? (uint16(_randomize(rand, "Accessories", id)) % 2) + 3 : uint16(_randomize(rand, "Accessories", id)) % 2; //2 accessories MAX 7 
-
-                uint256 _traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
-                uint256 _class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-                
-                elf.healthPoints = DataStructures.calcHealthPoints(elf.sentinelClass, elf.level);
-                elf.attackPoints = DataStructures.calcAttackPoints(elf.sentinelClass, elf.weaponTier); 
-
-            sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, _traits, _class);
-            
-            }
-                
-            _mint(_to, id);           
-
-        }
-
-
         function _actions(
             uint256 id_, 
             uint action, 
@@ -567,6 +489,10 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
         require(admin == msg.sender || auth[msg.sender] == true || dev1Address == msg.sender || dev2Address == msg.sender);
     }
 
+    function checkBalance(uint256 balance, uint256 amount) internal view {    
+        require(balance - amount >= 0, "notEnoughBalance");           
+    }
+
 
 //ADMIN Only
     function withdrawAll() public {
@@ -612,7 +538,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 
     
     
-   function setAccountBalance(address _owner, uint256 _amount) public {                
+   function adminSetAccountBalance(address _owner, uint256 _amount) public {                
         onlyOwner();
         bankBalances[_owner] += _amount;
     }
@@ -652,6 +578,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
         for(uint i = 0; i < ids.length; i++){
             
             DataStructures.Elf memory elf = DataStructures.getElf(sentinel[ids[i]]);
+            DataStructures.ActionVariables memory actions;
             
             require(elf.owner == owner, "NotYourElf");
             require(ownerOf[ids[i]] == address(this));
@@ -659,6 +586,8 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
             _transfer(address(this), owner, ids[i]);      
             elf.owner = address(0);    
            
+            actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
+            actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
 
             sentinels[ids[i]] = DataStructures._setElf(elf.owner, elf.timestamp, action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
             emit Action(owner, action, ids[i]); 
@@ -674,18 +603,55 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
         for(uint i = 0; i < ids.length; i++){            
            
             DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);
+            DataStructures.ActionVariables memory actions;
             
              if(ownerOf[ids[i]] != address(this)){
-                _transfer(elfOwner, address(this), ids[i]);
+                _transfer(owner, address(this), ids[i]);
                 elf.owner = owner;                                
              }
+
+            actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
+            actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
 
             sentinels[ids[i]] = DataStructures._setElf(elf.owner, elf.timestamp, action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
             emit Action(owner, action, ids[i]);                
 
         }        
         
+    }
+
+    function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external {
+            
+            require (msg.sender == terminus || admin == msg.sender, "not terminus");
+
+            if(_subtract){
+               
+                    if(_index == 0){
+                        
+                        _subtract ? bankBalances[_owner] >= _amount ? _setAccountBalance(_owner, _amount, true) :  ren.burn(_owner, _amount)
+                                  : ren.mint(_owner, _amount);           
+                        
+                        emit BalanceChanged(_owner, _amount, _subtract);
+
+                    }else if (_index == 1){
+                        
+                        _subtract ? moon.burn(_owner, _amount) : moon.mint(_owner, _amount);    
+                        
+                        emit MoonBalanceChanged(_owner, _amount, _subtract);
+                    }                    
+
+            }            
+            
     } 
+
+    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance) {
+            
+            if(_index == 0){
+            //0 = REN
+            return bankBalances[_owner];          
+            }
+            
+    }
 
   
 

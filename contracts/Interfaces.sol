@@ -41,12 +41,11 @@ interface IArtifacts {
 
 interface IElves {    
     function prismBridge(uint256[] calldata id, uint256[] calldata sentinel, address owner) external;    
-    function exitElf(uint256[] ids, address owner) external;
+    function exitElf(uint256[] calldata ids, address owner) external;
     function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external;
-    function bankBalances(address owner) external returns (uint256 balance);
-    function moonBalances(address owner) external returns (uint256 balance);
-    function artifacts(address owner) external returns (uint256 balance);    
-    function sentinels(uint256 _id) external returns(uint256 sentinel);
+    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance);
+   
+
 }
 
 interface IERC721Lite {
