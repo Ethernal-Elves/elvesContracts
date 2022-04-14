@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./ERC721.sol"; 
 import "./DataStructures.sol";
 import "./Interfaces.sol";
-//import "hardhat/console.sol"; 
+import "hardhat/console.sol"; 
 
 // We are the Ethernal. The Ethernal Elves         
 // Written by 0xHusky & Beff Jezos. Everything is on-chain for all time to come.
@@ -55,13 +55,11 @@ contract EthernalElvesV5 is ERC721 {
     mapping(bytes => uint16)  public usedRenSignatures; 
     mapping(bytes => uint16)  public usedSentinelSignatures; 
 /////NEW STORAGE FROM THIS LINE V5///////////////////////////////////////////////////////
-    IERC20Lite public moon;
+    
    
-    function setAddresses(address _ren, address _terminus, address _moon)  public {
-       onlyOwner();
-       ren                  = IERC20Lite(_ren); 
-       terminus             = _terminus;   
-       moon                 = IERC20Lite(_moon);    
+    function setBridge(address _bridge)  public {
+       onlyOwner();     
+       terminus             = _bridge;       
     }    
     
     function setAuth(address[] calldata adds_, bool status) public {
@@ -76,8 +74,11 @@ contract EthernalElvesV5 is ERC721 {
 
     event Action(address indexed from, uint256 indexed action, uint256 indexed tokenId);         
     event BalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
-    event Campaigns(address indexed owner, uint256 amount, uint256 indexed campaign, uint256 sector, uint256 indexed tokenId);
-    event MoonBalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
+    //event Campaigns(address indexed owner, uint256 amount, uint256 indexed campaign, uint256 sector, uint256 indexed tokenId);
+    event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
+    event CheckOut(address indexed to, uint256 timestamp, uint256 indexed tokenId);      
+    event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);  
+    event RenTransferIn(address indexed from, uint256 timestamp, uint256 indexed renAmount); 
  
    
 //GAMEPLAY//
@@ -228,7 +229,7 @@ contract EthernalElvesV5 is ERC721 {
                     if(gameMode_ == 1 || gameMode_ == 2) _setAccountBalance(msg.sender, actions.reward, false);
                     if(gameMode_ == 3) elf.level = elf.level + 1;
                     
-                    emit Campaigns(msg.sender, actions.reward, campaign_, sector_, id_);
+                    //emit Campaigns(msg.sender, actions.reward, campaign_, sector_, id_);
 
                 
                 }else if(action == 3){//passive campaign
@@ -251,24 +252,7 @@ contract EthernalElvesV5 is ERC721 {
 
                     elf.level = _exitPassive(actions.timeDiff, elf.level);
                    
-                    
-                  /*  if(actions.timeDiff >= 7){
-                        actions.reward = 140 ether;
-                    }
-                    if(actions.timeDiff >= 14 && actions.timeDiff < 30){
-                        actions.reward = 420 ether;
-                    }
-                    if(actions.timeDiff >= 30){
-                        actions.reward = 1200 ether;
-                    }
-                    
-                    elf.level = elf.level + (actions.timeDiff * 1); //one level per day
-                    elf.level = elf.level > 100 ? 100 : elf.level;
-
- 
-                    _setAccountBalance(msg.sender, actions.reward, false);
-                */
-
+    
                 }else if(action == 5){//forge loop for weapons
                    
                     require(msg.value >= .04 ether, "Wrong value sent");  
@@ -411,19 +395,7 @@ contract EthernalElvesV5 is ERC721 {
             _subtract ? bankBalances[_owner] -= _amount : bankBalances[_owner] += _amount;
             emit BalanceChanged(_owner, _amount, _subtract);
     }
-    //NOTE BEFF WE NEED TO CHANGE THIS
-    function getMintPriceLevel() public view returns (uint256 mintCost, uint256 mintLevel) {
-            
-            if (totalSupply <= INIT_SUPPLY) return  (price, 1);
-            if (totalSupply < 4000) return  (  60 ether, 3);
-            if (totalSupply < 4500) return  ( 180 ether, 5);
-            if (totalSupply < 5000) return  ( 360 ether, 15);
-            if (totalSupply < 5500) return  ( 600 ether, 25);
-            if (totalSupply < 6000) return  ( 900 ether, 35);
-            if (totalSupply < 6333) return  ( 1800 ether, 45);
-            if (totalSupply < 6666) return  ( 2700  ether, 60);
 
-    }
 
     function _randomize(uint256 ran, string memory dom, uint256 ness) internal pure returns (uint256) {
     return uint256(keccak256(abi.encode(ran,dom,ness)));}
@@ -573,14 +545,18 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 
     function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel, address owner) external {
         require (msg.sender == terminus || admin == msg.sender, "not terminus");
+        //return to eth
         uint256 action = 0;
         
         for(uint i = 0; i < ids.length; i++){
             
-            DataStructures.Elf memory elf = DataStructures.getElf(sentinel[ids[i]]);
+           //Get currently staked elf
+            DataStructures.Elf memory elfStaked = DataStructures.getElf(sentinels[ids[i]]);
+           //Get new sentinel ID sent from Polygon 
+            DataStructures.Elf memory elf = DataStructures.getElf(sentinel[i]);
             DataStructures.ActionVariables memory actions;
-            
-            require(elf.owner == owner, "NotYourElf");
+            //check if owners are the same. Check is owner is sender.
+            require(elf.owner == elfStaked.owner && elf.owner == owner, "NotYourElf");
             require(ownerOf[ids[i]] == address(this));
             
             _transfer(address(this), owner, ids[i]);      
@@ -591,20 +567,23 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 
             sentinels[ids[i]] = DataStructures._setElf(elf.owner, elf.timestamp, action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
             emit Action(owner, action, ids[i]); 
+            emit CheckOut(owner, block.timestamp, ids[i]);
         
         }        
-        
+
     } 
 
     function exitElf(uint256[] calldata ids, address owner) external {
         require (msg.sender == terminus || admin == msg.sender, "not terminus");
         uint256 action = 8;
+        //send through the portal to polygon
         
+
         for(uint i = 0; i < ids.length; i++){            
            
             DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);
             DataStructures.ActionVariables memory actions;
-            
+
              if(ownerOf[ids[i]] != address(this)){
                 _transfer(owner, address(this), ids[i]);
                 elf.owner = owner;                                
@@ -614,9 +593,11 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
             actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
 
             sentinels[ids[i]] = DataStructures._setElf(elf.owner, elf.timestamp, action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
-            emit Action(owner, action, ids[i]);                
+            emit Action(owner, action, ids[i]); 
+            emit CheckIn(owner, block.timestamp, ids[i], sentinels[ids[i]]);          
 
-        }        
+        }
+        //emit event    ids   sentinelTransfers
         
     }
 
@@ -624,34 +605,31 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
             
             require (msg.sender == terminus || admin == msg.sender, "not terminus");
 
-            if(_subtract){
-               
-                    if(_index == 0){
+                if(_index == 0){
                         
-                        _subtract ? bankBalances[_owner] >= _amount ? _setAccountBalance(_owner, _amount, true) :  ren.burn(_owner, _amount)
-                                  : ren.mint(_owner, _amount);           
-                        
-                        emit BalanceChanged(_owner, _amount, _subtract);
+                        if(_subtract){
 
-                    }else if (_index == 1){
-                        
-                        _subtract ? moon.burn(_owner, _amount) : moon.mint(_owner, _amount);    
-                        
-                        emit MoonBalanceChanged(_owner, _amount, _subtract);
-                    }                    
+                            ren.burn(_owner, _amount);
+                            emit RenTransferOut(_owner,block.timestamp,_amount);
 
-            }            
+                        }else{
+
+                            ren.mint(_owner, _amount); 
+                            emit RenTransferIn(_owner,block.timestamp,_amount);          
+
+                        }
+
+                    
+                         
+                                              
+
+                }              
+
+     
+            //emit event to let the dapp know you have exited.            
             
     } 
 
-    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance) {
-            
-            if(_index == 0){
-            //0 = REN
-            return bankBalances[_owner];          
-            }
-            
-    }
 
   
 

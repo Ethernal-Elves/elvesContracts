@@ -1,33 +1,4 @@
 
-Goerli
-let invetoryAddress = "0x20051ce393bf24118e750b3705bce1a699f0234a"
-let campaignAddress = "0xDE5D398dD4ad4DA226eB9cA5eFA2cD125E35fB7B"
-let renAddress =  "0x9f4b65278c6c9c5df4ed430642d46e2193d7b3a6"
-let elvesAddress = "0x365271EA323BAf27B97886Fa78872C7ef5505Db1"
-
-Mumbai
-Compilation finished successfully
-Inventory 0x20051cE393bf24118E750B3705bCE1a699F0234a
-Campaigns 0x597d97b11a9cf0e491b69686d2ed7fee8e0deec8
-Miren 0xde5d398dd4ad4da226eb9ca5efa2cd125e35fb7b set minter and init
-Elves 0x12047E66d3e1CFd506efca80bb23BDB7c72a6D82
-
-
-//npx hardhat verify --network mainnet 0xCaD981ea69c29debcbf1d67354614D671dC1a743
-//npx hardhat run scripts/upgrades/campaigns.js --network mainnet
-///////////////////22 JAN
-deploying elves imp: 0x078ec7adb7b79475839927ffd7c9377964d02aea
-Elves 0xd86A8e58D9455877D6B831dE70Aa718EBC71a0a8
-deploying art contracts
-deploying inventory manager
-Inventory 0xA5163753BD468e62122523293f45B5931Bb5c498
-deploying campaigns
-Campaigns 0x1B249E2Fa3656eA782B5DB519F35F58ad561CA5c
-deploying ren
-Miren 0x62dccEBAb42EBA60AaF9BfB78b0D9fb8296BDD2B
-
-
-
 let huskyAddress = "0xCcB6D1e4ACec2373077Cb4A6151b1506F873a1a5"
 let beffAddress =  "0x3296D61C5E737F9847bA52267b1DeBB8Dbff139F"
 
@@ -63,22 +34,23 @@ INVENTORY LOCATION:
 
 
 let validator = "0x80861814a8775de20F9506CF41932E95f80f7035"
+polygonValidator = "0xa2B877EC3234F50C33Ff7d0605F7591053d06E31"
 
 ///////////////////POLYGON///////////////////////////////////
 
-Inventory: 0x3cF1630393BFd1D9fF52bD822fE88714FC81467E
-Elves: 0x4deab743f79b582c9b1d46b4af61a69477185dd5
-
-operator
 
 
 //////////RINKEBY//////////////////////////////////////////////
-deploying elves
-Elves: 0x4430B68a122966f61aEe861A2D9ec789b03b8631
-Campaigns: 0xbF902bF679d938986CE76249C60Af6111A5457b8
-Metadata: 0x2AbC14AEd72F74C4Dcf6A674237514ac4F398bFA
-REN: 0xF114Dbd66f7e69b2635bE7d85418E707AB029a67
+REN 0xce5ee326019e9f186cbf0e0738bf0f48148b3192
+ELVES: 0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579
+INVENTORY: 0xed70e87d465b2d87e9bd23b34e7f869885ea9434
+BRIDGE: 0x20c0799850f2c8d94e2672f2c3178f911272eccd
 
 ////////MUMBAI/////////////////////////////////////
-metadata: 0x644bcc992Afc46505B25623A551489fda7dd4572    
-elves: 0xBa8EFCA65A99b97741fF3B382Cf198CEB3c9c90F
+
+//REN  0x87353b13c7333d460252aAAFdB775BE01c9724Ae
+//MOON 0x37311e190292257cd83f9a9d91750022b396af9d
+//ELVES 0x45a48576af2e5aa4ab82dce6fd49a919526b03a5
+//BRIDGE 0x1653FeA0EAb46A843239f3993EFFc4Cc0B6706DE
+//IM 0x5707ff21a520beebccdad13df292576e7fbe4cb4
+//Wallet 0x760576ac349439ea3505a6ff668a26ecf61d2224

@@ -44,7 +44,7 @@ contract EETest is EthernalElvesV5 {
                 elf.level = _level;
 
                 elf.sentinelClass = _class;
-                console.log("elf.sentinelClass", elf.sentinelClass);
+              
                 elf.race = _race;
 
                 elf.hair = elf.race == 3 ? 0 : uint16(_randomize(rand, "Hair", id)) % 3;            
@@ -67,12 +67,10 @@ contract EETest is EthernalElvesV5 {
 
 
  
-   function initialize(address _dev1Address, address _dev2Address) public {
+   function initialize() public {
     
        require(!initialized, "Already initialized");
        admin                = msg.sender;   
-       dev1Address          = _dev1Address;
-       dev2Address          = _dev2Address;
        maxSupply            = 6666; 
        INIT_SUPPLY          = 3300; 
        initialized          = true;
@@ -81,6 +79,15 @@ contract EETest is EthernalElvesV5 {
        validator            = 0x80861814a8775de20F9506CF41932E95f80f7035;
        
     }
+
+      function setInitialAddress(address _ren, address _inventory, address _bridge) public {
+
+              ren                  = IERC20Lite(_ren); 
+              elfmetaDataHandler   = IElfMetaDataHandler(_inventory);
+              terminus             = _bridge;       
+
+
+      }
 
 
 }

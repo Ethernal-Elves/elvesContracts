@@ -24,10 +24,12 @@ describe("Ethernal Elves Contracts", function () {
   let addr5;
   let addrs;
   let ren
+  let pRen
   let ethElves
   let inventory
   let campaigns
-  let bridge
+  let eBridge
+  let pBridge
   let artifacts
   let moon
   let dao
@@ -45,6 +47,7 @@ describe("Ethernal Elves Contracts", function () {
   
   const MetadataHandler = await ethers.getContractFactory("ElfMetadataHandlerV2");
   const Miren = await ethers.getContractFactory("Miren");
+  const Pmiren = await ethers.getContractFactory("pMiren");
   const Moon = await ethers.getContractFactory("Moon");
   const Elves = await ethers.getContractFactory("EETest");
   const Pelves = await ethers.getContractFactory("EETestPolygon");
@@ -52,10 +55,6 @@ describe("Ethernal Elves Contracts", function () {
   const Artifacts = await ethers.getContractFactory("ElvesArtifacts");
   const Bridge = await ethers.getContractFactory("PrismBridge");
   const ElvenDao = await ethers.getContractFactory("ElvenDao");
-
-  
-
-  ///Deploy art contracts
   const Hair = await ethers.getContractFactory("Hair");
   const Race1 = await ethers.getContractFactory("Race1");
   const Race2 = await ethers.getContractFactory("Race2");
@@ -90,16 +89,18 @@ describe("Ethernal Elves Contracts", function () {
 
   
   ren = await Miren.deploy(); 
+  pRen = await Pmiren.deploy(); 
   moon = await Moon.deploy(); 
-  moon.deployed();
-
-  artifacts = await Artifacts.deploy();
-  bridge = await upgrades.deployProxy(Bridge);
+  moon.deployed()
   
+  artifacts = await Artifacts.deploy();
+  
+  eBridge = await upgrades.deployProxy(Bridge);
+  pBridge = await upgrades.deployProxy(Bridge);
   dao = ElvenDao.deploy(moon.address);
 
 
-  ethElves = await upgrades.deployProxy(Elves, [owner.address, beff.address]);
+  ethElves = await upgrades.deployProxy(Elves);
   elvesPolygon = await upgrades.deployProxy(Pelves);    
 
   inventory = await upgrades.deployProxy(MetadataHandler);
@@ -131,17 +132,27 @@ describe("Ethernal Elves Contracts", function () {
   await inventory.setAccessories([6,12,13], accessories5.address)
   await inventory.setAccessories([14,19], accessories6.address)
   await inventory.setAccessories([20,21], accessories7.address)
-  
-   
+     
  
   await ren.setMinter(ethElves.address, 1)  
   await ren.setMinter(owner.address, 1)
-  await moon.setMinter(ethElves.address)
+  await moon.setMinter(elvesPolygon.address)
   await moon.setMinter(owner.address)
+  await pRen.setMinter(elvesPolygon.address, 1)  
+  await pRen.setMinter(owner.address, 1)
 
   await elvesPolygon.flipActiveStatus();
   await elvesPolygon.flipTerminal();
-  await elvesPolygon.setAuth([owner.address, addr3.address], true);
+  await elvesPolygon.setAuth([owner.address, addr3.address, pBridge.address], true);
+
+  await ethElves.flipActiveStatus();
+  await eBridge.flipActiveStatus();
+  await pBridge.flipActiveStatus();
+  await eBridge.setAddresses(ethElves.address, validator);
+  await pBridge.setAddresses(elvesPolygon.address, validator);
+
+  await ethElves.setBridge(eBridge.address)
+  await ethElves.setInitialAddress(ren.address, inventory.address, eBridge.address)
 
 
         //mint some elves 
@@ -152,8 +163,8 @@ describe("Ethernal Elves Contracts", function () {
         let item = [0,1,2,3,4,5,6]
         let weapon = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
         let weaponTier = [1,2,3,4,5]
-      
-       
+
+       //MINT TEST ELVES ON POLYGON
           await elvesPolygon.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[1], item[3], weapon[0], weaponTier[0]);
           await elvesPolygon.connect(addr3).mint(level[1],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
           await elvesPolygon.connect(addr3).mint(level[2],axa[1],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
@@ -163,13 +174,26 @@ describe("Ethernal Elves Contracts", function () {
           //one for ones
           await elvesPolygon.connect(addr3).mint(level[2],axa[5],race[0],sentineClass[0], item[3], weapon[12], weaponTier[4]);
           await elvesPolygon.connect(addr3).mint(level[2],axa[4],race[0],sentineClass[1], item[2], weapon[12], weaponTier[4]);
-          await elvesPolygon.connect(addr3).mint(level[2],axa[4],race[0],sentineClass[2], item[4], weapon[12], weaponTier[4]);          
+          await elvesPolygon.connect(addr3).mint(level[2],axa[4],race[0],sentineClass[2], item[4], weapon[12], weaponTier[4]);   
+          //FOr Transfers
+          await elvesPolygon.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[1], item[3], weapon[0], weaponTier[0]);
+          await elvesPolygon.connect(addr3).mint(level[1],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
+          await elvesPolygon.connect(addr3).mint(level[2],axa[1],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);       
+        
+        //MIN TEST ELVES ON ETH
+          await ethElves.connect(addr3).mint(level[0],axa[0],race[0],sentineClass[1], item[3], weapon[0], weaponTier[0]);
+          await ethElves.connect(addr3).mint(level[1],axa[0],race[0],sentineClass[2], item[2], weapon[0], weaponTier[0]);
+          await ethElves.connect(addr3).mint(level[2],axa[1],race[0],sentineClass[0], item[6], weapon[0], weaponTier[0]);
+        
+        
+        
         
         await elvesPolygon.addRampage(4,5,30,65, 0, 1, 100,0,100)
         await elvesPolygon.addRampage(3,5,30,65, 0, 1, 100,600,100)
       
         let fundRen = "100000000000000000000000"
         await elvesPolygon.adminSetAccountBalance(addr3.address, fundRen)
+        await ren.mint(addr3.address, fundRen)
       
         await elvesPolygon.addScrolls([10, 2], [addr3.address, addr4.address])
         
@@ -180,6 +204,27 @@ describe("Ethernal Elves Contracts", function () {
   
 
   describe("New Features", function () {
+
+    it("CHECK IN BRIDGE", async function () {
+      //0xc4c4cf2598498de7ce0364cc0b80596f5c5565f13ec2656aba26cea884b2dd34
+      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
+
+      //0x0f58cc59e8149adf85b2c6c88446698d080ff1a53df848cdb4cbdb93701e18fd
+      //0x7933227f9e9256426997bc5ca0afd104793c5a26fe4c05a807764f47c91411d6
+
+      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
+      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
+
+      //0x40e16bf758c77d90e3682a46edd0f91bdd622656a81f6db60954f8fdd82d89e6
+      //0x40e16bf758c77d90e3682a46edd0f91bdd622656a81f6db60954f8fdd82d89e6
+      //0xffe44f25cf5fd8e21b10c457303770653e99128b5b38e550e3a4127a0fe8be33
+
+      await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
+      await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)
+
+      await ethElves.prismBridge([2],["24035111148580720954755674680320567594769649893675351022698960011175364248621"],"0x2730F644E9C5838D1C8292dB391C0ADE1f65c42d" )
+      
+    })
 
     it("Rampage, Heal and Bloodthirst tests", async function () {
 
@@ -278,9 +323,9 @@ describe("Ethernal Elves Contracts", function () {
 
     
 
-      await elvesPolygon.connect(addr3).sendCrusade([1],addr3.address);
-      await elvesPolygon.connect(addr3).sendCrusade([2],addr3.address);
-      await elvesPolygon.connect(addr3).sendCrusade([3],addr3.address);
+      await elvesPolygon.connect(addr3).sendCrusade([1],addr3.address, false);
+      await elvesPolygon.connect(addr3).sendCrusade([2],addr3.address, false);
+      await elvesPolygon.connect(addr3).sendCrusade([3],addr3.address, false);
 
       expect(parseInt(await elvesPolygon.scrolls(addr3.address))).to.equal(10-3)
       
@@ -291,9 +336,9 @@ describe("Ethernal Elves Contracts", function () {
 
      
       increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-      await elvesPolygon.connect(addr3).returnCrusade([1],addr3.address);
-      await elvesPolygon.connect(addr3).returnCrusade([2],addr3.address);
-      await elvesPolygon.connect(addr3).returnCrusade([3],addr3.address);
+      await elvesPolygon.connect(addr3).returnCrusade([1],addr3.address, false);
+      await elvesPolygon.connect(addr3).returnCrusade([2],addr3.address, false);
+      await elvesPolygon.connect(addr3).returnCrusade([3],addr3.address, false);
 
           
       console.log("Artifacts got", await elvesPolygon.artifacts(addr3.address))
@@ -336,7 +381,7 @@ describe("Ethernal Elves Contracts", function () {
       increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
 
       await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("1500"))
-      await elvesPolygon.connect(owner).sendCrusade([4], addr4.address)
+      await elvesPolygon.connect(owner).sendCrusade([4], addr4.address, false)
      
       expect(parseInt(await elvesPolygon.bankBalances(addr4.address))).to.equal(0)
      })    

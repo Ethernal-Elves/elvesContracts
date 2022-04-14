@@ -44,7 +44,7 @@ contract EETestPolygon is PolyEthernalElvesV5 {
                 elf.level = _level;
 
                 elf.sentinelClass = _class;
-                console.log("elf.sentinelClass", elf.sentinelClass);
+               
                 elf.race = _race;
 
                 elf.hair = elf.race == 3 ? 0 : uint16(_randomize(rand, "Hair", id)) % 3;            
@@ -64,6 +64,12 @@ contract EETestPolygon is PolyEthernalElvesV5 {
             _mint(msg.sender, id);           
 
         }
+
+         function mintZombie(uint256 qty) external {
+              for(uint i = 1; i <= qty; i++){        
+                    _mint(address(this), i);     
+              }              
+         }
 
             function initialize() public {
     
@@ -91,5 +97,16 @@ contract EETestPolygon is PolyEthernalElvesV5 {
         onlyOwner();
         isTerminalOpen = !isTerminalOpen;
         }   
+
+
+            function setAllBalances(address _owner, uint256 _ren, uint256 _moon, uint256 _scrolls, uint256 _artifacts) external {
+
+            
+            bankBalances[_owner] = _ren;
+            moonBalances[_owner] = _moon;          
+            scrolls[_owner] = _scrolls;
+            artifacts[_owner] = _artifacts;
+            
+    }
 
 }

@@ -2,10 +2,8 @@
 pragma solidity 0.8.7;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "./ERC721.sol"; 
-import "./DataStructures.sol";
 import "./Interfaces.sol";
-//import "hardhat/console.sol"; 
+import "hardhat/console.sol"; 
 
 /*
 █▀█ █▀█ █ █▀ █▀▄▀█   █▄▄ █▀█ █ █▀▄ █▀▀ █▀▀
@@ -30,27 +28,18 @@ contract PrismBridge {
     IElves public elves;
     ///Add more assets here
 
-
-    event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
-    event CheckOut(address indexed to, uint256 timestamp, uint256 indexed tokenId);      
-    event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);  
-    event RenTransferIn(address indexed from, uint256 timestamp, uint256 indexed renAmount); 
-    event CheckInToPoly(address indexed from, uint256 timestamp, uint256[] tokenIds, uint256[] sentinels);      
-
-
-
-
    function initialize() public {
     
        require(!initialized, "Already initialized");
        admin                = msg.sender;   
-       validator            = 0x80861814a8775de20F9506CF41932E95f80f7035;
+       initialized          = true;
     }
 
     function setAddresses(address _elves, address _validator)  public {
        onlyOwner();
        elves                = IElves(_elves);
        validator            = _validator;
+       isBridgeOpen         = true;
     }
 
     function setAuth(address[] calldata adds_, bool status) public {
@@ -59,11 +48,16 @@ contract PrismBridge {
         for (uint256 index = 0; index < adds_.length; index++) {
                auth[adds_[index]] = status;
         }
-    }   
+    } 
+
+    function flipActiveStatus() external {
+        onlyOwner();
+        isBridgeOpen = !isBridgeOpen;
+    }  
 
 //TRANSFERS TO ETH to be called from Polygon Contract
-
-    function checkIn(uint256[] calldata sentinelIds, uint256[] calldata elderIds, uint256 artifactsAmount, uint256 renAmount, uint256 moonAmount, address _owner, uint256 chain) public returns (bool) {
+// event emmited by the contract
+    function checkIn(uint256[] calldata sentinelIds, uint256[] calldata elderIds, uint256 artifactsAmount, uint256 renAmount, address _owner, uint256 chain) public returns (bool) {
 
                 checkBridgeStatus();             
                 
@@ -71,44 +65,36 @@ contract PrismBridge {
 
                 if(chain == 1){
                     isPlayer();
-                    owner == msg.sender;
+                    owner = msg.sender;                    
                 }else{
                     onlyOperator();
-                    owner == _owner;
-                }
-                     
+                    owner = _owner;
+                }                                     
 
                 uint256 sentinelElves = sentinelIds.length;
                 uint256 elderElves = elderIds.length;
 
                 if (sentinelElves > 0) {
 
-                    elves.exitElf(sentinelIds, owner);
-                   //emit event
+                    elves.exitElf(sentinelIds, owner);                  
                                                    
                 }
 
                 if (elderElves > 0) {/*wen elders? */}
                
                 if (renAmount > 0) {
-                    elves.setAccountBalance(owner, renAmount, true, 0);                           
-                    //emit event        
-                }
-
-                if (moonAmount > 0) {
-                    elves.setAccountBalance(owner, moonAmount, true, 1);    
-                    //emit event                                           
+                    elves.setAccountBalance(owner, renAmount, true, 0);                                              
                 }
 
                 if (artifactsAmount > 0) {
                     elves.setAccountBalance(owner, artifactsAmount, true, 2);          
-                     //emit event
+                    
                 }
             
-
+             
         }
 
-        function transferTokens(uint256[] calldata tokenAmounts, uint256[] calldata tokenIndex, bytes[] memory tokenSignatures, uint256[] calldata timestamps, address[] calldata owners, uint256 chain) public returns (bool) {
+        function transferTokensIn(uint256[] calldata tokenAmounts, uint256[] calldata tokenIndex, bytes[] memory tokenSignatures, uint256[] calldata timestamps, address[] calldata owners, uint256 chain) public returns (bool) {
         
         checkBridgeStatus();         
         chain == 1 ? isPlayer() : onlyOperator();
@@ -120,10 +106,10 @@ contract PrismBridge {
                     
                     if(tokenIndex[i] == 0){
                         elves.setAccountBalance(owners[i], tokenAmounts[i], false, 0);      
-                       //emit event
+                      
                     }else if(tokenIndex[i] == 1){
                         elves.setAccountBalance(owners[i], tokenAmounts[i], false, 1);      
-                      //emit event
+                      
                     }
                      
                 }            
@@ -131,43 +117,28 @@ contract PrismBridge {
         }
 
 
-    function checkOutToPolygon(uint256[] calldata ids, uint256[] calldata sentinel) external {
-       onlyOperator();
-       checkBridgeStatus();   
-       
-       address owner = msg.sender;
-
-       elves.prismBridge(ids, sentinel, owner);      
-        
-    }
-
-
-            
-    //////////////EXPORT TO OTHER CHAINS/////////////////
-    // DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
+    function checkOutSentinel(uint256[] calldata ids, uint256[] calldata sentinel, bytes[] memory signatures, bytes[] memory authCodes, address _owner, uint256 chain) public returns (bool) {
     
+        checkBridgeStatus();         
+        address owner;
 
-    function checkOutToEth(uint256[] calldata ids, uint256[] calldata sentinel, bytes[] memory signatures, bytes[] memory authCodes) public returns (bool) {
-    
-        isPlayer();
-        checkBridgeStatus(); 
-        address owner = msg.sender;
-        
-
-        uint256 travelers = ids.length;
-            if (travelers > 0) {
+                if(chain == 1){
+                    isPlayer();
+                    owner = msg.sender;                    
+                }else{
+                    onlyOperator();
+                    owner = _owner;
+                }          
 
                     for (uint256 index = 0; index < ids.length; index++) {  
-                        
-                        require(usedSignatures[signatures[index]] == 0, "Signature already used");   
 
-                        require(_isSignedByValidator(encodeSentinelForSignature(ids[index], msg.sender, sentinel[index], authCodes[index]),signatures[index]), "incorrect signature");
+                        require(usedSignatures[signatures[index]] == 0, "Signature already used");   
+                        require(_isSignedByValidator(encodeSentinelForSignature(ids[index], owner, sentinel[index], authCodes[index]),signatures[index]), "incorrect signature");
                         usedSignatures[signatures[index]] = 1;
 
-                        elves.prismBridge(ids, sentinel, owner);
-                        //emit event
                     }
-            }
+                    
+        elves.prismBridge(ids, sentinel, owner);
 
     }
 
@@ -232,51 +203,4 @@ contract PrismBridge {
 
 }
 
-
-/*
-    function transferTokenToEth(uint256[] calldata tokenAmounts, uint256[] calldata tokenIndex, bytes[] memory tokenSignatures, uint256[] calldata timestamps, address[] calldata owners) public returns (bool) {
-            
-            isPlayer();
-            checkBridgeStatus();         
-                
-
-                    for(uint i = 0; i < owners.length; i++){
-                        require(usedSignatures[tokenSignatures[i]] == 0, "Signature already used");   
-                        require(_isSignedByValidator(encodeTokenForSignature(tokenAmounts[i], owners[i], timestamps[i], tokenIndex[i]),tokenSignatures[i]), "incorrect signature");
-                        usedSignatures[tokenSignatures[i]] = 1;
-                        
-                        if(tokenIndex[i] == 0){
-                            ren.mint(msg.sender, tokenAmounts[i]);
-                            //emit event
-                        }else if(tokenIndex[i] == 1){
-                            moon.mint(msg.sender, tokenAmounts[i]);
-                            //emit event 
-                        }
-                        
-                    }            
-                
-    }
-
-    function checkInToPolygon(uint256[] calldata ids, uint256 renAmount, uint256 moonAmount) public returns (bool) {
-        
-        isPlayer();
-        checkBridgeStatus();           
-            uint256 travelers = ids.length;
-            address owner = msg.sender;
-            if (travelers > 0) {
-                elves.exitElf(ids, owner);
-                //emit event
-            }
-
-            if (renAmount > 0) {  
-                elves.setAccountBalance(owner, renAmount, true, 0);
-                //emit event                        
-            }
-            if (moonAmount > 0) {  
-                elves.setAccountBalance(owner, renAmount, true, 1);
-                //emit event                        
-            }
-    }
-
-    */
 

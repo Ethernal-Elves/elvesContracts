@@ -26,9 +26,8 @@ contract PolyEthernalElvesV5 is PolyERC721 {
     function name() external pure returns (string memory) { return "Polygon Ethernal Elves"; }
     function symbol() external pure returns (string memory) { return "pELV"; }
        
-    //using DataStructures for DataStructures.ActionVariables;
-    using DataStructures for DataStructures.Elf;
-    //using DataStructures for DataStructures.Token; 
+    
+    using DataStructures for DataStructures.Elf;    
 
     IElfMetaDataHandler elfmetaDataHandler;
         
@@ -111,49 +110,14 @@ contract PolyEthernalElvesV5 is PolyERC721 {
                 uint256 currentInventory;     
     }
 
-     //NewDataSlots from this deployment///
-
     //CRUSADER NO REGRET// 
     ///////////////////////////////////////////////////////////////////////////////////////////
     mapping(address => uint256) public scrolls; //memory slot for scrolls to go on crusades////
     mapping(address => uint256) public artifacts; //memory slot for artifact mint           ///
     mapping(uint256 => uint256) public onCrusade;                                           /// 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    mapping(address => uint256) public moonBalances;     
-
-    /*
-    function initialize() public {
-    
-       require(!initialized, "Already initialized");
-       admin                = msg.sender;   
-       initialized          = true;
-       operator             = 0xa2B877EC3234F50C33Ff7d0605F7591053d06E31; 
-       elfmetaDataHandler   = IElfMetaDataHandler(0x3cF1630393BFd1D9fF52bD822fE88714FC81467E);
-
-       camps[1] = Camps({baseRewards: 10, creatureCount: 1000, creatureHealth: 120,  expPoints:6,   minLevel:1, campMaxLevel:100});
-
-       MAX_LEVEL = 100;
-       TIME_CONSTANT = 1 hours; 
-       REGEN_TIME = 300 hours; 
-
-    }  */  
-
-    /*function initializeRampage() public {
-    
-       require(!isRampageInit, "Already initialized");
-       isRampageInit = true;
-       rampages[1] = Rampages({probDown:  0, probSame:  0, propUp:  0, levelsGained: 3, minLevel: 1, maxLevel:100, renCost: 75,  count:10000});
-       rampages[2] = Rampages({probDown:  0, probSame:  0, propUp:  0, levelsGained: 5, minLevel:60, maxLevel:100, renCost:125,  count:8000});
-       //Accessories & Weapons
-       rampages[3] = Rampages({probDown: 20, probSame: 50, propUp: 30, levelsGained: 0, minLevel:60, maxLevel:100, renCost:300,  count:4000});
-       rampages[4] = Rampages({probDown:  5, probSame: 30, propUp: 65, levelsGained: 0, minLevel:75, maxLevel:100, renCost:600,  count:2000});
-       rampages[5] = Rampages({probDown:  0, probSame: 10, propUp: 90, levelsGained: 0, minLevel:99, maxLevel:100, renCost:1200, count:667});
-       //Morphset
-       rampages[6] = Rampages({probDown:  0, probSame: 50, propUp: 50, levelsGained: 0, minLevel:99, maxLevel:100, renCost:5000, count:100});       
-       rampages[7] = Rampages({probDown:  0, probSame: 50, propUp: 50, levelsGained: 0, minLevel:99, maxLevel:100, renCost:6500, count:100});              
-    }*/
- 
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////    
+    //NewDataSlots from this deployment///
+    mapping(address => uint256) public moonBalances;         
 
 
 /*
@@ -163,22 +127,19 @@ contract PolyEthernalElvesV5 is PolyERC721 {
 
     event Action(address indexed from, uint256 indexed action, uint256 indexed tokenId);         
     event BalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
+    event MoonBalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
     event Campaigns(address indexed owner, uint256 amount, uint256 indexed campaign, uint256 sector, uint256 indexed tokenId);
-    event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
-    event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);   
-    event LastKill(address indexed from); 
-    event AddCamp(uint256 indexed id, uint256 baseRewards, uint256 creatureCount, uint256 creatureHealth, uint256 expPoints, uint256 minLevel);
+    
     event BloodThirst(address indexed owner, uint256 indexed tokenId); 
-    event ElfTransferedIn(uint256 indexed tokenId, uint256 sentinel); 
-    event RenTransferedIn(address indexed from, uint256 renAmount); 
     event RollOutcome(uint256 indexed tokenId, uint256 roll, uint256 action);
     event ArtifactFound(address indexed from, uint256 artifacts, uint256 indexed tokenId);
     event ArtifactsMinted(address indexed from, uint256 artifacts, uint256 timestamp);
-    event MoonTransferedIn(address indexed from, uint256 renAmount); 
-    event MoonTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);   
-    event MoonBalanceChanged(address indexed owner, uint256 indexed amount, bool indexed subtract);
 
-       
+    event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
+    event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);   
+    event ElfTransferedIn(uint256 indexed tokenId, uint256 sentinel); 
+    event RenTransferedIn(address indexed from, uint256 renAmount); 
+
 
 
 /*
@@ -282,20 +243,20 @@ contract PolyEthernalElvesV5 is PolyERC721 {
           
     }
 
-     function sendCrusade(uint256[] calldata ids, address owner) external {
+     function sendCrusade(uint256[] calldata ids, address owner, bool useMoon) external {
           onlyOperator();       
           //using items bool for try accessories
           for (uint256 index = 0; index < ids.length; index++) {  
-            _actions(ids[index], 14, owner, 0, 0, false,false, false, 0);
+            _actions(ids[index], 14, owner, 0, 0, false,false, useMoon, 0);
           }
     }
 
-     function returnCrusade(uint256[] calldata ids, address owner) external {
+     function returnCrusade(uint256[] calldata ids, address owner, bool useMoon) external {
           onlyOperator();       
 
           for (uint256 index = 0; index < ids.length; index++) {  
                 
-                _returnCrusade(ids[index], owner);
+                _returnCrusade(ids[index], owner, useMoon);
           }
     } 
  
@@ -588,7 +549,7 @@ function _instantKill(uint256 timestamp, uint256 weaponTier, address elfOwner, u
     }else{
         timestamp_ = timestamp;
     } 
-    //console.log("Instant Kill Chance: " , chance , " Kill Chance: " , killChance);
+    
     emit RollOutcome(id, chance, 10);
     
 
@@ -772,14 +733,6 @@ function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sen
  _accesssories = ((7 * sentinelClass) + _accesssories) + 1;
 
 
-
-        /*console.log("Abilities Check, Ability:", _accesssories);            
-        
-        console.log("AP BEFORE: ",_attackPoints);
-        console.log("heal time BEFORE", actions_.healTime/3600 , " hours");
-        console.log("IKM BEFORE:", actions_.instantKillModifier); 
-        */
-
         //if Druid 
         if(_accesssories == 2){
         //Bear
@@ -824,13 +777,6 @@ function _getAbilities(uint256 _attackPoints, uint256 _accesssories, uint256 sen
             //Ranger
             attackPoints_ = _attackPoints * 135/100;
         }  
-        /*
-        console.log("AFTER", _accesssories);            
-        
-        console.log("AP After: ",attackPoints_);
-        console.log("heal time After", actions_.healTime/3600 , " hours");
-        console.log("IKM After:", actions_.instantKillModifier); 
-        */
 
 }
 
@@ -981,7 +927,7 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
         
     }
 
-    function _returnCrusade(uint256 id_, address elfOwner) private {
+    function _returnCrusade(uint256 id_, address elfOwner, bool useMoon) private {
             onCrusade[id_] = 0;//reset elf on crusade
             DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id_]);
             
@@ -996,8 +942,16 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
 
             uint256 chance = _randomize(_rand(), "Crusade", id_) % 100;
             uint256 artifactsReceived = 1;
+            uint256 artifactsChance = 10;
 
-            if(chance < 10){
+            if(useMoon){
+               //used 5 moon to increase odds  
+                checkMoon(elfOwner, 5 ether);
+                _setAccountBalance(elfOwner, 5 ether, true, 1); 
+                artifactsChance = 20;
+                }
+
+            if(chance < artifactsChance){
                 artifactsReceived = 2;
             }
 
@@ -1012,18 +966,6 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
             emit ArtifactFound(elfOwner, artifactsReceived, id_);
             emit RollOutcome(id_, chance, 15);
     }
-
-    function _mintArtifact (address _owner, uint256 _artifacts) internal {
-        //make sure we have enough artifacts to mint
-        require(artifacts[_owner] >= _artifacts, "notEnoughArtifacts");
-        //remove minted amount from artifacts memory
-        artifacts[_owner] = artifacts[_owner] - _artifacts;
-        //emit message to dApp to prepare signatures for eth Minting
-        emit ArtifactsMinted(_owner, _artifacts, block.timestamp);
-        
-    }
-    
-    
 
     function _setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) private {
             
@@ -1144,9 +1086,8 @@ function addCamp(uint256 id, uint16 baseRewards_, uint16 creatureCount_, uint16 
             campMaxLevel:   maxLevel_
             });
         
-        camps[id] = newCamp;
+        camps[id] = newCamp;        
         
-        emit AddCamp(id, baseRewards_, creatureCount_, expPoints_, creatureHealth_, minLevel_);
     }
 
 
@@ -1236,81 +1177,13 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
         sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
         
     }
-
-    /* // COMMENTED OUT TO MAKE SPACE FOR NEW FUNCTIONALITY
-
-    function changeElfOwner(address elfOwner, uint id) external {
-        onlyOwner();
-        DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        GameVariables memory actions;
-
-        elf.owner           = elfOwner;
-       
-        actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
-        actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-                       
-        sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
-        
-    }
-
-
-
-    function changeElfLevel(uint8 level, uint id) external {
-       
-        onlyOwner();
-        DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        GameVariables memory actions;
-        require(level <=255, "level out of range");
-
-        elf.level = level;
-       
-        actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
-        actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-                       
-        sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
-        
-    }
-
-    function changeElfItem(uint8 inventory, uint id) external {
-       
-        onlyOwner();
-        DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        GameVariables memory actions;
-        require(inventory <=6, "item index out of range");
-
-        elf.inventory = inventory;
-       
-        actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
-        actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-                       
-        sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
-        
-    }
-
-    function changeElfWeapons(uint id, uint8 _primaryWeapon, uint8 _weaponTier, uint8 _attackPoints) external {
-        onlyOwner();
-        DataStructures.Elf memory elf = DataStructures.getElf(sentinels[id]);
-        GameVariables memory actions;
-
-        elf.attackPoints    = _attackPoints;
-        elf.primaryWeapon   = _primaryWeapon;
-        elf.weaponTier      = _weaponTier;
-        
-        actions.traits = DataStructures.packAttributes(elf.hair, elf.race, elf.accessories);
-        actions.class =  DataStructures.packAttributes(elf.sentinelClass, elf.weaponTier, elf.inventory);
-                       
-        sentinels[id] = DataStructures._setElf(elf.owner, elf.timestamp, elf.action, elf.healthPoints, elf.attackPoints, elf.primaryWeapon, elf.level, actions.traits, actions.class);
-        
-    }
-
-    */
- 
     
     function setAddresses(address _inventory, address _operator)  public {
        onlyOwner();
        elfmetaDataHandler   = IElfMetaDataHandler(_inventory);
        operator             = _operator;
     }
+
 
     function setValidator(address _validator)  public {
        onlyOwner();
@@ -1330,27 +1203,30 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel, address owner) external {
       onlyOperator();
         
-        for(uint i = 0; i < ids.length; i++){
+        for(uint i = 0; i < ids.length; i++){           
             
             DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);            
             require(elf.owner == address(0), "Already in Polygon");
             
             sentinels[ids[i]] = sentinel[i];
-            
-        }        
+            emit ElfTransferedIn(ids[i], sentinel[i]);
+        }
+        //emit event to        sentinelTransfers ids 
         
     }
 
     function exitElf(uint256[] calldata ids, address owner) external {
       onlyOperator();
-        
+      uint256 action = 0;
+          
         for(uint i = 0; i < ids.length; i++){
             
            _actions(ids[i], 0, owner, 0, 0, false, false, false, 0);
+           emit CheckIn(owner, block.timestamp, ids[i], sentinels[ids[i]]);
            sentinels[ids[i]] = 0; //scramble their bwainz.. muahaha.
-
+         
         }        
-        
+         //emit event    ids   sentinelTransfers
     } 
 
      
@@ -1362,12 +1238,14 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
                     if(_index == 0){
                         checkRen(_owner, _amount);
                         bankBalances[_owner] -= _amount;
+                     
+                        emit RenTransferOut(_owner,block.timestamp,_amount);
 
                     }else if (_index == 1){
                         checkMoon(_owner, _amount);
                         moonBalances[_owner] -= _amount; 
 
-                    }else if (_index == 1){
+                    }else if (_index == 2){
                         checkArtifacts(_owner, _amount);
                         artifacts[_owner] -= _amount; 
                     }
@@ -1378,13 +1256,13 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
                     if(_index == 0){
                         //0 = REN
                         bankBalances[_owner] += _amount;
-                        emit BalanceChanged(_owner, _amount, _subtract);
-                            
-                    }else if(_index == 1){
-                        //1 = MOON
-                        moonBalances[_owner] += _amount;
-                        emit MoonBalanceChanged(_owner, _amount, _subtract);
+                       
+                        emit RenTransferedIn(_owner, _amount);        
 
+                    }else if(_index == 1){
+                        //2 = Artifacts
+                        moonBalances[_owner] += _amount;
+                        
                     }else if(_index == 2){
                         //2 = Artifacts
                         artifacts[_owner] += _amount;
@@ -1397,26 +1275,23 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
             
     }
 
-    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance) {
+    function getAllAccountBalances(address _owner) external returns (uint256 ren_, uint256 moon_, uint256 artifacts_, uint256 scrolls_) {
 
-            if(_index == 0){
-                //0 = REN
-                return bankBalances[_owner];                
-                
-            }else if(_index == 1){
-                //1 = MOON
-                return moonBalances[_owner];                
+           ren_ = bankBalances[_owner];                
+           moon_ = moonBalances[_owner];                
+           artifacts_ = artifacts[_owner];
+           scrolls_ = scrolls[_owner];
 
-            }else if(_index == 2){
-                //2 = Artifacts
-                return artifacts[_owner];
+    }
 
-            }else if(_index == 3){
-                //3 = Scrolls
-                return scrolls[_owner];
-
-            }
-            
+        function _mintArtifact (address _owner, uint256 _artifacts) internal {
+        //make sure we have enough artifacts to mint
+        require(artifacts[_owner] >= _artifacts, "notEnoughArtifacts");
+        //remove minted amount from artifacts memory
+        artifacts[_owner] = artifacts[_owner] - _artifacts;
+        //emit message to dApp to prepare signatures for eth Minting
+        emit ArtifactsMinted(_owner, _artifacts, block.timestamp);
+        
     }
 
 

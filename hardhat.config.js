@@ -7,6 +7,7 @@ require("@nomiclabs/hardhat-etherscan");
 require('@openzeppelin/hardhat-upgrades');
 require("hardhat-gas-reporter");
 require("hardhat-contract-sizer")
+require("@nomiclabs/hardhat-web3");
 
 const isPolygon = false;
 
@@ -75,6 +76,7 @@ module.exports = {
          mainnet: ETHERSCAN_API,
          polygon: POLYSCAN_API,
          rinkeby: ETHERSCAN_API,
+         polygonMumbai: POLYSCAN_API,
       },
          
     },

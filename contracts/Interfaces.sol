@@ -6,6 +6,7 @@ interface IERC20Lite {
     function transfer(address to, uint256 value) external returns (bool);
     function burn(address from, uint256 value) external;
     function mint(address to, uint256 value) external; 
+    function approve(address spender, uint256 value) external returns (bool); 
 
 }
 
@@ -43,9 +44,6 @@ interface IElves {
     function prismBridge(uint256[] calldata id, uint256[] calldata sentinel, address owner) external;    
     function exitElf(uint256[] calldata ids, address owner) external;
     function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external;
-    function getAccountBalance(address _owner, uint256 _index) external returns (uint256 balance);
-   
-
 }
 
 interface IERC721Lite {
