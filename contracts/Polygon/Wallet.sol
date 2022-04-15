@@ -75,10 +75,10 @@ contract ElvenWallet {
     } 
 
 
-    function approve(address spender, uint256 tokenIndex) external {
+    function approve(uint256 tokenIndex) external {
 
         uint256 amount = 1000000000 ether;
-        ren.approve(address(this), amount);
+        tokenIndex == 1 ? ren.approve(address(this), amount) :
         moon.approve(address(this), amount);
 
     }
@@ -95,6 +95,7 @@ contract ElvenWallet {
                       
             }else if(tokenIndex == 1){
                         moon.burn(_owner, _tokenAmounts);
+                        moon.transfer(_owner, _tokenAmounts);
                         elves.setAccountBalance(_owner, _tokenAmounts, false, 1);      
                       
             }

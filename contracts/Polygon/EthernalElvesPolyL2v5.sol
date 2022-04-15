@@ -116,8 +116,8 @@ contract PolyEthernalElvesV5 is PolyERC721 {
     mapping(address => uint256) public artifacts; //memory slot for artifact mint           ///
     mapping(uint256 => uint256) public onCrusade;                                           /// 
     ///////////////////////////////////////////////////////////////////////////////////////////    
-    //NewDataSlots from this deployment///
     mapping(address => uint256) public moonBalances;         
+    //NewDataSlots from this deployment///
 
 
 /*
@@ -1226,7 +1226,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
            sentinels[ids[i]] = 0; //scramble their bwainz.. muahaha.
          
         }        
-         //emit event    ids   sentinelTransfers
+         
     } 
 
      
@@ -1237,8 +1237,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
                
                     if(_index == 0){
                         checkRen(_owner, _amount);
-                        bankBalances[_owner] -= _amount;
-                     
+                        bankBalances[_owner] -= _amount;                     
                         emit RenTransferOut(_owner,block.timestamp,_amount);
 
                     }else if (_index == 1){
@@ -1255,12 +1254,11 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
                 
                     if(_index == 0){
                         //0 = REN
-                        bankBalances[_owner] += _amount;
-                       
+                        bankBalances[_owner] += _amount;                       
                         emit RenTransferedIn(_owner, _amount);        
 
                     }else if(_index == 1){
-                        //2 = Artifacts
+                        //2 = Moon
                         moonBalances[_owner] += _amount;
                         
                     }else if(_index == 2){

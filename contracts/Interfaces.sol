@@ -7,6 +7,7 @@ interface IERC20Lite {
     function burn(address from, uint256 value) external;
     function mint(address to, uint256 value) external; 
     function approve(address spender, uint256 value) external returns (bool); 
+    function balanceOf(address account) external returns (uint256); 
 
 }
 

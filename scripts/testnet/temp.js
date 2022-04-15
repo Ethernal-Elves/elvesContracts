@@ -81,9 +81,9 @@ async function deploySettings() {
   console.log("allow wallet to access elves")
   elves.setAuth(["0x760576ac349439ea3505a6ff668a26ecf61d2224"], true)
   await sleep(20000);*/
-  let result = await wallet.setAddresses("0x45a48576af2e5aa4ab82dce6fd49a919526b03a5", "0x87353b13c7333d460252aAAFdB775BE01c9724Ae", "0x87353b13c7333d460252aAAFdB775BE01c9724Ae", "0x37311e190292257cd83f9a9d91750022b396af9d", "0x37311e190292257cd83f9a9d91750022b396af9d")
-  console.log(result.txHash)
+  //let result = await wallet.setAddresses("0x45a48576af2e5aa4ab82dce6fd49a919526b03a5", "0x87353b13c7333d460252aAAFdB775BE01c9724Ae", "0x37311e190292257cd83f9a9d91750022b396af9d", "0x37311e190292257cd83f9a9d91750022b396af9d")
   
+  await wallet.approve(1);
 
 }
 

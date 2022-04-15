@@ -115,7 +115,7 @@ contract EthernalElvesV5 is ERC721 {
           }
     }
 
-    function forging(uint256[] calldata ids) external payable {
+ /*   function forging(uint256[] calldata ids) external payable {
           isPlayer();         
         
           for (uint256 index = 0; index < ids.length; index++) {  
@@ -131,7 +131,7 @@ contract EthernalElvesV5 is ERC721 {
           }
 
     }
-
+*/
     function heal(uint256 healer, uint256 target) external {
         isPlayer();
         _actions(healer, 7, msg.sender, target, 0, false, false, false, 0);
@@ -147,7 +147,7 @@ contract EthernalElvesV5 is ERC721 {
     }
 
 
-    function withdrawSomeTokenBalance(uint256 amount) external {
+ /*   function withdrawSomeTokenBalance(uint256 amount) external {
       
         require(bankBalances[msg.sender] > 0, "NoBalance");
         require(bankBalances[msg.sender] - amount >= 0,"Overdraft Not permitted");
@@ -156,6 +156,8 @@ contract EthernalElvesV5 is ERC721 {
       
 
     }
+
+*/
 
 //INTERNALS
     
@@ -226,7 +228,7 @@ contract EthernalElvesV5 is ERC721 {
                                     
                     }
                     
-                    if(gameMode_ == 1 || gameMode_ == 2) _setAccountBalance(msg.sender, actions.reward, false);
+                    if(gameMode_ == 1 || gameMode_ == 2)  ren.mint(msg.sender, actions.reward);   
                     if(gameMode_ == 3) elf.level = elf.level + 1;
                     
                     //emit Campaigns(msg.sender, actions.reward, campaign_, sector_, id_);
@@ -355,11 +357,9 @@ contract EthernalElvesV5 is ERC721 {
                     
                     if(level >= 100){
                         level = 100;
-                    }
-                    
+                    }                    
                    
-
-                    _setAccountBalance(msg.sender, rewards, false);
+                    ren.mint(msg.sender, rewards);                     
 
     }
 
@@ -544,7 +544,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
     //Bridge    
 
     function prismBridge(uint256[] calldata ids, uint256[] calldata sentinel, address owner) external {
-        require (msg.sender == terminus || admin == msg.sender, "not terminus");
+        require (msg.sender == terminus || admin == msg.sender, "notBridge");
         //return to eth
         uint256 action = 0;
         
@@ -574,7 +574,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
     } 
 
     function exitElf(uint256[] calldata ids, address owner) external {
-        require (msg.sender == terminus || admin == msg.sender, "not terminus");
+        require (msg.sender == terminus || admin == msg.sender, "notBridge");
         uint256 action = 8;
         //send through the portal to polygon
         
@@ -603,7 +603,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 
     function setAccountBalance(address _owner, uint256 _amount, bool _subtract, uint256 _index) external {
             
-            require (msg.sender == terminus || admin == msg.sender, "not terminus");
+            require (msg.sender == terminus || admin == msg.sender, "notBridge");
 
                 if(_index == 0){
                         
@@ -617,11 +617,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
                             ren.mint(_owner, _amount); 
                             emit RenTransferIn(_owner,block.timestamp,_amount);          
 
-                        }
-
-                    
-                         
-                                              
+                        }                                   
 
                 }              
 

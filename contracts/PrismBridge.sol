@@ -3,7 +3,7 @@ pragma solidity 0.8.7;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./Interfaces.sol";
-import "hardhat/console.sol"; 
+//import "hardhat/console.sol"; 
 
 /*
 █▀█ █▀█ █ █▀ █▀▄▀█   █▄▄ █▀█ █ █▀▄ █▀▀ █▀▀
@@ -33,13 +33,14 @@ contract PrismBridge {
        require(!initialized, "Already initialized");
        admin                = msg.sender;   
        initialized          = true;
+       isBridgeOpen         = true;
     }
 
     function setAddresses(address _elves, address _validator)  public {
        onlyOwner();
        elves                = IElves(_elves);
        validator            = _validator;
-       isBridgeOpen         = true;
+     
     }
 
     function setAuth(address[] calldata adds_, bool status) public {

@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 
 
-///npx hardhat verify --network rinkeby 0x858c52bbc608435f035b1913ec0228322ac54c2e 
+///npx hardhat verify --network mainnet 0x858c52bbc608435f035b1913ec0228322ac54c2e 
 
 //npx hardhat run scripts/testnet/deploy.js --network hardhat
 
@@ -55,8 +55,9 @@ async function deployContracts() {
 
   //Deploying on eth
   const MetadataHandler = await ethers.getContractFactory("ElfMetadataHandlerV2");
-  const Miren = await ethers.getContractFactory("Miren");
-  const Elves = await ethers.getContractFactory("EETest");
+  const Miren = await ethers.getContractFactory("pMiren");
+  const Moon = await ethers.getContractFactory("Moon");
+  const Elves = await ethers.getContractFactory("EETestPolygon");
   const Bridge = await ethers.getContractFactory("PrismBridge");
   const Hair = await ethers.getContractFactory("Hair");
   const Race1 = await ethers.getContractFactory("Race1");
@@ -93,6 +94,7 @@ async function deployContracts() {
   const accessories7 = await deployContract(Accessories7)
 
   const ren = await deployContract(Miren); 
+  const moon = await deployContract(Moon); 
   
   const ethElves = await deployProxy(Elves);
   const inventory = await deployProxy(MetadataHandler);
@@ -103,39 +105,39 @@ async function deployContracts() {
 async function setArt() {
   
 const MetadataHandler = await ethers.getContractFactory("ElfMetadataHandlerV2");
-const inventory = MetadataHandler.attach("0xed70e87d465b2d87e9bd23b34e7f869885ea9434")
+const inventory = MetadataHandler.attach("0x5707ff21a520beebccdad13df292576e7fbe4cb4")
 console.log("starting")
-await inventory.setRace([1,10,11,12,2,3], "0x66e4FB86Ca426dF1F3e5892eb8d0a229E4408154")
+await inventory.setRace([1,10,11,12,2,3], "0xf2aba59f491942211ca90fa84f95767638f9f307")
 await sleep(10000);
-await inventory.setRace([4,5,6,7,8,9], "0x33767c4a85B1C9B143ee53d4E21dA1CB67310071")
+await inventory.setRace([4,5,6,7,8,9], "0x2be3e741305458fefeeec27af2f463b068cde71e")
 await sleep(10000);
-await inventory.setHair([1,2,3,4,5,6,7,8,9], "0x2DB7510824c9B24520170ac1BeFbcf1E5ab4aB9C")
+await inventory.setHair([1,2,3,4,5,6,7,8,9], "0x591e02d67db57e698dd6fce73fa01a52da1b1afd")
 await sleep(10000);
-await inventory.setWeapons([1,10,11,12,13,14,15], "0xF9920C5ad0966d533868826eFD9E928b2876cB7B")
+await inventory.setWeapons([1,10,11,12,13,14,15], "0xf5d650eb960980a983e1cf3fa0c5589f98dbb7da")
 await sleep(10000);
 console.log("30%")
-await inventory.setWeapons([23,24,25,26,27,28,29], "0xafee685bc07241df9e7a864ea46ac418bdbbc362")
+await inventory.setWeapons([23,24,25,26,27,28,29], "0x18218d5cee6c851fea811a7837452fcb344a5248")
 await sleep(10000);
-await inventory.setWeapons([38,39,4,40,41,42], "0x32982ce19a7c06ec988cfa9b9438a9631f46e80b")
+await inventory.setWeapons([38,39,4,40,41,42], "0xe393206bce316db4ca44b78a6db0743e332faafb")//w3
 await sleep(10000);
-await inventory.setWeapons([16,17,18,19,2,20,21,22], "0x3c5095124442b843c45ca4c693be24660293f350")  
+await inventory.setWeapons([16,17,18,19,2,20,21,22], "0x75aa16d3f7b2d4ff559a0e30085e3a2a17ba5763")  
 await sleep(10000);
-await inventory.setWeapons([3,30,31,32,33,34,35,36,37], "0x82569162deae886216a03f8186e74d7048292640")
+await inventory.setWeapons([3,30,31,32,33,34,35,36,37], "0xb08ffbbcc329b8def4cb9bceaa59977d75053ba3")
 await sleep(10000);
-await inventory.setWeapons([43,44,45,5,6,7,8,9, 69], "0x8aa36f985c9722b2faf17f93d4ffe656e1b9dd5f")
+await inventory.setWeapons([43,44,45,5,6,7,8,9, 69], "0x610fad0cb149caca388fd1597c7ae852a2de7805")
 await sleep(10000);
 console.log("50%")
-await inventory.setAccessories([15,16,4,5,8,9,1,2,3,6,7,10,11,12,13,14,17,18,19,20,21], "0xc210e4e4a3fe7e8655826ec9c5391fb74f88f9de")
+await inventory.setAccessories([15,16,4,5,8,9,1,2,3,6,7,10,11,12,13,14,17,18,19,20,21], "0x5c34c91120b3e95eabf028cf498290c905cbc73d")
 await sleep(10000);
-await inventory.setAccessories([2,3], "0x04295d438cfa8a859d78a6b6162f76652194c605")
+await inventory.setAccessories([2,3], "0x1e54f0b7549adf3bb054a8b08b5aaf601b96a18c")
 await sleep(10000);
-await inventory.setAccessories([10,11,17,18], "0x64cabdec14caada99e1d82c6a6eb026b014ea840")  
+await inventory.setAccessories([10,11,17,18], "0x91a171294bba9052d1f1d7059a46b6708730916a")  
 await sleep(10000);
-await inventory.setAccessories([6,12,13], "0xec5fb86f30c9e9efea62e2700c1bc85cb9c2c6ee")
+await inventory.setAccessories([6,12,13], "0x6baec3f652262272efaff9982f225a6396099a09")
 await sleep(10000);
-await inventory.setAccessories([14,19], "0xa01b39c23cf893930abd296ce7170901ceeef1a1")
+await inventory.setAccessories([14,19], "0xc382422ba00083c09df4016ff2a8aab9997e1b09")
 await sleep(10000);
-await inventory.setAccessories([20,21], "0xcb1b4215f9b7942bf6baf08087a387417c9982a3")
+await inventory.setAccessories([20,21], "0x21a877f20f51a43553828a363caca8464580a7c8")
 console.log("done")
 }
 async function main() {
@@ -144,22 +146,26 @@ async function main() {
 //await setArt();
 
 
-const Elves = await ethers.getContractFactory("EETest");
+/*const Elves = await ethers.getContractFactory("EETest");
 const elves = Elves.attach("0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579")
 const Bridge = await ethers.getContractFactory("PrismBridge");
 const bridge = Bridge.attach("0x20c0799850f2c8d94e2672f2c3178f911272eccd")
-
+*/
 //await elves.setInitialAddress("0xed70e87d465b2d87e9bd23b34e7f869885ea9434","0xce5ee326019e9f186cbf0e0738bf0f48148b3192", "0x20c0799850f2c8d94e2672f2c3178f911272eccd", {gasLimit: 100000})
 //await bridge.setAddresses("0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579","0x80861814a8775de20F9506CF41932E95f80f7035", {gasLimit: 100000})
 //await elves.flipActiveStatus()
 //await sleep(15000)
 //await bridge.flipActiveStatus()
 
-await bridge.checkIn([1], [], 0, 0, "0x2730F644E9C5838D1C8292dB391C0ADE1f65c42d",1, {gasLimit: 100000}) 
+//await bridge.checkIn([1], [], 0, 0, "0x2730F644E9C5838D1C8292dB391C0ADE1f65c42d",1, {gasLimit: 100000}) 
   
+//REN  0x87353b13c7333d460252aAAFdB775BE01c9724Ae
+//MOON 0x37311e190292257cd83f9a9d91750022b396af9d
+//ELVES 0x45a48576af2e5aa4ab82dce6fd49a919526b03a5
+//BRIDGE 0x1653FeA0EAb46A843239f3993EFFc4Cc0B6706DE
+//IM 0x5707ff21a520beebccdad13df292576e7fbe4cb4
   
 
-  
 }
 
 
