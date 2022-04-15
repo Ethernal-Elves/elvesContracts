@@ -1,7 +1,6 @@
 
 const hre = require("hardhat");
-const polyElvesAbi =  require("../../artifacts/contracts/Polygon/EthernalElvesPolyL2v4.sol/PolyEthernalElvesV4.json");
-const {wallets} = require("./wallets.json")
+const {wallets} = require("./thirdSnap.json")
 
 
 const sleep = (milliseconds) => {
@@ -12,9 +11,9 @@ const sleep = (milliseconds) => {
 async function main() {
     
  
-    const iface = new ethers.utils.Interface(polyElvesAbi.abi)
+    
 
-      const ElvesPoly = await ethers.getContractFactory("PolyEthernalElvesV4");
+      const ElvesPoly = await ethers.getContractFactory("PolyEthernalElvesV5");
       const elves = ElvesPoly.attach("0x4deab743f79b582c9b1d46b4af61a69477185dd5")    
 
       let arrayLength = wallets.length;
@@ -29,13 +28,13 @@ async function main() {
         let subWalletsScrolls = subWallets.map(x => x.scrolls);
 
         try{
-          let result = await elves.addScolls(subWalletsScrolls, subWalletsAddresses, {gasLimit: 1000000});
+          let result = await elves.addScrolls(subWalletsScrolls, subWalletsAddresses, {gasLimit: 1000000});
           console.log("resultHash: ", result.hash, "current set:", i)
         }catch(e){
             console.log(e)
             console.log("This set failed: ", i)
             sleep(15000)
-            let result = await elves.addScolls(subWalletsScrolls, subWalletsAddresses, {gasLimit: 1000000});
+            let result = await elves.addScrolls(subWalletsScrolls, subWalletsAddresses, {gasLimit: 1000000});
             console.log("resultHash: ", result.hash, "current set:", i)
         }
 
