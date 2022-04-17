@@ -33,7 +33,7 @@ contract ElvenWallet {
     address public admin;
     uint256 public slpSwapRate;
     mapping(address => bool)   public auth;  
-
+    uint256 moonForLPs;
     
    
     ///Add more assets here
@@ -58,7 +58,10 @@ contract ElvenWallet {
     function setSlpSwapRate(uint256 _slp)  public {
        onlyOwner();
        slpSwapRate                = _slp;
-
+    }
+    function setMoonForLP(uint256 _moonForLp)  public {
+       onlyOwner();
+       moonForLPs                = _moonForLp;
     }
 
     function setAuth(address[] calldata adds_, bool status) public {
@@ -75,29 +78,19 @@ contract ElvenWallet {
     } 
 
 
-    function approve(uint256 tokenIndex) external {
-
-        uint256 amount = 1000000000 ether;
-        tokenIndex == 1 ? ren.approve(address(this), amount) :
-        moon.approve(address(this), amount);
-
-    }
-     
-
-    
     function deposit(address _owner, uint256 _tokenAmounts, uint256 tokenIndex) external {
         
             onlyOperator();
             
             if(tokenIndex == 0){
+                        elves.setAccountBalance(_owner, _tokenAmounts, false, 0);  
                         ren.burn(_owner, _tokenAmounts);
-                        elves.setAccountBalance(_owner, _tokenAmounts, false, 0);      
-                      
+
             }else if(tokenIndex == 1){
-                        moon.burn(_owner, _tokenAmounts);
-                        moon.transfer(_owner, _tokenAmounts);
+                        //moon.burn(_owner, _tokenAmounts);
+                        //moon.transfer(address(this), _tokenAmounts);
                         elves.setAccountBalance(_owner, _tokenAmounts, false, 1);      
-                      
+                        moon.transferFrom(_owner, address(this), _tokenAmounts);
             }
             
     } 
@@ -108,35 +101,33 @@ contract ElvenWallet {
             
              if(tokenIndex == 0){
                         
-                         elves.setAccountBalance(_owner, _tokenAmounts, true, 0);      
+                        elves.setAccountBalance(_owner, _tokenAmounts, true, 0);      
                         ren.mint(_owner, _tokenAmounts);
                       
              }else if(tokenIndex == 1){
                 
-                        elves.setAccountBalance(_owner, _tokenAmounts, true, 1);      
-                        moon.mint(_owner, _tokenAmounts);  
+                        elves.setAccountBalance(_owner, _tokenAmounts, true, 1);  
+                        //moon.transferFrom(address(this), _owner, _tokenAmounts); 
+                        moon.transfer(_owner, _tokenAmounts);   
+                        //moon.mint(_owner, _tokenAmounts);  
                       
             }
             
     }
 
-    /*
-    
+    function exchangeSLPForMoon(uint256 _amount) external
+    {   
+        isPlayer();
+        //require(daoAddress != address(0), "DAO address not set");
+        require(_amount > 0, "Amount is 0");
+        require(_amount % 10**18 == 0, "Must be an integer amount of SLP");
+        require(moonForLPs != 0, "No Lp tokens left for this round");
 
-    Deposit
-
-    Withdraw
-
-    Swap Moon for SLP
-
-    SLP sits in this contract 
-
-    Withdraw fees to this waller
-
-    approve(address spender, uint256 amount) → bool
-
-*/
- 
+         slp.transferFrom(msg.sender, address(this), _amount);
+         uint256 _moonAmount = _amount * slpSwapRate;
+         moon.transfer(msg.sender, _moonAmount);
+         /// 10**18 *        
+    }
 
 
             ////////////////MODIFIERS//////////////////////////////////////////

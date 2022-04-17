@@ -452,7 +452,7 @@ contract PolyEthernalElvesV5 is PolyERC721 {
                       //used 5 moon to reduce the cost of crusade by 250 ren  
                       checkMoon(elfOwner, 5 ether);
                       _setAccountBalance(elfOwner, 5 ether, true, 1); 
-                      crusadeCost = 1250 ether;
+                      crusadeCost = 1200 ether;
                     }
                     checkRen(elfOwner, crusadeCost);
 
@@ -946,9 +946,9 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
 
             if(useMoon){
                //used 5 moon to increase odds  
-                checkMoon(elfOwner, 5 ether);
+                checkMoon(elfOwner, 15 ether);
                 _setAccountBalance(elfOwner, 5 ether, true, 1); 
-                artifactsChance = 20;
+                artifactsChance = 30;
                 }
 
             if(chance < artifactsChance){
@@ -1258,7 +1258,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
                         emit RenTransferedIn(_owner, _amount);        
 
                     }else if(_index == 1){
-                        //2 = Moon
+                        //1 = Moon
                         moonBalances[_owner] += _amount;
                         
                     }else if(_index == 2){
