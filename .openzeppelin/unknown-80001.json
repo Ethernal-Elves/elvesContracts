@@ -4965,6 +4965,120 @@
             "label": "ren",
             "offset": 0,
             "slot": "0",
+            "type": "t_contract(IERC20Lite)662",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:62"
+          },
+          {
+            "label": "moon",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(IERC20Lite)662",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:63"
+          },
+          {
+            "label": "slp",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_contract(IERC20Lite)662",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:64"
+          },
+          {
+            "label": "elves",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_contract(IElves)731",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:66"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:70"
+          },
+          {
+            "label": "isActive",
+            "offset": 21,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:70"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:71"
+          },
+          {
+            "label": "slpSwapRate",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:71"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:74"
+          },
+          {
+            "label": "moonForLPs",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:76"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20Lite)662": {
+            "label": "contract IERC20Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IElves)731": {
+            "label": "contract IElves",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "eebfd173c1e33242d854a9229ffd6b5199eb57cafc40fee7253a3322c393b7b2": {
+      "address": "0x4333B489Ef5Ac79ca3f990f37a08D1e736313b11",
+      "txHash": "0xd59f9ad0d236966b49e956261bf97b83c704c09d41575417b951f415acad18a4",
+      "layout": {
+        "storage": [
+          {
+            "label": "ren",
+            "offset": 0,
+            "slot": "0",
             "type": "t_contract(IERC20Lite)15433",
             "contract": "ElvenWallet",
             "src": "contracts\\Polygon\\Wallet.sol:62"
@@ -5040,6 +5154,128 @@
             "type": "t_uint256",
             "contract": "ElvenWallet",
             "src": "contracts\\Polygon\\Wallet.sol:76"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20Lite)15433": {
+            "label": "contract IERC20Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IElves)15502": {
+            "label": "contract IElves",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "0f2a84ee3f41c9a3171e63e476555b974eda35f4fb56acf7b5659cbdc2283d25": {
+      "address": "0xc39b9b7146E5ce999E6aF1990e55fC80142f3e87",
+      "txHash": "0x8e6ba5a59d132de41b8ea7732d7691b1d56a48e96139305f8c652fcda67fb6c3",
+      "layout": {
+        "storage": [
+          {
+            "label": "ren",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_contract(IERC20Lite)15433",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:64"
+          },
+          {
+            "label": "moon",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(IERC20Lite)15433",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:64"
+          },
+          {
+            "label": "slp",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_contract(IERC20Lite)15433",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:65"
+          },
+          {
+            "label": "elves",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_contract(IElves)15502",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:66"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:70"
+          },
+          {
+            "label": "isActive",
+            "offset": 21,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:70"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:70"
+          },
+          {
+            "label": "slpSwapRate",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:72"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:72"
+          },
+          {
+            "label": "moonForLPs",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:73"
+          },
+          {
+            "label": "moonForLPsLeft",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256",
+            "contract": "ElvenWallet",
+            "src": "contracts\\Polygon\\Wallet.sol:74"
           }
         ],
         "types": {

@@ -33,6 +33,8 @@ describe("Ethernal Elves Contracts", function () {
   let artifacts
   let moon
   let dao
+  let slp 
+  let wallet
 
 
   // `beforeEach` will run before each test, re-deploying the contract every
@@ -49,6 +51,8 @@ describe("Ethernal Elves Contracts", function () {
   const Miren = await ethers.getContractFactory("Miren");
   const Pmiren = await ethers.getContractFactory("pMiren");
   const Moon = await ethers.getContractFactory("Moon");
+  const SLP = await ethers.getContractFactory("SLP");
+  const Wallet = await ethers.getContractFactory("ElvenWallet");
   const Elves = await ethers.getContractFactory("EETest");
   const Pelves = await ethers.getContractFactory("EETestPolygon");
   const Campaigns = await ethers.getContractFactory("ElfCampaignsV3");
@@ -90,7 +94,10 @@ describe("Ethernal Elves Contracts", function () {
   
   ren = await Miren.deploy(); 
   pRen = await Pmiren.deploy(); 
-  moon = await Moon.deploy(); 
+  moon = await Moon.deploy();
+  wallet = await upgrades.deployProxy(Wallet);
+
+  slp = await SLP.deploy();
   moon.deployed()
   
   artifacts = await Artifacts.deploy();
@@ -98,7 +105,7 @@ describe("Ethernal Elves Contracts", function () {
   eBridge = await upgrades.deployProxy(Bridge);
   pBridge = await upgrades.deployProxy(Bridge);
   dao = ElvenDao.deploy(moon.address);
-
+  
 
   ethElves = await upgrades.deployProxy(Elves);
   elvesPolygon = await upgrades.deployProxy(Pelves);    
@@ -139,20 +146,29 @@ describe("Ethernal Elves Contracts", function () {
   await moon.setMinter(elvesPolygon.address)
   await moon.setMinter(owner.address)
   await pRen.setMinter(elvesPolygon.address, 1)  
+  await pRen.setMinter(wallet.address, 1) 
   await pRen.setMinter(owner.address, 1)
+  await slp.setMinter(owner.address, 1)
+
+  await wallet.setAddresses(elvesPolygon.address, pRen.address, moon.address, slp.address)
+  await wallet.setAuth([addr3.address,addr4.address,addr5.address],true)
+  await wallet.setMoonForLP("1400000000000000000000000")
 
   await elvesPolygon.flipActiveStatus();
   await elvesPolygon.flipTerminal();
   await elvesPolygon.setAuth([owner.address, addr3.address, pBridge.address], true);
 
   await ethElves.flipActiveStatus();
-  await eBridge.flipActiveStatus();
-  await pBridge.flipActiveStatus();
+  //await eBridge.flipActiveStatus();
+  //await pBridge.flipActiveStatus();
   await eBridge.setAddresses(ethElves.address, validator);
   await pBridge.setAddresses(elvesPolygon.address, validator);
 
   await ethElves.setBridge(eBridge.address)
   await ethElves.setInitialAddress(ren.address, inventory.address, eBridge.address)
+
+
+  
 
 
         //mint some elves 
@@ -192,118 +208,52 @@ describe("Ethernal Elves Contracts", function () {
         await elvesPolygon.addRampage(3,5,30,65, 0, 1, 100,600,100)
       
         let fundRen = "100000000000000000000000"
+        let slpFund = "400000000000000000000000"
         await elvesPolygon.adminSetAccountBalance(addr3.address, fundRen)
         await ren.mint(addr3.address, fundRen)
+
+        await slp.mint(addr3.address, slpFund)
+        await slp.mint(addr4.address, slpFund)
+        await slp.mint(addr5.address, slpFund)
+        await moon.mint(wallet.address, "1400000000000000000000000")
       
         await elvesPolygon.addScrolls([10, 2], [addr3.address, addr4.address])
         
   
   });
 
+  describe("LP Stuff", function () {
 
-  
+    it("EXCHANGE SLP FOR TOKENS", async function () {
 
-  describe("New Features", function () {
 
-    it("CHECK IN BRIDGE", async function () {
-      //0xc4c4cf2598498de7ce0364cc0b80596f5c5565f13ec2656aba26cea884b2dd34
-      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
+      await slp.connect(addr3).approve(wallet.address,"10000000000000000000000000000000000000000")
+      await slp.connect(addr4).approve(wallet.address,"10000000000000000000000000000000000000000")
+      await slp.connect(addr5).approve(wallet.address,"10000000000000000000000000000000000000000")
 
-      //0x0f58cc59e8149adf85b2c6c88446698d080ff1a53df848cdb4cbdb93701e18fd
-      //0x7933227f9e9256426997bc5ca0afd104793c5a26fe4c05a807764f47c91411d6
+      let remainTokens = 1400000000
+      let count = 0
 
-      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
-      //0x7e4b21cc4796e0d076ea4a4a6827bfd7c1aea61a7e600482349f7e0fb2a1333e
-
-      //0x40e16bf758c77d90e3682a46edd0f91bdd622656a81f6db60954f8fdd82d89e6
-      //0x40e16bf758c77d90e3682a46edd0f91bdd622656a81f6db60954f8fdd82d89e6
-      //0xffe44f25cf5fd8e21b10c457303770653e99128b5b38e550e3a4127a0fe8be33
-
-      await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
-      await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)
-
-      await ethElves.prismBridge([2],["24035111148580720954755674680320567594769649893675351022698960011175364248621"],"0x2730F644E9C5838D1C8292dB391C0ADE1f65c42d" )
+      while(remainTokens > 6000){
+      await wallet.connect(addr3).exchangeSLPForMoon(addr3.address, "25000000000000000000")//25
+      await wallet.connect(addr4).exchangeSLPForMoon(addr4.address, "35000000000000000000")//23
+      await wallet.connect(addr5).exchangeSLPForMoon(addr5.address, "50000000000000000000")//50
+      console.log("MOON FOR LPS REMAIN: ", parseInt(await wallet.moonForLPsLeft()/1000000000000000000), "SLP SWAPRATE: " , parseInt(await wallet.getSlpSwapRate()))
+     
+      count = count + 3  
+      remainTokens = parseInt(await wallet.moonForLPsLeft()/1000000000000000000)  
+     
+    }
+    console.log("total txs:", count)
+    console.log("SLP BALANCE: ", parseInt(await slp.balanceOf(wallet.address)/1000000000000000000))
       
     })
 
-    it("Rampage, Heal and Bloodthirst tests", async function () {
-
-
-           
-       let tryAxa = true
-       let useItem = true
-       let tryWeapon = true
-       let rampage = 4
-      console.log("RAMPAGE")
-       await elvesPolygon.connect(addr3).rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
-       //increaseWorldTimeinSeconds(36* 24 * 60 * 60, true)
-       console.log("BLOODTHIRST")
-       await elvesPolygon.connect(addr3).bloodThirst([2], tryAxa, useItem,addr3.address);
-       console.log("HEAL")
-       await elvesPolygon.connect(addr3).heal([3],[1],addr3.address);
-       console.log("BLOODTHIRST 1/1s") 
-      
-       await elvesPolygon.connect(owner).bloodThirst([6,7,8], false, false, addr3.address)       
-       increaseWorldTimeinSeconds(10000000000, true)
-       for(let i =0; i<100; i++){
-       await elvesPolygon.connect(owner).bloodThirst([7], false, false, addr3.address)
-       increaseWorldTimeinSeconds(10000000000, true)       
-       }
-       
- //     console.log(await elvesPolygon.attributes(1))
- //     console.log(await elvesPolygon.elves(1))
- //     console.log(await elvesPolygon.rampages(rampage))
- //     console.log(await elvesPolygon.bankBalances(addr3.address))
+  })
 
  
-    })
-
-    it("Inventory tests", async function () {
-
      
-       for(let i =0; i<2; i++){
-       
-        await elvesPolygon.connect(addr3).merchant([1], addr3.address);
-        //increaseWorldTimeinSeconds(100, true)
-        //await elvesPolygon.connect(addr3).bloodThirst([1], true, false, addr3.address)
-        //increaseWorldTimeinSeconds(10000000, true)
-        //await elvesPolygon.rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
-       
-       }
-      
-       //elvesPolygon.connect(addr3).forging([1],{ value: ethers.utils.parseEther("0.0")});    
-     
-
-       
-
-    })
-
-    it("Trade Items tests", async function () {
-
-      elvesPolygon.addPawnItem(1,10,15,10,9)
-      elvesPolygon.addPawnItem(2,20,25,10,3)
-      elvesPolygon.addPawnItem(3,30,35,10,3)
-      elvesPolygon.addPawnItem(4,40,45,10,0)
-      elvesPolygon.addPawnItem(5,50,55,10,5)
-
-        await elvesPolygon.connect(addr3).sellItem(1, addr3.address) 
-
-        await elvesPolygon.connect(addr3).buyItem(1,5, addr3.address) 
-    
-
-        /*console.log(await elvesPolygon.pawnItems(1))
-        console.log(await elvesPolygon.pawnItems(2))
-        console.log(await elvesPolygon.pawnItems(3))
-        console.log(await elvesPolygon.pawnItems(4))
-        console.log(await elvesPolygon.pawnItems(5))
-      */
-
-       // expect(await token.balanceOf(wallet.address)).to.equal(993);
-
-      
-       //elvesPolygon.connect(addr3).forging([1],{ value: ethers.utils.parseEther("0.0")});    
-     
-
+/*
        
 
     })
@@ -390,8 +340,98 @@ describe("Ethernal Elves Contracts", function () {
   });
 
 
+*/
+
+/*
+  
+
+  describe("New Features", function () {
+
+    
+
+    it("CHECK IN BRIDGE", async function () {
+      await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
+      await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)
+
+       
+    })
+
+    it("Rampage, Heal and Bloodthirst tests", async function () {
 
 
+           
+       let tryAxa = true
+       let useItem = true
+       let tryWeapon = true
+       let rampage = 4
+      console.log("RAMPAGE")
+       await elvesPolygon.connect(addr3).rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
+       //increaseWorldTimeinSeconds(36* 24 * 60 * 60, true)
+       console.log("BLOODTHIRST")
+       await elvesPolygon.connect(addr3).bloodThirst([2], tryAxa, useItem,addr3.address);
+       console.log("HEAL")
+       await elvesPolygon.connect(addr3).heal([3],[1],addr3.address);
+       console.log("BLOODTHIRST 1/1s") 
+      
+       await elvesPolygon.connect(owner).bloodThirst([6,7,8], false, false, addr3.address)       
+       increaseWorldTimeinSeconds(10000000000, true)
+       for(let i =0; i<100; i++){
+       await elvesPolygon.connect(owner).bloodThirst([7], false, false, addr3.address)
+       increaseWorldTimeinSeconds(10000000000, true)       
+       }
+       
+ //     console.log(await elvesPolygon.attributes(1))
+ //     console.log(await elvesPolygon.elves(1))
+ //     console.log(await elvesPolygon.rampages(rampage))
+ //     console.log(await elvesPolygon.bankBalances(addr3.address))
+
+ 
+    })
+
+    it("Inventory tests", async function () {
+
+     
+       for(let i =0; i<2; i++){
+       
+        await elvesPolygon.connect(addr3).merchant([1], addr3.address);
+        //increaseWorldTimeinSeconds(100, true)
+        //await elvesPolygon.connect(addr3).bloodThirst([1], true, false, addr3.address)
+        //increaseWorldTimeinSeconds(10000000, true)
+        //await elvesPolygon.rampage([1],rampage,tryWeapon, tryAxa, useItem,addr3.address);
+       
+       }
+      
+       //elvesPolygon.connect(addr3).forging([1],{ value: ethers.utils.parseEther("0.0")});    
+     
+
+       
+
+    })
+
+    it("Trade Items tests", async function () {
+
+      elvesPolygon.addPawnItem(1,10,15,10,9)
+      elvesPolygon.addPawnItem(2,20,25,10,3)
+      elvesPolygon.addPawnItem(3,30,35,10,3)
+      elvesPolygon.addPawnItem(4,40,45,10,0)
+      elvesPolygon.addPawnItem(5,50,55,10,5)
+
+        await elvesPolygon.connect(addr3).sellItem(1, addr3.address) 
+
+        await elvesPolygon.connect(addr3).buyItem(1,5, addr3.address) 
+    
+
+        /*console.log(await elvesPolygon.pawnItems(1))
+        console.log(await elvesPolygon.pawnItems(2))
+        console.log(await elvesPolygon.pawnItems(3))
+        console.log(await elvesPolygon.pawnItems(4))
+        console.log(await elvesPolygon.pawnItems(5))
+      */
+
+       // expect(await token.balanceOf(wallet.address)).to.equal(993);
+
+      
+       //elvesPolygon.connect(addr3).forging([1],{ value: ethers.utils.parseEther("0.0")});   
 
  /* describe("Check In, Check Out", function () {
     it("Stake Sentinels with Contract", async function () {
@@ -803,6 +843,6 @@ describe("Admin Functions", function () {
 
   
 */
-});
 
+});
 

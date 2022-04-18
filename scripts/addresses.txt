@@ -41,9 +41,9 @@ polygonValidator = "0xa2B877EC3234F50C33Ff7d0605F7591053d06E31"
 
 //BRIDGE 0xb33506b63382622cede7a44e5c2b08c5cb9224b6
 //ELVES 0x4deab743f79b582c9b1d46b4af61a69477185dd5
-//Wallet
-//pREN
-//Moon
+//Wallet 
+//pREN 0xA2eCFEBe618E90608882c4aD6b3a2eA6FdEB5e46
+//Moon 0x6C183674Cf5948508f1ABb75c4AF2CAA0b1a9d81
 
 //////////RINKEBY//////////////////////////////////////////////
 REN 0xce5ee326019e9f186cbf0e0738bf0f48148b3192

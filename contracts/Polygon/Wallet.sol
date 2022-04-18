@@ -31,9 +31,11 @@ contract ElvenWallet {
     bool public initialized;
     bool public isActive;
     address public admin;
-    uint256 public slpSwapRate;
+    uint256 public slpSwapRate;    
     mapping(address => bool)   public auth;  
     uint256 moonForLPs;
+    uint256 public moonForLPsLeft;
+    
     
    
     ///Add more assets here
@@ -43,7 +45,7 @@ contract ElvenWallet {
        require(!initialized, "Already initialized");
        admin                = msg.sender;   
        initialized          = true;
-       slpSwapRate          = 1;
+       slpSwapRate          = 10;
     }
 
     function setAddresses(address _elves, address _ren, address _moon, address _slp)  public {
@@ -62,6 +64,20 @@ contract ElvenWallet {
     function setMoonForLP(uint256 _moonForLp)  public {
        onlyOwner();
        moonForLPs                = _moonForLp;
+       moonForLPsLeft          = _moonForLp;     
+    }
+
+    function getSlpSwapRate() public view returns (uint256 swapRate) {            
+
+            if (moonForLPsLeft <   500000 ether) return  ( 14 );
+            if (moonForLPsLeft <   100000 ether) return  ( 18 );
+            if (moonForLPsLeft <   150000 ether) return  ( 22 );
+            if (moonForLPsLeft <   200000 ether) return  ( 26 );
+            if (moonForLPsLeft <   400000 ether) return  ( 30 );
+            if (moonForLPsLeft <   600000 ether) return  ( 34 );
+            if (moonForLPsLeft <   900000 ether) return  ( 38 );
+            if (moonForLPsLeft <= moonForLPs) return  ( 50 );
+
     }
 
     function setAuth(address[] calldata adds_, bool status) public {
@@ -81,14 +97,13 @@ contract ElvenWallet {
     function deposit(address _owner, uint256 _tokenAmounts, uint256 tokenIndex) external {
         
             onlyOperator();
+            checkWalletStatus();
             
             if(tokenIndex == 0){
                         elves.setAccountBalance(_owner, _tokenAmounts, false, 0);  
                         ren.burn(_owner, _tokenAmounts);
 
             }else if(tokenIndex == 1){
-                        //moon.burn(_owner, _tokenAmounts);
-                        //moon.transfer(address(this), _tokenAmounts);
                         elves.setAccountBalance(_owner, _tokenAmounts, false, 1);      
                         moon.transferFrom(_owner, address(this), _tokenAmounts);
             }
@@ -98,6 +113,7 @@ contract ElvenWallet {
         function withdraw(address _owner, uint256 _tokenAmounts, uint256 tokenIndex) external {
         
             onlyOperator();
+            checkWalletStatus();
             
              if(tokenIndex == 0){
                         
@@ -107,26 +123,31 @@ contract ElvenWallet {
              }else if(tokenIndex == 1){
                 
                         elves.setAccountBalance(_owner, _tokenAmounts, true, 1);  
-                        //moon.transferFrom(address(this), _owner, _tokenAmounts); 
-                        moon.transfer(_owner, _tokenAmounts);   
-                        //moon.mint(_owner, _tokenAmounts);  
+                        moon.transfer(_owner, _tokenAmounts);                           
                       
             }
             
     }
 
-    function exchangeSLPForMoon(uint256 _amount) external
+    function exchangeSLPForMoon(address _owner, uint256 _amount) external
     {   
-        isPlayer();
-        //require(daoAddress != address(0), "DAO address not set");
+        onlyOperator();
+        checkWalletStatus();
+        
         require(_amount > 0, "Amount is 0");
         require(_amount % 10**18 == 0, "Must be an integer amount of SLP");
-        require(moonForLPs != 0, "No Lp tokens left for this round");
+        
+        uint256 _swapRate = getSlpSwapRate();
+        uint256 _moonAmount = _amount * _swapRate;
+        
+        require(moonForLPsLeft - _moonAmount > 0, "Not enough MOON");
+        require(moonForLPsLeft > 0, "No MOON left");
+         
+        moonForLPsLeft = moonForLPsLeft - _moonAmount;        
 
-         slp.transferFrom(msg.sender, address(this), _amount);
-         uint256 _moonAmount = _amount * slpSwapRate;
-         moon.transfer(msg.sender, _moonAmount);
-         /// 10**18 *        
+        slp.transferFrom(_owner, address(this), _amount);           
+        moon.transfer(_owner, _moonAmount);
+        
     }
 
 
@@ -135,7 +156,7 @@ contract ElvenWallet {
             function checkBalance(uint256 balance, uint256 amount) internal view {    
             require(balance - amount >= 0, "notEnoughBalance");           
             }
-            function checkBridgeStatus() internal view {
+            function checkWalletStatus() internal view {
             require(isActive, "walletInactive");       
             }
             function onlyOperator() internal view {    
