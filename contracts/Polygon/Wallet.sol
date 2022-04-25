@@ -3,7 +3,7 @@ pragma solidity 0.8.7;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "../Interfaces.sol";
-import "hardhat/console.sol"; 
+//import "hardhat/console.sol"; 
 
 /*
 
@@ -64,18 +64,18 @@ contract ElvenWallet {
     function setMoonForLP(uint256 _moonForLp)  public {
        onlyOwner();
        moonForLPs                = _moonForLp;
-       moonForLPsLeft          = _moonForLp;     
+       moonForLPsLeft            = _moonForLp;     
     }
 
     function getSlpSwapRate() public view returns (uint256 swapRate) {            
 
-            if (moonForLPsLeft <   500000 ether) return  ( 14 );
-            if (moonForLPsLeft <   100000 ether) return  ( 18 );
-            if (moonForLPsLeft <   150000 ether) return  ( 22 );
-            if (moonForLPsLeft <   200000 ether) return  ( 26 );
-            if (moonForLPsLeft <   400000 ether) return  ( 30 );
-            if (moonForLPsLeft <   600000 ether) return  ( 34 );
-            if (moonForLPsLeft <   900000 ether) return  ( 38 );
+            if (moonForLPsLeft <     50000 ether) return  ( 20 );
+            if (moonForLPsLeft <    100000 ether) return  ( 22 );
+            if (moonForLPsLeft <    150000 ether) return  ( 24 );
+            if (moonForLPsLeft <    200000 ether) return  ( 26 );
+            if (moonForLPsLeft <    500000 ether) return  ( 28 );
+            if (moonForLPsLeft <    800000 ether) return  ( 32 );
+            if (moonForLPsLeft <   1100000 ether) return  ( 36 );
             if (moonForLPsLeft <= moonForLPs) return  ( 50 );
 
     }
@@ -150,7 +150,6 @@ contract ElvenWallet {
         
     }
 
-
             ////////////////MODIFIERS//////////////////////////////////////////
 
             function checkBalance(uint256 balance, uint256 amount) internal view {    
@@ -169,7 +168,7 @@ contract ElvenWallet {
             require((msg.sender == tx.origin && size == 0));
             }
             function onlyOwner() internal view {    
-            require(admin == msg.sender);
+            require(admin == msg.sender, "notOwner");
             }
 
 }

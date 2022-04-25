@@ -100,6 +100,8 @@ describe("Ethernal Elves Contracts", function () {
   slp = await SLP.deploy();
   moon.deployed()
   
+  //artifacts = await Artifacts.deploy();
+
   artifacts = await Artifacts.deploy();
   
   eBridge = await upgrades.deployProxy(Bridge);
@@ -234,7 +236,7 @@ describe("Ethernal Elves Contracts", function () {
       let remainTokens = 1400000000
       let count = 0
 
-      while(remainTokens > 6000){
+      while(remainTokens > 1000000){
       await wallet.connect(addr3).exchangeSLPForMoon(addr3.address, "25000000000000000000")//25
       await wallet.connect(addr4).exchangeSLPForMoon(addr4.address, "35000000000000000000")//23
       await wallet.connect(addr5).exchangeSLPForMoon(addr5.address, "50000000000000000000")//50
@@ -245,116 +247,134 @@ describe("Ethernal Elves Contracts", function () {
      
     }
     console.log("total txs:", count)
-    console.log("SLP BALANCE: ", parseInt(await slp.balanceOf(wallet.address)/1000000000000000000))
+    console.log("SLP BALANCE: ", parseInt(await slp.balanceOf(wallet.address))/1000000000000000000)
+
+    await wallet.withdrawSLP("8800000000000000000000")//25
+    console.log("SLP BALANCE After withdraw: ", parseInt(await slp.balanceOf(wallet.address))/1000000000000000000)
+    await slp.approve(wallet.address,"10000000000000000000000000000000000000000")
+    await wallet.depositSLP("8800000000000000000000")//25
+    console.log("SLP BALANCE after deposit: ", parseInt(await slp.balanceOf(wallet.address))/1000000000000000000)
+
       
     })
 
   })
 
  
+  it("Mint Artifacts", async function () {
+
+    await artifacts.mint(10);
+     let response = await artifacts.tokenURI(1);
+
+     //console.log(response)       
+
+   })
+
+   it("Add scrolls, go on crusade", async function () {
+
+    
+     expect(parseInt(await elvesPolygon.scrolls(addr3.address))).to.equal(10)
+
+   
+
+     await elvesPolygon.connect(addr3).sendCrusade([1],addr3.address, false);
+     await elvesPolygon.connect(addr3).sendCrusade([2],addr3.address, false);
+     await elvesPolygon.connect(addr3).sendCrusade([3],addr3.address, false);
+
+     expect(parseInt(await elvesPolygon.scrolls(addr3.address))).to.equal(10-3)
      
-/*
-       
+     console.log("ts1:", await elvesPolygon.elves(1))
+     console.log("ts2:", await elvesPolygon.elves(2))
+     console.log("ts3:", await elvesPolygon.elves(3))
+     //await elvesPolygon.connect(addr3).heal(3,1, addr3.address);
+
+    
+     increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
+     await elvesPolygon.connect(addr3).returnCrusade([1],addr3.address, false);
+     await elvesPolygon.connect(addr3).returnCrusade([2],addr3.address, false);
+     await elvesPolygon.connect(addr3).returnCrusade([3],addr3.address, false);
+
+         
+     console.log("Artifacts got", parseInt(await elvesPolygon.artifacts(addr3.address)))
+    
+     
 
     })
-    it("Mint Artifacts", async function () {
 
-     await artifacts.mint(10);
-      let response = await artifacts.tokenURI(1);
 
-      //console.log(response)       
-
-    })
-
-    it("Add scrolls, go on crusade", async function () {
-
-     
-      expect(parseInt(await elvesPolygon.scrolls(addr3.address))).to.equal(10)
+    
+   it("Test REN costs for each function", async function () {
 
     
 
-      await elvesPolygon.connect(addr3).sendCrusade([1],addr3.address, false);
-      await elvesPolygon.connect(addr3).sendCrusade([2],addr3.address, false);
-      await elvesPolygon.connect(addr3).sendCrusade([3],addr3.address, false);
+     await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("200"))
 
-      expect(parseInt(await elvesPolygon.scrolls(addr3.address))).to.equal(10-3)
-      
-      console.log("ts1:", await elvesPolygon.elves(1))
-      console.log("ts2:", await elvesPolygon.elves(2))
-      console.log("ts3:", await elvesPolygon.elves(3))
-      //await elvesPolygon.connect(addr3).heal(3,1, addr3.address);
+     await elvesPolygon.connect(owner).forging([4], addr4.address)
+     increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
 
+     await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("10"))
+
+     await elvesPolygon.connect(owner).merchant([4], addr4.address)
+     increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
+
+     let tryAxa = true
+     let useItem = true
+     let tryWeapon = true
+     let rampage = 3
+
+     await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("600"))
      
-      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-      await elvesPolygon.connect(addr3).returnCrusade([1],addr3.address, false);
-      await elvesPolygon.connect(addr3).returnCrusade([2],addr3.address, false);
-      await elvesPolygon.connect(addr3).returnCrusade([3],addr3.address, false);
+     await elvesPolygon.connect(owner).rampage([4],rampage,tryWeapon, tryAxa, useItem,addr4.address);
 
-          
-      console.log("Artifacts got", await elvesPolygon.artifacts(addr3.address))
-     
-      
+     await elvesPolygon.connect(owner).heal([5],[4], addr4.address);
 
-     })
+     await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("5"))
 
+     await elvesPolygon.connect(owner).synergize([5], addr4.address);
 
-     
-    it("Test REN costs for each function", async function () {
+     increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
 
-     
-
-      await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("200"))
-
-      await elvesPolygon.connect(owner).forging([4], addr4.address)
-      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-
-      await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("10"))
-
-      await elvesPolygon.connect(owner).merchant([4], addr4.address)
-      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-
-      let tryAxa = true
-      let useItem = true
-      let tryWeapon = true
-      let rampage = 3
-
-      await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("600"))
-      
-      await elvesPolygon.connect(owner).rampage([4],rampage,tryWeapon, tryAxa, useItem,addr4.address);
-
-      await elvesPolygon.connect(owner).heal([5],[4], addr4.address);
-
-      await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("5"))
-
-      await elvesPolygon.connect(owner).synergize([5], addr4.address);
-
-      increaseWorldTimeinSeconds(10 * 24* 24 * 60 * 60, true)
-
-      await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("1500"))
-      await elvesPolygon.connect(owner).sendCrusade([4], addr4.address, false)
-     
-      expect(parseInt(await elvesPolygon.bankBalances(addr4.address))).to.equal(0)
-     })    
+     await elvesPolygon.adminSetAccountBalance(addr4.address, ethers.utils.parseEther("1500"))
+     await elvesPolygon.connect(owner).sendCrusade([4], addr4.address, false)
+    
+     expect(parseInt(await elvesPolygon.bankBalances(addr4.address))).to.equal(0)
+    })    
 
 
-  });
 
+    describe("New Features", function () {
 
-*/
+    
 
-/*
+      it("CHECK IN BRIDGE ETH", async function () {
+        await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
+       // await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
+         
   
+         
+      })
 
-  describe("New Features", function () {
+      it("CHECK IN BRIDGE POLYGON", async function () {
+       
+        await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)     
+      //  await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)     
+  
+         
+      })
+  
+    })
+
+       
+
+    })
+
 
     
 
-    it("CHECK IN BRIDGE", async function () {
-      await eBridge.connect(addr3).checkIn([1,2,3],[],0,10000000,addr3.address,1)
-      await pBridge.connect(addr3).checkIn([9,10,11],[],0,10000000,addr3.address,1)
 
-       
-    })
+
+
+    /*
 
     it("Rampage, Heal and Bloodthirst tests", async function () {
 
@@ -844,5 +864,4 @@ describe("Admin Functions", function () {
   
 */
 
-});
 

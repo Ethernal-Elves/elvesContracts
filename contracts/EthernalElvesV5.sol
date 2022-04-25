@@ -485,13 +485,6 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
         require(success);
     }
 
-    function burnBeffsElf() external {
-        require(block.timestamp > 1650428400, "not yet"); //420timestamp
-        require(msg.sender == 0x92DC59566CC193211bCB43b1325a1f1d5BC10b96, "not razuki"); //razuki.eth
-        isPlayer(); //require not contract        
-        _burn(6667);
-    }
-
     function flipActiveStatus() external {
         onlyOwner();
         isGameActive = !isGameActive;
@@ -575,6 +568,7 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 
     function exitElf(uint256[] calldata ids, address owner) external {
         require (msg.sender == terminus || admin == msg.sender, "notBridge");
+     
         uint256 action = 8;
         //send through the portal to polygon
         
@@ -583,7 +577,9 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
            
             DataStructures.Elf memory elf = DataStructures.getElf(sentinels[ids[i]]);
             DataStructures.ActionVariables memory actions;
-
+            
+            require (elf.action !=8, "ElfAlreadyExited");
+            
              if(ownerOf[ids[i]] != address(this)){
                 _transfer(owner, address(this), ids[i]);
                 elf.owner = owner;                                

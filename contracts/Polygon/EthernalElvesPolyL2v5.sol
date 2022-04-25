@@ -945,10 +945,10 @@ function _exitPassive(uint256 timeDiff, uint256 _level, address _owner) private 
             uint256 artifactsChance = 10;
 
             if(useMoon){
-               //used 5 moon to increase odds  
+               //used 15 moon to increase odds  
                 checkMoon(elfOwner, 15 ether);
-                _setAccountBalance(elfOwner, 5 ether, true, 1); 
-                artifactsChance = 30;
+                _setAccountBalance(elfOwner, 15 ether, true, 1); 
+                artifactsChance = 20;
                 }
 
             if(chance < artifactsChance){

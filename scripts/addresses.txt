@@ -33,17 +33,19 @@ INVENTORY LOCATION:
     await inventory.setWeapons([43,44,45,5,6,7,8,9,69], weapons6)
     await inventory.setAccessories([15,16,4,5,8,9], accessories)
 
-
+//0x3296D61C5E737F9847bA52267b1DeBB8Dbff139F
 let validator = "0x80861814a8775de20F9506CF41932E95f80f7035"
 polygonValidator = "0xa2B877EC3234F50C33Ff7d0605F7591053d06E31"
 
 ///////////////////POLYGON///////////////////////////////////
 
-//BRIDGE 0xb33506b63382622cede7a44e5c2b08c5cb9224b6
+//BRIDGE 0xb33506b63382622cede7a44e5c2b08c5cb92224b6
 //ELVES 0x4deab743f79b582c9b1d46b4af61a69477185dd5
-//Wallet 
+//Wallet 0x87e8fbe53fa6c1900bcb8511124c65467e0e71bb
 //pREN 0xA2eCFEBe618E90608882c4aD6b3a2eA6FdEB5e46
 //Moon 0x6C183674Cf5948508f1ABb75c4AF2CAA0b1a9d81
+//SLP 0x036b85e1f14c7e5cf9e80b6dc51bccda38c09242
+//https://app.sushi.com/trident/add?tokens=0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619&tokens=0xA2eCFEBe618E90608882c4aD6b3a2eA6FdEB5e46&fee=30&twap=false&chainId=137
 
 //////////RINKEBY//////////////////////////////////////////////
 REN 0xce5ee326019e9f186cbf0e0738bf0f48148b3192
