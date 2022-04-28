@@ -57,7 +57,7 @@ async function deployContracts() {
   const MetadataHandler = await ethers.getContractFactory("ElfMetadataHandlerV2");
   const Miren = await ethers.getContractFactory("pMiren");
   const Moon = await ethers.getContractFactory("Moon");
-  const Elves = await ethers.getContractFactory("EETestPolygon");
+  const Elves = await ethers.getContractFactory("PolyEthernalElvesV6");
   const Bridge = await ethers.getContractFactory("PrismBridge");
   const Hair = await ethers.getContractFactory("Hair");
   const Race1 = await ethers.getContractFactory("Race1");
@@ -141,6 +141,10 @@ await inventory.setAccessories([20,21], "0x21a877f20f51a43553828a363caca8464580a
 console.log("done")
 }
 async function main() {
+
+  const Elves = await ethers.getContractFactory("PolyEthernalElvesV6");
+  const ethElves = await deployProxy(Elves);
+  console.log("done")
   
 //await deployContracts();
 //await setArt();

@@ -1,14 +1,18 @@
 // scripts/upgrade-box.js
 const { ethers, upgrades } = require("hardhat");
 
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 const payroll = [
-{"wallet" : "0x3296d61c5e737f9847ba52267b1debb8dbff139f", "to": "R",      "amt": "3"},
-{"wallet" : "0xccb6d1e4acec2373077cb4a6151b1506f873a1a5", "to": "S",	  "amt": "3"},
-{"wallet" : "0x34db35639EAfe2712aE1F69dfa298b06a5c25053", "to": "S17a",   "amt": "0.2181"},
-{"wallet" : "0xcf97bb94f405162f3F3AD433B709ebbd9B51e42d", "to": "P4L",    "amt": "0.0727"},
-{"wallet" : "0x52A5431369A5E9b9b51D2c6b94F1e3Efd7d48062", "to": "etay",   "amt": "0.0727"},
-{"wallet" : "0xB8956287dec237624F22F480340a11bb89315658", "to": "seven",  "amt": "0.03635"},
-{"wallet" : "0x079bBFa2103e15a8E0B7fBB7FE2c5ffB317A2b39", "to": "dev",    "amt": "0.2181"}
+{"wallet" : "0x3296d61c5e737f9847ba52267b1debb8dbff139f", "to": "R",      "amt": ".2"},
+{"wallet" : "0xccb6d1e4acec2373077cb4a6151b1506f873a1a5", "to": "S",	  "amt": ".2"},
+{"wallet" : "0x34db35639EAfe2712aE1F69dfa298b06a5c25053", "to": "S17a",   "amt": "0.24"},
+{"wallet" : "0xcf97bb94f405162f3F3AD433B709ebbd9B51e42d", "to": "P4L",    "amt": "0.06"},
+{"wallet" : "0x52A5431369A5E9b9b51D2c6b94F1e3Efd7d48062", "to": "etay",   "amt": "0.06"},
+{"wallet" : "0xB8956287dec237624F22F480340a11bb89315658", "to": "seven",  "amt": "0.03"},
+{"wallet" : "0x079bBFa2103e15a8E0B7fBB7FE2c5ffB317A2b39", "to": "dev",    "amt": "0.18"}
 ]
 
 const {MAINNET_PRIVATE_KEY} = process.env
@@ -42,8 +46,14 @@ wallet.sendTransaction(tx)
 }
 
 async function main() {
-   
-//await payment(5)
+   console.log("payroll")
+
+for(let i = 0; i<payroll.length; i++){
+    console.log(`Paying ${payroll[i].to} ${payroll[i].amt} eth`)
+    await payment(i)
+    await sleep(45000)
+}
+    
 
 
 
