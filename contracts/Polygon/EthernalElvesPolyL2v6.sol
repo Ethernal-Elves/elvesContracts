@@ -134,7 +134,7 @@ contract PolyEthernalElvesV6 is PolyERC721 {
     event BloodThirst(address indexed owner, uint256 indexed tokenId); 
     event RollOutcome(uint256 indexed tokenId, uint256 roll, uint256 action);
     event ArtifactFound(address indexed from, uint256 artifacts, uint256 indexed tokenId);
-    event ArtifactsMinted(address indexed from, uint256 artifacts, uint256 timestamp);
+    
 
     event CheckIn(address indexed from, uint256 timestamp, uint256 indexed tokenId, uint256 indexed sentinel);      
     event RenTransferOut(address indexed from, uint256 timestamp, uint256 indexed renAmount);   
@@ -1084,6 +1084,15 @@ function addScrolls(uint256[] calldata qty, address[] memory owners) external {
         }
 }
 
+function addArtifacts(uint256[] calldata qty, address[] memory owners) external {
+        onlyOwner();
+        for(uint256 i = 0; i < qty.length; i++) {
+            if(qty[i] > 0) {
+                 artifacts[owners[i]] = qty[i];
+            }
+        }
+}
+
 function addCamp(uint256 id, uint16 baseRewards_, uint16 creatureCount_, uint16 expPoints_, uint16 creatureHealth_, uint16 minLevel_, uint16 maxLevel_) external      
     {
         onlyOwner();
@@ -1300,7 +1309,8 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
         //remove minted amount from artifacts memory
         artifacts[_owner] = artifacts[_owner] - _artifacts;
         //emit message to dApp to prepare signatures for eth Minting
-        emit ArtifactsMinted(_owner, _artifacts, block.timestamp);
+        emit ArtifactOut(_owner,block.timestamp,_artifacts);
+        
         
     }
 

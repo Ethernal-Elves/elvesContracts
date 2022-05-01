@@ -56,7 +56,7 @@ describe("Ethernal Elves Contracts", function () {
   const Elves = await ethers.getContractFactory("EETest");
   const Pelves = await ethers.getContractFactory("EETestPolygon");
   const Campaigns = await ethers.getContractFactory("ElfCampaignsV3");
-  const Artifacts = await ethers.getContractFactory("ElvesArtifacts");
+  const Artifacts = await ethers.getContractFactory("Artifacts");
   const Bridge = await ethers.getContractFactory("PrismBridge");
   //const ElvenDao = await ethers.getContractFactory("ElvenDao");
   const Hair = await ethers.getContractFactory("Hair");
@@ -75,6 +75,10 @@ describe("Ethernal Elves Contracts", function () {
   const Accessories6 = await ethers.getContractFactory("Accessories6"); 
   const Accessories7 = await ethers.getContractFactory("Accessories7"); 
 
+  const ArtifactArt1 = await ethers.getContractFactory("ArtifactArt1"); 
+  //const ArtifactArt2 = await ethers.getContractFactory("ArtifactArt2"); 
+  //const ArtifactArt3 = await ethers.getContractFactory("ArtifactArt3"); 
+
   const hair = await Hair.deploy();
   const race1 = await Race1.deploy();
   const race2 = await Race2.deploy();
@@ -91,6 +95,15 @@ describe("Ethernal Elves Contracts", function () {
   const accessories6 = await Accessories6.deploy();
   const accessories7 = await Accessories7.deploy();
 
+  const artifactArt1 = await ArtifactArt1.deploy();
+  //const artifactArt2 = await ArtifactArt2.deploy();
+  //const artifactArt3 = await ArtifactArt3.deploy();
+  
+  artifacts = await upgrades.deployProxy(Artifacts); 
+  await artifacts.setArt(artifactArt1.address)
+  //await artifacts.setArt([4,5], artifactArt2.address)
+  //await artifacts.setArt([7,8,9], artifactArt3.address)
+  
   
   ren = await Miren.deploy(); 
   pRen = await Pmiren.deploy(); 
@@ -100,7 +113,6 @@ describe("Ethernal Elves Contracts", function () {
   slp = await SLP.deploy();
   moon.deployed()
   
-  artifacts = await upgrades.deployProxy(Artifacts); 
   
   eBridge = await upgrades.deployProxy(Bridge);
   pBridge = await upgrades.deployProxy(Bridge);
@@ -212,6 +224,7 @@ describe("Ethernal Elves Contracts", function () {
         await moon.mint(wallet.address, "1400000000000000000000000")
       
         await elvesPolygon.addScrolls([10, 2], [addr3.address, addr4.address])
+        await elvesPolygon.addArtifacts([10, 2], [addr3.address, addr4.address])        
         
   
   });
@@ -247,10 +260,16 @@ describe("Ethernal Elves Contracts", function () {
  
   it("Mint Artifacts", async function () {
 
-    await artifacts.mint(10, 1600, "0x93b53bfab6b02ccb4212ede5fecba3545a0643d6406f617cde50f3cae453d361549b2db31285f82d307ac6e28177dd3ea9cb6c16d7e8aef64e566e44db0bdc871b");
-     let response = await artifacts.tokenURI(1);
+    //await artifacts.mint(10, 1600, "0x93b53bfab6b02ccb4212ede5fecba3545a0643d6406f617cde50f3cae453d361549b2db31285f82d307ac6e28177dd3ea9cb6c16d7e8aef64e566e44db0bdc871b");
+    await artifacts.reserve(10);
+    //console.log(await artifacts.uri(1337))       
+    console.log(await artifacts.balanceOf(owner.address, 1337))       
 
-     console.log(response)       
+    await artifacts.burn(owner.address, 1337, 2);
+    console.log("//BREAKER//")       
+    console.log(await artifacts.balanceOf(owner.address, 1337))       
+    //console.log(await artifacts.tokenURI(1))       
+   
 
    })
 

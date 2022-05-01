@@ -4,8 +4,8 @@ const { ethers, upgrades } = require("hardhat");
 async function main() {
   
   
-  const contractName = "PolyEthernalElvesV6" //EETest
-  const address = "0x42e3239ce02705697adc7a408b95122778bb7869" //0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579
+  const contractName = "ElvesArtifacts" //EETest
+  const address = "0xAb37DBe908467934c23989BB0BaD18357604D483" //0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579
 
   const ContractFactory = await ethers.getContractFactory(contractName);
   const upgraded = await upgrades.upgradeProxy(address, ContractFactory);
