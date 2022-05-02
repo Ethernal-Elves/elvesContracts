@@ -3,6 +3,7 @@ pragma solidity 0.8.7;
 //Thanks EO
 
 import "hardhat/console.sol";
+import "./Interfaces.sol";
 
 /*
 
@@ -13,34 +14,6 @@ import "hardhat/console.sol";
 ██║░░██║██║░░██║░░░██║░░░░╚██╗██║██║░░░░░██║░░██║╚█████╔╝░░░██║░░░██████╔╝██╔╝░
 ╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░░╚═╝╚═╝╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░╚═════╝░╚═╝░░
 */
-
-interface IERC165 {
-    function supportsInterface(bytes4 _interfaceId) external view returns (bool);
-}
-
-interface IERC1155 is IERC165 {
-  event TransferSingle(address indexed _operator, address indexed _from, address indexed _to, uint256 _id, uint256 _amount);
-  event TransferBatch(address indexed _operator, address indexed _from, address indexed _to, uint256[] _ids, uint256[] _amounts);
-  event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
-
-  function safeTransferFrom(address _from, address _to, uint256 _id, uint256 _amount, bytes calldata _data) external;
-  function safeBatchTransferFrom(address _from, address _to, uint256[] calldata _ids, uint256[] calldata _amounts, bytes calldata _data) external;
-  function balanceOf(address _owner, uint256 _id) external view returns (uint256);
-  function balanceOfBatch(address[] calldata _owners, uint256[] calldata _ids) external view returns (uint256[] memory);
-  function setApprovalForAll(address _operator, bool _approved) external;
-  function isApprovedForAll(address _owner, address _operator) external view returns (bool isOperator);
-}
-
-interface IERC1155Metadata {
-  event URI(string _uri, uint256 indexed _id);
-  function uri(uint256 _id) external view returns (string memory);
-}
-
-interface IERC1155TokenReceiver {
-  function onERC1155Received(address _operator, address _from, uint256 _id, uint256 _amount, bytes calldata _data) external returns(bytes4);
-  function onERC1155BatchReceived(address _operator, address _from, uint256[] calldata _ids, uint256[] calldata _amounts, bytes calldata _data) external returns(bytes4);
-}
-
 
 contract Artifacts is IERC1155 {
 
@@ -54,7 +27,7 @@ contract Artifacts is IERC1155 {
     string public constant footer =
     "<style>#art{shape-rendering: crispedges; image-rendering: -webkit-crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}</style></svg>";
     mapping(bytes => uint256) public usedSignatures; 
-    mapping(address => bool)    public auth;
+    mapping(address => bool) public auth;
     
     /***********************************|
     |        Variables and Events       |
@@ -83,12 +56,12 @@ function mint(uint256 quantity, uint256 timestamp, bytes memory tokenSignature) 
     require(_isSignedByValidator(encodeTokenForSignature(quantity, msg.sender, timestamp),tokenSignature), "incorrect signature");
     usedSignatures[tokenSignature] = 1;    
     //_safeMint(msg.sender, quantity);
-     _mint(msg.sender, 1337, quantity);
+     _mint(msg.sender, 1, quantity);
   }
 
   function reserve(uint256 quantity) external {
     onlyOwner();
-    _mint(msg.sender, 1337, quantity);
+    _mint(msg.sender, 1, quantity);
   }
 
   function burn(address from,uint256 id, uint256 value) external {
@@ -96,26 +69,19 @@ function mint(uint256 quantity, uint256 timestamp, bytes memory tokenSignature) 
         _burn(from, id, value);
    }
 
-    function _mint(address _to, uint256 _id, uint256 _amount) internal {
+   function _mint(address _to, uint256 _id, uint256 _amount) internal {
         balances[_to][_id] += _amount; 
         emit TransferSingle(msg.sender, address(0x0), _to, _id, _amount / 1 ether);
-    }
+   }
     
-    function _burn(address _from, uint256 _id, uint256 _amount) internal {
+   function _burn(address _from, uint256 _id, uint256 _amount) internal {
         balances[_from][_id] -= _amount;
         emit TransferSingle(msg.sender, _from, address(0x0), _id, _amount / 1 ether);
-    }
+   }
 
-  /*  function mint(address to,uint256 id, uint256 value) external {
-        require(auth[msg.sender], "FORBIDDEN TO MINT");
-        _mint(to, id, value);
-    }
 
-   
 
-    */
-
-//
+//Permissions
 function encodeTokenForSignature(uint256 quantity, address owner, uint256 timestamp) public pure returns (bytes32) {
                 return keccak256(
                         abi.encodePacked("\x19Ethereum Signed Message:\n32", 
@@ -167,7 +133,14 @@ function setArt(address source) external {
     artifactArt = source;
         
     }
-
+    
+function setAuth(address[] calldata adds_, bool status) public {
+       onlyOwner();
+       
+        for (uint256 index = 0; index < adds_.length; index++) {
+            auth[adds_[index]] = status;
+        }
+    }
     /***********************************|
     |     On Chain Imaging              |
     |__________________________________*/

@@ -119,7 +119,7 @@ contract PolyEthernalElvesV6 is PolyERC721 {
     mapping(address => uint256) public moonBalances;         
     //NewDataSlots from this deployment///
     uint256 public CREATURE_HEALTH; 
-
+  
 
 /*
 █▀▀ █░█ █▀▀ █▄░█ ▀█▀ █▀

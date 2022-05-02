@@ -35,6 +35,8 @@ describe("Ethernal Elves Contracts", function () {
   let dao
   let slp 
   let wallet
+  let elders
+  let eldersInventory
 
 
   // `beforeEach` will run before each test, re-deploying the contract every
@@ -76,6 +78,7 @@ describe("Ethernal Elves Contracts", function () {
   const Accessories7 = await ethers.getContractFactory("Accessories7"); 
 
   const ArtifactArt1 = await ethers.getContractFactory("ArtifactArt1"); 
+  const Elders = await ethers.getContractFactory("Elders");
   //const ArtifactArt2 = await ethers.getContractFactory("ArtifactArt2"); 
   //const ArtifactArt3 = await ethers.getContractFactory("ArtifactArt3"); 
 
@@ -103,8 +106,7 @@ describe("Ethernal Elves Contracts", function () {
   await artifacts.setArt(artifactArt1.address)
   //await artifacts.setArt([4,5], artifactArt2.address)
   //await artifacts.setArt([7,8,9], artifactArt3.address)
-  
-  
+
   ren = await Miren.deploy(); 
   pRen = await Pmiren.deploy(); 
   moon = await Moon.deploy();
@@ -120,8 +122,11 @@ describe("Ethernal Elves Contracts", function () {
   
 
   ethElves = await upgrades.deployProxy(Elves);
-  elvesPolygon = await upgrades.deployProxy(Pelves);    
-
+  elvesPolygon = await upgrades.deployProxy(Pelves);   
+  elders = await await upgrades.deployProxy(Elders); 
+  
+  await artifacts.setAuth([elders.address], true);
+  
   inventory = await upgrades.deployProxy(MetadataHandler);
 
   await elvesPolygon.deployed();
@@ -134,17 +139,14 @@ describe("Ethernal Elves Contracts", function () {
 
 
   await inventory.setRace([1,10,11,12,2,3], race1.address)
-  await inventory.setRace([4,5,6,7,8,9], race2.address)
-  
+  await inventory.setRace([4,5,6,7,8,9], race2.address)  
   await inventory.setHair([1,2,3,4,5,6,7,8,9], hair.address)
-
   await inventory.setWeapons([1,10,11,12,13,14,15], weapons1.address)
   await inventory.setWeapons([23,24,25,26,27,28,29], weapons2.address)
   await inventory.setWeapons([38,39,4,40,41,42], weapons3.address)
   await inventory.setWeapons([16,17,18,19,2,20,21,22], weapons4.address)  
   await inventory.setWeapons([3,30,31,32,33,34,35,36,37], weapons5.address)
   await inventory.setWeapons([43,44,45,5,6,7,8,9, 69], weapons6.address)
-
   await inventory.setAccessories([15,16,4,5,8,9,1,2,3,6,7,10,11,12,13,14,17,18,19,20,21], accessories.address)
   await inventory.setAccessories([2,3], accessories3.address)
   await inventory.setAccessories([10,11,17,18], accessories4.address)  
@@ -174,7 +176,8 @@ describe("Ethernal Elves Contracts", function () {
 
   await ethElves.setBridge(eBridge.address)
   await ethElves.setInitialAddress(ren.address, inventory.address, eBridge.address)
-
+  
+  await elders.setAddresses(artifacts.address, inventory.address)
   await elvesPolygon.setCreatureHealth("420");
   
   //mint some elves 
@@ -229,6 +232,16 @@ describe("Ethernal Elves Contracts", function () {
   
   });
 
+  describe("Elders", function () {
+
+    it("Mint Elders for Artifacts", async function () {
+      await artifacts.reserve(14);
+      await elders.mint(2);
+
+    })
+
+  });
+
   describe("LP Stuff", function () {
 
     it("EXCHANGE SLP FOR TOKENS", async function () {
@@ -263,11 +276,11 @@ describe("Ethernal Elves Contracts", function () {
     //await artifacts.mint(10, 1600, "0x93b53bfab6b02ccb4212ede5fecba3545a0643d6406f617cde50f3cae453d361549b2db31285f82d307ac6e28177dd3ea9cb6c16d7e8aef64e566e44db0bdc871b");
     await artifacts.reserve(10);
     //console.log(await artifacts.uri(1337))       
-    console.log(await artifacts.balanceOf(owner.address, 1337))       
+    console.log(await artifacts.balanceOf(owner.address, 1))       
 
-    await artifacts.burn(owner.address, 1337, 2);
+    await artifacts.burn(owner.address, 1, 2);
     console.log("//BREAKER//")       
-    console.log(await artifacts.balanceOf(owner.address, 1337))       
+    console.log(await artifacts.balanceOf(owner.address, 1))       
     //console.log(await artifacts.tokenURI(1))       
    
 
