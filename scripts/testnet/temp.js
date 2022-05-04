@@ -56,9 +56,7 @@ async function deploySettings() {
   const Miren = await ethers.getContractFactory("pMiren");
   const Moon = await ethers.getContractFactory("Moon");
   const Elves = await ethers.getContractFactory("EETestPolygon");  
-  const Wallet = await ethers.getContractFactory("ElvenWallet");
   
-  const miren = Miren.attach("0x87353b13c7333d460252aAAFdB775BE01c9724Ae")
   const moon = Moon.attach("0x37311e190292257cd83f9a9d91750022b396af9d")
   const elves = Elves.attach("0x45a48576af2e5aa4ab82dce6fd49a919526b03a5")
   const wallet = Wallet.attach("0x760576ac349439ea3505a6ff668a26ecf61d2224")
@@ -90,30 +88,14 @@ async function deploySettings() {
 
 async function main() {
   
-//await deployContracts();
-//await setArt();
-
-
-/*const Elves = await ethers.getContractFactory("EETest");
-const elves = Elves.attach("0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579")
-const Bridge = await ethers.getContractFactory("PrismBridge");
-const bridge = Bridge.attach("0x20c0799850f2c8d94e2672f2c3178f911272eccd")
-*/
-//await elves.setInitialAddress("0xed70e87d465b2d87e9bd23b34e7f869885ea9434","0xce5ee326019e9f186cbf0e0738bf0f48148b3192", "0x20c0799850f2c8d94e2672f2c3178f911272eccd", {gasLimit: 100000})
-//await bridge.setAddresses("0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579","0x80861814a8775de20F9506CF41932E95f80f7035", {gasLimit: 100000})
-//await elves.flipActiveStatus()
-//await sleep(15000)
-//await bridge.flipActiveStatus()
-
-//await bridge.checkIn([1], [], 0, 0, "0x2730F644E9C5838D1C8292dB391C0ADE1f65c42d",1, {gasLimit: 100000}) 
+  console.log("starting")
+  const Artifacts = await ethers.getContractFactory("Artifacts");
   
-//REN  0x87353b13c7333d460252aAAFdB775BE01c9724Ae
-//MOON 0x37311e190292257cd83f9a9d91750022b396af9d
-//ELVES 0x45a48576af2e5aa4ab82dce6fd49a919526b03a5
-//BRIDGE 0x1653FeA0EAb46A843239f3993EFFc4Cc0B6706DE
-//IM 0x5707ff21a520beebccdad13df292576e7fbe4cb4
-  await deploySettings();
+  const artifact = Artifacts.attach("0x00d85F015647cb5837a0f01fc9BE5800b94f0387")
 
+  let response = await artifact.reserve(6)
+
+  console.log("done:", response )
 
 }
 

@@ -62,7 +62,9 @@ module.exports = {
       },
       rinkeby: {
          url: RINKEBY_API_URL,
-         accounts: [`0x${RINKEBY_PRIVATE_KEY}`]
+         accounts: [`0x${RINKEBY_PRIVATE_KEY}`],
+         gas: 12000000,               
+         gasMultiplier: 1.5,            
       },
       mumbai:{
          url: MUMBAI_API_URL,

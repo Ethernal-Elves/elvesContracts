@@ -69,6 +69,8 @@ contract Elders is ERC721 {
          _mint(_to, id);           
 
         }
+     
+     }
 
     function tokenURI(uint256 _id) external view returns(string memory) {
     return string("1"); //elfmetaDataHandler.getTokenURI(uint16(_id), sentinels[_id]);

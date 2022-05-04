@@ -55,15 +55,9 @@ async function deployContracts() {
 
   console.log("Deploying artifacts")
   //Deploying on eth
-  const Artifacts = await ethers.getContractFactory("ElvesArtifacts");
-  const ArtifactArt1 = await ethers.getContractFactory("ArtifactArt1"); 
-  console.log("Deploying art")
-  const artifactArt1 = await deployContract(ArtifactArt1)
-//  await sleep(20000)
-//  const artifacts = deployProxy(Artifacts); 
-//  await sleep(20000)
-//  console.log("Setting Art")
-//  await artifacts.setArt([1], "0xA42E7535B6c062a62E361EF834Da29448AF18B83") 
+  const Artifacts = await ethers.getContractFactory("Artifacts");
+  const artifacts = await deployProxy(Artifacts); 
+
   console.log("Done")
 
 }

@@ -119,6 +119,8 @@ contract PolyEthernalElvesV6 is PolyERC721 {
     mapping(address => uint256) public moonBalances;         
     //NewDataSlots from this deployment///
     uint256 public CREATURE_HEALTH; 
+    uint256 public scrollsForSale;
+    uint256 public scrollsForSalePrice;
   
 
 /*
@@ -1067,8 +1069,11 @@ function elves(uint256 _id) external view returns(address owner, uint timestamp,
 █▀█ █▄▀ █░▀░█ █ █░▀█   █▀░ █▄█ █░▀█ █▄▄ ░█░ █ █▄█ █░▀█ ▄█
 */
 
-
-
+function addScrollsForSale(uint256 qty, uint256 price) external {
+        onlyOwner();
+        scrollsForSale = qty;
+        scrollsForSalePrice = price;
+}
 
 function setCreatureHealth(uint256 creatureHealth) external {
         onlyOwner();
@@ -1303,7 +1308,7 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
 
     }
 
-        function _mintArtifact (address _owner, uint256 _artifacts) internal {
+    function _mintArtifact (address _owner, uint256 _artifacts) internal {
         //make sure we have enough artifacts to mint
         require(artifacts[_owner] >= _artifacts, "notEnoughArtifacts");
         //remove minted amount from artifacts memory
@@ -1312,6 +1317,19 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
         emit ArtifactOut(_owner,block.timestamp,_artifacts);
         
         
+    }
+
+    function buyScrolls(uint256 qty, address owner) external {
+        onlyOwner();
+        require(scrollsForSale >= qty, "notEnoughScrolls");
+        uint256 cost = qty * scrollsForSalePrice * 1 ether;
+        checkRen(owner, cost);
+
+        bankBalances[owner] -= cost;
+        scrolls[owner] = qty + scrolls[owner];
+        
+        scrollsForSale = scrollsForSale - qty;
+       
     }
 
 

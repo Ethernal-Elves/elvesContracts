@@ -24,6 +24,16 @@
       "address": "0xAb37DBe908467934c23989BB0BaD18357604D483",
       "txHash": "0x31b0543d878382d181ee6c1b128a53659dba9beb8b58761414de4349bed7fb8f",
       "kind": "transparent"
+    },
+    {
+      "address": "0x26f21C3686a465E95d31258C661878C728FbE80F",
+      "txHash": "0xb707dce2803b939f0654f82a45e28854a0449f3bf00e0fa484c7adf3200f015a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x00d85F015647cb5837a0f01fc9BE5800b94f0387",
+      "txHash": "0x955ed003639482d3cd8cddfa44341251eaa34022b22828af3e89ed3b363aa4e7",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -4222,6 +4232,1476 @@
           "t_uint8": {
             "label": "uint8",
             "numberOfBytes": "1"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "6d30171374b7bc2405be8091229939006a750eb029ab6b27e784ce2fe7ed276e": {
+      "address": "0x13681bB2a910968cc8441A4A9f944D393e705C41",
+      "txHash": "0xdd7721ab7d3f673845bae5b868ce77dff44a07705cf8082d7374e93f402bb45d",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "363f8e6c0f859194b308c88b12e5a7586d2daec81296c49d98afcb0e536fbfe9": {
+      "address": "0x43efCBc2a76b5E7B47265E488b302E5375b5fF1e",
+      "txHash": "0x80aba9c72d9c1163868ee62e2fedcaa22b1c29c8865fbf258e75534e93ae8076",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "a2b098b87b9b13e48182059436ba133e77c5089babee41467a8cb6030f6e0d9a": {
+      "address": "0x952121Bf9a360A94C642fcd316f242c54c0c67c7",
+      "txHash": "0x04c0865ceb1cdb75fc2ba608534e480e0311463c44d48345a24711a27007c496",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "ee030a50c3847c26e5e3a6da46a7716fb53d6f8ba4fec5e073776a50daa055bf": {
+      "address": "0xAfEc5f3EDD5596C643E252956CFf05a2de7B78d1",
+      "txHash": "0x1751cbb282e13e75536dacf8a715d8bdaf0be2ed16fc4633655c9e9817115282",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "321cb0f31bb0896a6b01ed7c22c3de46d99c94e2ebaf567005473a07bd0ea6ab": {
+      "address": "0x36DF4cEc3BeEe270D964138e9629dD62bF0C0b85",
+      "txHash": "0x7d6ac660445dcb6472da6d9e4759e5a6af9a50dceec64d48b2d0f72bd6576314",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "61b4075b74d294567b9ba55e5163b313121fdc0edf3f1e9200bd61ad75e39ab2": {
+      "address": "0x297677fB7923Cc1908B4Ab527Ac7d2980fEC8f20",
+      "txHash": "0x6648ef5936b47dc6220e02c7c3096700337291335b6df6fc2f5434fd7941e5b0",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "57a6fd06802ff289d1ce27cdcb182e563a03e7632c6f5c13f10b41c5fb7c9778": {
+      "address": "0x5DAF3B8CF95fF679e4910916581fB14A9D3251ca",
+      "txHash": "0x9585903440c2c364431461fa9dc6dd77fbe289b27796a1f5fa7a8a8597530edd",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "05d0d70b9e45e598a0234291cb99d3576ab0c0a5198f090d2504b7af0fb7385a": {
+      "address": "0x32fFa0af911e091eA477c209043Ead6610e842EA",
+      "txHash": "0x7f7fd29373bc07e5098a150ca6a75bf5c989ea78fa589cd385d46cdd1f73be9d",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "abeb92f06c3c76a109f6558e32f78499a76b991e649603b0cc610a563c6b14c4": {
+      "address": "0xc0FB18B83406E20f8FD3C30C8CC5101E28e1ec62",
+      "txHash": "0xedf8b506d24dc486bc5e28e28f1abdb075cb015e7ed73860caeae85fb7bec914",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "741cb0af04f89f53d4783b705207ea8345daab5f1bc69bb7a73eceb82b0859f2": {
+      "address": "0xe3C9d0D2476b8FBD82f067984252B9d2c2D36D6E",
+      "txHash": "0xafb2f78eeb5069103bbe2c9d84a8d5205cc2ef8f43178b489f970c47db1e43f3",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "00e8370e0829270801d11fa16ac703cd6dd5c58e21834510d5fa3513febf88f2": {
+      "address": "0x48f0C824b20Bcafe3AAccf08d4be688470B86ae8",
+      "txHash": "0xa45db9a1b83e19b227035cc86532b7bece0ddac50842d8553718d604d2303b6a",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "c8eb70a77049e7d19bec6538b1b8c3b1afc4be9ddc6dc6a3da69aea1abf30e60": {
+      "address": "0x7Dbdde737e136C265f92f0719996E98b1873771c",
+      "txHash": "0x0cb6588bbf92e631441eb56c5a958250d61b40a1f6b02716fa7fe3d3360a6379",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "5bfc7413fc5ab49202fd44f320998efeeaf39df0c5238c5b4ccf9817565b77c2": {
+      "address": "0x7ac00c09DC5EFC2f28835c2b53c0058B370Ff594",
+      "txHash": "0x5152349ff6be9418e7cbb4f249f8211ba18699d4df3a5b49c6104f80f7baf22d",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "2ba94384eaa27f6c16394be3b80509e09f37625afaf2d4543b116b5d6f3e9084": {
+      "address": "0x03537B466b34a76A6B4145d6aB863D3F98b6e082",
+      "txHash": "0x722c45ad3524a77c4e308fa01ed53193b4f5be8c8fe1f6f1a874eeb27e15da31",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:46"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:49"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:51"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:58"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
           },
           "t_bytes_storage": {
             "label": "bytes"

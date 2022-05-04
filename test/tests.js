@@ -103,10 +103,8 @@ describe("Ethernal Elves Contracts", function () {
   //const artifactArt3 = await ArtifactArt3.deploy();
   
   artifacts = await upgrades.deployProxy(Artifacts); 
-  await artifacts.setArt(artifactArt1.address)
-  //await artifacts.setArt([4,5], artifactArt2.address)
-  //await artifacts.setArt([7,8,9], artifactArt3.address)
-
+  
+  
   ren = await Miren.deploy(); 
   pRen = await Pmiren.deploy(); 
   moon = await Moon.deploy();
@@ -281,7 +279,7 @@ describe("Ethernal Elves Contracts", function () {
     await artifacts.burn(owner.address, 1, 2);
     console.log("//BREAKER//")       
     console.log(await artifacts.balanceOf(owner.address, 1))       
-    //console.log(await artifacts.tokenURI(1))       
+    console.log(await artifacts.uri(1))       
    
 
    })
