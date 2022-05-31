@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.7;
 
-import "../Polygon/EthernalElvesPolyL2v6.sol";
+import "../Polygon/EthernalElvesPolyL2v7.sol";
 import "hardhat/console.sol";
 
-contract EETestPolygon is PolyEthernalElvesV6 {
+contract EETestPolygon is PolyEthernalElvesV7 {
 /////////THIS CODE IS NOT TO BE USED IN PROD
 bool private initialized;
 function mint(uint8 _level, uint8 _accessories, uint8 _race, uint8 _class, uint8 _item, uint8 _weapon, uint8 _weaponTier) public returns (uint16 id) {
@@ -75,12 +75,12 @@ function mint(uint8 _level, uint8 _accessories, uint8 _race, uint8 _class, uint8
 
     }
 
-    function setAllBalances(address _owner, uint256 _ren, uint256 _moon, uint256 _scrolls, uint256 _artifacts) external {
+  /*  function setAllBalances(address _owner, uint256 _ren, uint256 _moon, uint256 _scrolls, uint256 _artifacts) external {
         onlyOwner();
         bankBalances[_owner] = _ren;
         moonBalances[_owner] = _moon;          
         scrolls[_owner] = _scrolls;
         artifacts[_owner] = _artifacts;
     }
-  
+  */
 }

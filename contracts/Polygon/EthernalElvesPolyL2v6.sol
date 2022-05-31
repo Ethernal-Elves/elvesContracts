@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./PolyElvesERC721.sol"; 
 import "./../DataStructures.sol";
 import "./../Interfaces.sol";
-import "hardhat/console.sol";
+//import "hardhat/console.sol";
 
 /*
 ███████╗████████╗██╗░░██╗███████╗██████╗░███╗░░██╗░█████╗░██╗░░░░░  ███████╗██╗░░░░░██╗░░░██╗███████╗░██████╗
@@ -18,8 +18,7 @@ import "hardhat/console.sol";
 
 // We are the Ethernal. The Ethernal Elves         
 // Written by 0xHusky & Beff Jezos. Everything is on-chain for all time to come.
-// Version 5.0.0
-// Release notes: Adding moon and moon bridge
+// Version 6.0.0
 
 contract PolyEthernalElvesV6 is PolyERC721 {
 
@@ -401,7 +400,8 @@ contract PolyEthernalElvesV6 is PolyERC721 {
                     //require(bankBalances[elfOwner] >= 5 ether, "notEnoughRen");
                     checkRen(elfOwner, 5 ether);
                     require(elf.sentinelClass == 0, "notDruid"); 
-                    require(elf.action != 3, "exitPassive"); //Cant heal in passve mode
+                    require(elf.action != 3, "exitPassive"); //Cant heal in passve mode                    
+                    require(elf.timestamp > block.timestamp && (elf.timestamp - block.timestamp) < 13 hours, "cannotSynergizeMW");
                     
                     _setAccountBalance(elfOwner, 5 ether, true, 0);
                     elf.timestamp = _rollCooldown(elf.timestamp, id_, rand);
@@ -790,22 +790,22 @@ function _exitPassive(uint256 timeDiff, address _owner, uint256 _weaponTier, uin
             uint256 rewards;
             uint256 reward;
             uint256 levelTier =  _level == 100 ? 5 : uint256((_level/20) + 1);
-            uint16[6] memory levelMultiplier = [10000,10000,12000,12500,13200,15000];
-            uint8[6] memory weaponTierReward = [0,10,15,20,25,30];
+            uint16[6] memory levelMultiplier = [10000,10000,11000,12500,13000,15000];
+            uint8[6] memory weaponTierReward = [0,10,12,14,18,24];
 
                     reward = weaponTierReward[_weaponTier];
-                    reward = reward * levelMultiplier[levelTier]/10000;
-                    rewards = timeDiff * reward * 1 ether;
+                    reward = reward * levelMultiplier[levelTier];
+                    rewards = timeDiff * reward * 1 ether /10000;
                     
                     _setAccountBalance(_owner, rewards, false, 0);
 
-                    /*  console.log("weapontier reward: ", weaponTierReward[_weaponTier]);
+                        /*console.log("weapontier reward: ", weaponTierReward[_weaponTier]);
                         console.log("weapontier: ", _weaponTier);
                         console.log("levelTier: ", levelTier); 
                         console.log("levelMultiplier :", levelMultiplier[levelTier]/10000);
                         console.log("daily reward: ", reward);
                         console.log("total rewards: ", rewards);
-                    */
+                       */
                     
     }
 
@@ -1075,6 +1075,13 @@ function addScrollsForSale(uint256 qty, uint256 price) external {
         scrollsForSalePrice = price;
 }
 
+function addScrollsRenBurn(uint256 qty) external {
+    //This is to correct the ingame balance of REN for REN burn.
+        onlyOwner();
+        uint256 burn = qty * 750 * 1 ether;
+        emit BalanceChanged(address(this), burn, true);
+}
+
 function setCreatureHealth(uint256 creatureHealth) external {
         onlyOwner();
         CREATURE_HEALTH = creatureHealth;
@@ -1308,24 +1315,21 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
 
     }
 
-    function _mintArtifact (address _owner, uint256 _artifacts) internal {
-        //make sure we have enough artifacts to mint
-        require(artifacts[_owner] >= _artifacts, "notEnoughArtifacts");
-        //remove minted amount from artifacts memory
+    function mintArtifacts (address _owner, uint256 _artifacts) external {
+        onlyOperator();
+        checkArtifacts(_owner, _artifacts);
         artifacts[_owner] = artifacts[_owner] - _artifacts;
-        //emit message to dApp to prepare signatures for eth Minting
         emit ArtifactOut(_owner,block.timestamp,_artifacts);
-        
-        
     }
 
     function buyScrolls(uint256 qty, address owner) external {
-        onlyOwner();
+        onlyOperator();
         require(scrollsForSale >= qty, "notEnoughScrolls");
         uint256 cost = qty * scrollsForSalePrice * 1 ether;
         checkRen(owner, cost);
-
-        bankBalances[owner] -= cost;
+        
+        _setAccountBalance(owner, cost, true, 0);
+        //bankBalances[owner] -= cost;
         scrolls[owner] = qty + scrolls[owner];
         
         scrollsForSale = scrollsForSale - qty;
@@ -1336,8 +1340,15 @@ function addPawnItem(uint256 id, uint16 buyPrice_, uint16 sellPrice_, uint16 max
     ///////////////////////////////////////////////////////////////////
     //TESTNET FUNCTIONS///////////////////////////////////////////////
     //COMMENT OUT BEFORE DEPLOYMENT//////////////////////////////////
- 
-    
+    /*
+        function setAllBalances(address _owner, uint256 _ren, uint256 _moon, uint256 _scrolls, uint256 _artifacts) external {
+        onlyOwner();
+        bankBalances[_owner] = _ren;
+        moonBalances[_owner] = _moon;          
+        scrolls[_owner] = _scrolls;
+        artifacts[_owner] = _artifacts;
+    }
+    */
 
 
 }

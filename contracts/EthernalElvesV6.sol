@@ -5,12 +5,12 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./ERC721.sol"; 
 import "./DataStructures.sol";
 import "./Interfaces.sol";
-import "hardhat/console.sol"; 
+//import "hardhat/console.sol"; 
 
 // We are the Ethernal. The Ethernal Elves         
 // Written by 0xHusky & Beff Jezos. Everything is on-chain for all time to come.
-// Version 2.0.1
-// Release notes: Reroll price for weapons adjuseted
+// Version 6.0.0
+
 
 contract EthernalElvesV6 is ERC721 {
 

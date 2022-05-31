@@ -6350,7 +6350,7 @@
             "label": "elfmetaDataHandler",
             "offset": 0,
             "slot": "9",
-            "type": "t_contract(IElfMetaDataHandler)17870",
+            "type": "t_contract(IElfMetaDataHandler)1660",
             "contract": "PolyEthernalElvesV6",
             "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:77"
           },
@@ -6454,7 +6454,7 @@
             "label": "camps",
             "offset": 0,
             "slot": "19",
-            "type": "t_mapping(t_uint256,t_struct(Camps)28501_storage)",
+            "type": "t_mapping(t_uint256,t_struct(Camps)2005_storage)",
             "contract": "PolyEthernalElvesV6",
             "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:105"
           },
@@ -6486,7 +6486,7 @@
             "label": "rampages",
             "offset": 0,
             "slot": "23",
-            "type": "t_mapping(t_uint256,t_struct(Rampages)28535_storage)",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)2039_storage)",
             "contract": "PolyEthernalElvesV6",
             "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
           },
@@ -6502,7 +6502,7 @@
             "label": "pawnItems",
             "offset": 0,
             "slot": "25",
-            "type": "t_mapping(t_uint256,t_struct(PawnItems)28568_storage)",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)2072_storage)",
             "contract": "PolyEthernalElvesV6",
             "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:134"
           },
@@ -6580,7 +6580,7 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_contract(IElfMetaDataHandler)17870": {
+          "t_contract(IElfMetaDataHandler)1660": {
             "label": "contract IElfMetaDataHandler",
             "numberOfBytes": "20"
           },
@@ -6604,15 +6604,15 @@
             "label": "mapping(uint256 => address)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_uint256,t_struct(Camps)28501_storage)": {
+          "t_mapping(t_uint256,t_struct(Camps)2005_storage)": {
             "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_uint256,t_struct(PawnItems)28568_storage)": {
+          "t_mapping(t_uint256,t_struct(PawnItems)2072_storage)": {
             "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_uint256,t_struct(Rampages)28535_storage)": {
+          "t_mapping(t_uint256,t_struct(Rampages)2039_storage)": {
             "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
             "numberOfBytes": "32"
           },
@@ -6620,7 +6620,7 @@
             "label": "mapping(uint256 => uint256)",
             "numberOfBytes": "32"
           },
-          "t_struct(Camps)28501_storage": {
+          "t_struct(Camps)2005_storage": {
             "label": "struct PolyEthernalElvesV6.Camps",
             "members": [
               {
@@ -6662,7 +6662,7 @@
             ],
             "numberOfBytes": "32"
           },
-          "t_struct(PawnItems)28568_storage": {
+          "t_struct(PawnItems)2072_storage": {
             "label": "struct PolyEthernalElvesV6.PawnItems",
             "members": [
               {
@@ -6692,8 +6692,4585 @@
             ],
             "numberOfBytes": "128"
           },
-          "t_struct(Rampages)28535_storage": {
+          "t_struct(Rampages)2039_storage": {
             "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "41eb49d37c2e06055a6321c078ad1d21cc7b3f2af253ab222d54955d6d242c1e": {
+      "address": "0x1506D2fe1d54bEB2814f5435175297fB7FbCe121",
+      "txHash": "0xdc3b7b55ca91681d1e146449e0cbafa33bd819678e6dd2ab26e421eed9c6050a",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17892",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:77"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:97"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:103"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)28523_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:105"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)28557_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:117"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)28590_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:134"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:143"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:150"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17892": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)28523_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)28590_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)28557_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)28523_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)28590_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)28557_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "0b109629c14d690b70fb9e48a795a47c83f5626cf77dc5e308a8009be2f946a6": {
+      "address": "0xD1776ab6162992C6F2519c16593901720DC6D310",
+      "txHash": "0x08e7cdbffcad440cc9af5e1ea9089d4ed9ae0f8c6c74da211ae62765752543e5",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)1660",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:77"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:97"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:103"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)2005_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:105"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)2039_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:117"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)2072_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:134"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:143"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:150"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)1660": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)2005_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)2072_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)2039_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)2005_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)2072_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)2039_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "882305f4bf2a372eb65c18462b6a252eecf8774f9d462e330d3041eb15e0c714": {
+      "address": "0x6b137022580065F233046AbdEf59eD9CDfe1C503",
+      "txHash": "0xd3e8cdba77f78f10861e6d0512e88e8fe176c4e0061dcb67e119590a8346ca0b",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17897",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:77"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:97"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:103"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)28528_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:105"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)28562_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:117"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)28595_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:134"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:143"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:150"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17897": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)28528_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)28595_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)28562_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)28528_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)28595_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)28562_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "37c0504520ad75636ebffeb2c92a95274e4cc085a90db7ea2f7ac958f6ef4b1a": {
+      "address": "0x895dD50A3b744496E518a66eC588c4C7ad1E6132",
+      "txHash": "0x5046cd86090addb74de39d83c9aa3cfad4a582066d93d4a35f0eb0844a00fedb",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17897",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:77"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:97"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:103"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)28528_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:105"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)28562_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:117"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)28595_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:134"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:143"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:150"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17897": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)28528_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)28595_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)28562_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)28528_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)28595_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)28562_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "7738c418d6fd815ff1b176b627a8ab6738078f386ce2da3db932057f9c96d6aa": {
+      "address": "0xc1fb0A5e7c3aC79bB999f5867Db9558206A9ff90",
+      "txHash": "0x3da260607912eb1f9a3ebec8403cbc76c7ddea306589c16c712997bb25889719",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:76"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:88"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:102"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)28526_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:104"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:114"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:114"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)28560_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)28593_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:133"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:140"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:149"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)28526_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)28593_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)28560_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)28526_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)28593_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)28560_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "6cea32c11d65bebff47e1a10f24d946e502c92bf76734a03939dcfa866dc349c": {
+      "address": "0x2f0d9cf7A12634F76858d1BdD3Cb1d264ba418c7",
+      "txHash": "0x59dcc1686b95da63ce36bb9273e3d4be55c8ecb676471d5faf2656f19ebce2ad",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:76"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:88"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:89"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:90"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:91"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:92"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:93"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:94"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:95"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:96"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:102"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)28526_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:104"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:114"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:114"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)28560_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:115"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:116"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)28593_storage)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:133"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:140"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:141"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:142"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:149"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV6",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v6.sol:154"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)28526_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)28593_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)28560_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV6.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)28526_storage": {
+            "label": "struct PolyEthernalElvesV6.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)28593_storage": {
+            "label": "struct PolyEthernalElvesV6.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)28560_storage": {
+            "label": "struct PolyEthernalElvesV6.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "effdd948038c291be8e84d06c8d11ccd2d545e7697f94ec8f360e24f0f6a4efc": {
+      "address": "0x881553e236A2A876e66e44c7eFdc7be96f94f8fe",
+      "txHash": "0xaad839b496cb4d3e44dfc4ab69cee5d2bd058f7577662fb5af462ce64c9db695",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:76"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:88"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:89"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:90"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:93"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:94"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:95"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:96"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:102"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)33515_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:104"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)33549_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:116"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:133"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:140"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:141"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:142"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:149"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:154"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:154"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:154"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)33515_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)33549_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)33515_storage": {
+            "label": "struct PolyEthernalElvesV7.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)33582_storage": {
+            "label": "struct PolyEthernalElvesV7.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)33549_storage": {
+            "label": "struct PolyEthernalElvesV7.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "36b91a48b0913316909315b6d0ce1ff174ac3a964873d5f5f8998d5a7e98a375": {
+      "address": "0x8F90827697bf7477eF1518E196bBF1c7BF83037B",
+      "txHash": "0x1c3e5693d01a33fa844b6e0d4fab5d30e4b516eba9af7498e2f090e196706bce",
+      "layout": {
+        "storage": [
+          {
+            "label": "ren",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_contract(IERC20Lite)17886",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:58"
+          },
+          {
+            "label": "moon",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(IERC20Lite)17886",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:61"
+          },
+          {
+            "label": "slp",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_contract(IERC20Lite)17886",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:61"
+          },
+          {
+            "label": "elves",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_contract(IElves)17953",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:62"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:66"
+          },
+          {
+            "label": "isActive",
+            "offset": 21,
+            "slot": "3",
+            "type": "t_bool",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:67"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:67"
+          },
+          {
+            "label": "slpSwapRate",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:68"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:70"
+          },
+          {
+            "label": "moonForLPs",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:71"
+          },
+          {
+            "label": "moonForLPsLeft",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256",
+            "contract": "ElvenWalletV2",
+            "src": "contracts\\Polygon\\WalletV2.sol:71"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20Lite)17886": {
+            "label": "contract IERC20Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IElves)17953": {
+            "label": "contract IElves",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "bbc032abb79dbde417358941838d7c07ef24450387a5da950ad903dd5faf5923": {
+      "address": "0x68Fa7cdF2Ad108099eB26bf16BB924cba20068b2",
+      "txHash": "0x0764c041d6eec4da11aa8f0a6fbcc01f610e5db61e2fef40581944449bc51400",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:76"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:88"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:89"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:90"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:93"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:94"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:95"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:96"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:102"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)33515_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:104"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)33549_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:116"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:133"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:140"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:141"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:142"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:145"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:150"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:151"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)33515_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)33549_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)33515_storage": {
+            "label": "struct PolyEthernalElvesV7.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)33582_storage": {
+            "label": "struct PolyEthernalElvesV7.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)33549_storage": {
+            "label": "struct PolyEthernalElvesV7.Rampages",
+            "members": [
+              {
+                "label": "probDown",
+                "type": "t_uint16",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "probSame",
+                "type": "t_uint16",
+                "offset": 2,
+                "slot": "0"
+              },
+              {
+                "label": "propUp",
+                "type": "t_uint16",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "levelsGained",
+                "type": "t_uint16",
+                "offset": 6,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint16",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "maxLevel",
+                "type": "t_uint16",
+                "offset": 10,
+                "slot": "0"
+              },
+              {
+                "label": "renCost",
+                "type": "t_uint16",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "count",
+                "type": "t_uint16",
+                "offset": 14,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "5377e9944f439460e4642787ac4cc75a1b1ca5cba5c398a499a5ce53bb7d0fd4": {
+      "address": "0xFcAE88070ee35608BBcc1f4f60cAF954Ec6eb96e",
+      "txHash": "0x33036c2da6f701b5c02aa829c08d56a09782dc980b5763861c64cad0595ed6f4",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:21"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:22"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:28"
+          },
+          {
+            "label": "oldSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:29"
+          },
+          {
+            "label": "minted",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:30"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:32"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:34"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:36"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "PolyERC721",
+            "src": "contracts\\Polygon\\PolyElvesERC721.sol:38"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:76"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:88"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:89"
+          },
+          {
+            "label": "initialized",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:90"
+          },
+          {
+            "label": "operator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:91"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "MAX_LEVEL",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:92"
+          },
+          {
+            "label": "TIME_CONSTANT",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:93"
+          },
+          {
+            "label": "REGEN_TIME",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:94"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_bytes32",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:95"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:96"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:102"
+          },
+          {
+            "label": "camps",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_struct(Camps)33515_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:104"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:114"
+          },
+          {
+            "label": "polyValidator",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "rampages",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_mapping(t_uint256,t_struct(Rampages)33549_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:115"
+          },
+          {
+            "label": "isRampageInit",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_bool",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:116"
+          },
+          {
+            "label": "pawnItems",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:133"
+          },
+          {
+            "label": "scrolls",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:140"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:141"
+          },
+          {
+            "label": "onCrusade",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:142"
+          },
+          {
+            "label": "moonBalances",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:145"
+          },
+          {
+            "label": "CREATURE_HEALTH",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:150"
+          },
+          {
+            "label": "scrollsForSale",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:151"
+          },
+          {
+            "label": "scrollsForSalePrice",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256",
+            "contract": "PolyEthernalElvesV7",
+            "src": "contracts\\Polygon\\EthernalElvesPolyL2v7.sol:155"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Camps)33515_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Camps)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(PawnItems)33582_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.PawnItems)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Rampages)33549_storage)": {
+            "label": "mapping(uint256 => struct PolyEthernalElvesV7.Rampages)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Camps)33515_storage": {
+            "label": "struct PolyEthernalElvesV7.Camps",
+            "members": [
+              {
+                "label": "baseRewards",
+                "type": "t_uint32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "creatureCount",
+                "type": "t_uint32",
+                "offset": 4,
+                "slot": "0"
+              },
+              {
+                "label": "creatureHealth",
+                "type": "t_uint32",
+                "offset": 8,
+                "slot": "0"
+              },
+              {
+                "label": "expPoints",
+                "type": "t_uint32",
+                "offset": 12,
+                "slot": "0"
+              },
+              {
+                "label": "minLevel",
+                "type": "t_uint32",
+                "offset": 16,
+                "slot": "0"
+              },
+              {
+                "label": "campMaxLevel",
+                "type": "t_uint32",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(PawnItems)33582_storage": {
+            "label": "struct PolyEthernalElvesV7.PawnItems",
+            "members": [
+              {
+                "label": "buyPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "sellPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "maxSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "currentInventory",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(Rampages)33549_storage": {
+            "label": "struct PolyEthernalElvesV7.Rampages",
             "members": [
               {
                 "label": "probDown",

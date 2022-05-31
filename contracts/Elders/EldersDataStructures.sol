@@ -10,44 +10,23 @@ library EldersDataStructures {
             uint256 strength;
             uint256 agility;
             uint256 intellegence;
-            uint256 maxMana;
-            uint256 mana;
             uint256 healthPoints;
-            uint256 health;
             uint256 attackPoints; 
+            uint256 mana;
             uint256 primaryWeapon; 
             uint256 secondaryWeapon; 
-            uint256 accessories; 
-            uint256 abilities;
+            uint256 armor; 
+            uint256 primaryTrait;
             uint256 level;
-            uint256 rank;
-            uint256 hair;
+            uint256 head;
             uint256 race;             
-            uint256 elderClass; 
-            uint256 weaponTier; 
-            uint256 inventory; 
+            uint256 body;  
+            uint256 elderClass;                         
     }
 
-    struct EldersOwner {
-            address owner;  
-            uint256 timestamp; 
-            uint256 timestamp2; 
-            uint256 action;            
-    }
 
-    struct EldersInventory {
-           address source;
-           uint256 attackPoints;
-           uint256 healthPoints;
-           uint256 manaPoints;
-           uint256 class;
-           uint256 layer;
-           uint256 aether;
-           uint256 iron;
-           uint256 terra;
-           uint256 frost;
-           uint256 magma;
-    }
+
+
 
     
 ////////////////////////////////////////////////////

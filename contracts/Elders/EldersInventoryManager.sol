@@ -17,6 +17,12 @@ contract EldersInventoryManager {
 
     mapping(uint256 => string) public itemName;
     mapping(uint256 => uint256) public itemMeta;
+    
+    struct EldersInventory {
+           address source;
+           string name;
+    }
+
     string[6] public layers;
     string[9] public attributes;
     string[4] public displayTypes;
@@ -223,12 +229,12 @@ function get(uint8 itemId) internal view returns (string memory data_)
 
 
 
-function wrapTag(string memory uri) internal pure returns (string memory) {
+function wrapTag(string memory ipfs) internal pure returns (string memory) {
         return
             string(
                 abi.encodePacked(
-                    '<image x="1" y="1" width="160" height="160" image-rendering="pixelated" preserveAspectRatio="xMidYMid" xlink:href="data:image/png;base64,',
-                    uri,
+                    '<image x="1" y="1" width="160" height="160" image-rendering="pixelated" preserveAspectRatio="xMidYMid" href="',
+                    ipfs,
                     '"/>'
                 )
             );

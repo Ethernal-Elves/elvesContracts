@@ -29,6 +29,11 @@
       "address": "0x15da62caaE17bc3b526483897A14196c43377C72",
       "txHash": "0xe3628ff416d731bd73686114f7ee1e6fd792d755d894d4f497f6ea66a5246867",
       "kind": "transparent"
+    },
+    {
+      "address": "0xDb2E506d2863646C0141f77F2cE9f99bbbB6b8Ab",
+      "txHash": "0x3522716bf59b6a136099a94895622f5e16ab3c5ebf382e2ba75a26283ccf1e32",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -5549,7 +5554,7 @@
             "label": "elfmetaDataHandler",
             "offset": 0,
             "slot": "8",
-            "type": "t_contract(IElfMetaDataHandler)4645",
+            "type": "t_contract(IElfMetaDataHandler)17896",
             "contract": "EthernalElvesV5",
             "src": "contracts\\EthernalElvesV5.sol:24"
           },
@@ -5557,7 +5562,7 @@
             "label": "campaigns",
             "offset": 0,
             "slot": "9",
-            "type": "t_contract(ICampaigns)4671",
+            "type": "t_contract(ICampaigns)17922",
             "contract": "EthernalElvesV5",
             "src": "contracts\\EthernalElvesV5.sol:25"
           },
@@ -5565,7 +5570,7 @@
             "label": "ren",
             "offset": 0,
             "slot": "10",
-            "type": "t_contract(IERC20Lite)4635",
+            "type": "t_contract(IERC20Lite)17886",
             "contract": "EthernalElvesV5",
             "src": "contracts\\EthernalElvesV5.sol:26"
           },
@@ -5743,15 +5748,546 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_contract(ICampaigns)4671": {
+          "t_contract(ICampaigns)17922": {
             "label": "contract ICampaigns",
             "numberOfBytes": "20"
           },
-          "t_contract(IERC20Lite)4635": {
+          "t_contract(IERC20Lite)17886": {
             "label": "contract IERC20Lite",
             "numberOfBytes": "20"
           },
-          "t_contract(IElfMetaDataHandler)4645": {
+          "t_contract(IElfMetaDataHandler)17896": {
+            "label": "contract IElfMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint16)": {
+            "label": "mapping(address => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint16)": {
+            "label": "mapping(bytes => uint16)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "b83d5834436df8ae57f5875c8f159cc4b29254229fd6c3326b8f4d5ce4b7357a": {
+      "address": "0x05369F969B47ab4BDdD4fa5af897dd5517910eB0",
+      "txHash": "0x5dcf085c54833a020d1764194ba95d55ef9fa1e386aa41578170d12b904a7f9e",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:45"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:48"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:48"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:48"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:50"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:57"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:60"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "f6f3a54d9d5ae5dd78ba40c8a6c008dcd77ef493a0a37e6c969d269d79253968": {
+      "address": "0xac96e2B815B1fE6D0f73933AB44C130c82D76C63",
+      "txHash": "0xd7d651658386eb84f505d58b46c01ef1a4a07e1f39c0ce4907b3c852023b86c1",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:43"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:43"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:44"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:44"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:44"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:56"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "Artifacts",
+            "src": "contracts\\Artifacts.sol:60"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "000740550ba71f60e64cb080403ff958a53ae2ed82f2bd091bee3ad0cfd33400": {
+      "address": "0x5d4AD883C83Ab7e5dc25d9f5a7Ca1aCedae749C9",
+      "txHash": "0x062bac030d070bd30d65da2e57581ec11a818d0331e7dd1b2d3fd2e577fa33bf",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:31"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:32"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:38"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:39"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:41"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:42"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:43"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721",
+            "src": "contracts\\ERC721.sol:44"
+          },
+          {
+            "label": "elfmetaDataHandler",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_contract(IElfMetaDataHandler)17896",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:24"
+          },
+          {
+            "label": "campaigns",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(ICampaigns)17922",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:25"
+          },
+          {
+            "label": "ren",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_contract(IERC20Lite)17886",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:26"
+          },
+          {
+            "label": "isGameActive",
+            "offset": 20,
+            "slot": "10",
+            "type": "t_bool",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:32"
+          },
+          {
+            "label": "isMintOpen",
+            "offset": 21,
+            "slot": "10",
+            "type": "t_bool",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:33"
+          },
+          {
+            "label": "isWlOpen",
+            "offset": 22,
+            "slot": "10",
+            "type": "t_bool",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:34"
+          },
+          {
+            "label": "initialized",
+            "offset": 23,
+            "slot": "10",
+            "type": "t_bool",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:35"
+          },
+          {
+            "label": "dev1Address",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_address",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:37"
+          },
+          {
+            "label": "dev2Address",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_address",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:38"
+          },
+          {
+            "label": "terminus",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_address",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:39"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_address",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:40"
+          },
+          {
+            "label": "INIT_SUPPLY",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:42"
+          },
+          {
+            "label": "price",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_uint256",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:43"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_bytes32",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:44"
+          },
+          {
+            "label": "_remaining",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:46"
+          },
+          {
+            "label": "sentinels",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:47"
+          },
+          {
+            "label": "bankBalances",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:48"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:49"
+          },
+          {
+            "label": "whitelist",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_mapping(t_address,t_uint16)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:50"
+          },
+          {
+            "label": "isTerminalOpen",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_bool",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:53"
+          },
+          {
+            "label": "usedRenSignatures",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:55"
+          },
+          {
+            "label": "usedSentinelSignatures",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint16)",
+            "contract": "EthernalElvesV6",
+            "src": "contracts\\EthernalElvesV6.sol:56"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(ICampaigns)17922": {
+            "label": "contract ICampaigns",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IERC20Lite)17886": {
+            "label": "contract IERC20Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IElfMetaDataHandler)17896": {
             "label": "contract IElfMetaDataHandler",
             "numberOfBytes": "20"
           },
