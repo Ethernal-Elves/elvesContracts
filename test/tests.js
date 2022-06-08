@@ -71,6 +71,7 @@ describe("Ethernal Elves Contracts", function () {
         // owner and beff are dev wallets. addr3 and addr4 will be used to test the game and transfer/banking functions
 
         const MetadataHandler = await ethers.getContractFactory("ElfMetadataHandlerV2");
+        
         const Miren = await ethers.getContractFactory("Miren");
         const Pmiren = await ethers.getContractFactory("pMiren");
         const Moon = await ethers.getContractFactory("Moon");
@@ -100,7 +101,7 @@ describe("Ethernal Elves Contracts", function () {
 
 
         const Elders = await ethers.getContractFactory("Elders");
-
+        const EldersInventoryManager = await ethers.getContractFactory("EldersInventoryManager");
 
         const hair = await Hair.deploy();
         const race1 = await Race1.deploy();
@@ -137,7 +138,8 @@ describe("Ethernal Elves Contracts", function () {
 
         ethElves = await upgrades.deployProxy(Elves);
         elvesPolygon = await upgrades.deployProxy(Pelves);
-        elders = await await upgrades.deployProxy(Elders);
+        elders = await upgrades.deployProxy(Elders);
+        eldersInventory = await upgrades.deployProxy(EldersInventoryManager);
 
         await artifacts.setAuth([elders.address], true);
 
@@ -303,7 +305,7 @@ describe("Ethernal Elves Contracts", function () {
         await ethElves.setBridge(eBridge.address);
         await ethElves.setInitialAddress(ren.address, inventory.address, eBridge.address);
 
-        await elders.setAddresses(artifacts.address, inventory.address);
+        await elders.setAddresses(artifacts.address, eldersInventory.address);
         await elvesPolygon.setCreatureHealth("420");
         await elvesPolygon.addScrollsForSale(100, 750);
 
@@ -394,6 +396,12 @@ describe("Ethernal Elves Contracts", function () {
         await slp.mint(addr5.address, slpFund);
         await moon.mint(wallet.address, "1400000000000000000000000");
 
+        await eldersInventory.addItem(
+            [1301,1901,2501,3101,3701,701], //code
+            ["Tatoos","Helmet", "Fire Crop","Shield", "Shoulder Pads", "Woodborne" ], //name
+            "QmVXwkXNFg1ZEhWc2MvhtuNyx5t6fmDYm4u3YH9dE1ZhVb" //folder
+        )
+
     });
 
     describe("Elders", function () {
@@ -402,13 +410,30 @@ describe("Ethernal Elves Contracts", function () {
 
         it("Mint Elders for Artifacts", async function () {
 
-            await artifacts.reserve(14);
-            await elders.mint(2);
+            for(let i=1; i<2200; i++){
+            await artifacts.reserve(100000);
+            await elders.mint(1);
+            let response = await elders.getElder(i);
+            if(parseInt(response.body) <= 12){
+                console.log(
+                    "class :", parseInt(response.elderClass),
+                    " uniqueId : ",
+                    parseInt(response.body), " token: ", i);
+            }    
+            //console.log(response)
+            
+            }
+            
+            //const elder = await elders.tokenURI(1)
+
+            //const elderInventory = await eldersInventory.getTokenURI(1, "1234134695188422351125047192743840899572785992085057292885098516");
+            //console.log(elder);
 
 
 
         });
 
+       
 
 
     });
@@ -473,16 +498,13 @@ describe("Ethernal Elves Contracts", function () {
             let remainTokens = 1400000000;
             let count = 0;
 
-            while (remainTokens > 1000000) {
+            while (remainTokens > 1300000000) {
 
                 await wallet.connect(addr3).exchangeSLPForMoon(addr3.address, "25000000000000000000"); // 25
                 await wallet.connect(addr4).exchangeSLPForMoon(addr4.address, "35000000000000000000"); // 23
                 await wallet.connect(addr5).exchangeSLPForMoon(addr5.address, "50000000000000000000"); // 50
                 count = count + 3;
                 remainTokens = parseInt(await wallet.moonForLPsLeft() / 1000000000000000000);
-
-
-
             }
             console.log("total txs:", count);
             console.log("SLP BALANCE: ", parseInt(await slp.balanceOf(wallet.address)) / 1000000000000000000);
@@ -505,7 +527,7 @@ describe("Ethernal Elves Contracts", function () {
         await artifacts.burn(owner.address, 1, 2);
         console.log("//BREAKER//");
         console.log(await artifacts.balanceOf(owner.address, 1));
-        console.log(await artifacts.uri(1));
+        //console.log(await artifacts.uri(1));
 
 
 

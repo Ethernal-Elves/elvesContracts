@@ -21,6 +21,8 @@ const {
    ETHERSCAN_API, POLYSCAN_API} = process.env;
 module.exports = {
    solidity: {
+      compilers: [
+      {   
 		version: "0.8.7",
 		settings: {
 			optimizer: {
@@ -28,6 +30,17 @@ module.exports = {
 				runs: 200,
 			},
 		},
+      },
+      {   
+         version: "0.8.12",
+         settings: {
+            optimizer: {
+               enabled: true,
+               runs: 200,
+            },
+         }
+      }
+      ],
 	},
    defaultNetwork: "hardhat",
    gasReporter: {
@@ -45,7 +58,7 @@ module.exports = {
          gas: 12000000,
          blockGasLimit: 0x1fffffffffffff,
          allowUnlimitedContractSize: true,
-         timeout: 1800000
+         timeout: 18000000000
          //forking: {         url: POLYGON_API_URL,//MAINNET_API_URL,          }
       },
       mainnet: {

@@ -1,52 +1,86 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity 0.8.7;
+pragma solidity 0.8.12;
 //import "hardhat/console.sol"; ///REMOVE BEFORE DEPLOYMENT
 //v 1.0.3
 import "hardhat/console.sol";
-import "../ERC721.sol"; 
-import "./DataStructures.sol";
-import "../Interfaces.sol";
+import "./EldersDataStructures.sol";
+import "./Interfaces.sol";
 
 contract EldersInventoryManager {
 
     using EldersDataStructures for EldersDataStructures.EldersMeta;
-    using EldersDataStructures for EldersDataStructures.EldersInventory;
-   //mappings for item name, source address and struct
-    string public constant header = '<svg id="elf" width="100%" height="100%" version="1.1" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-    string public constant footer = "<style>#elf{shape-rendering: crispedges; image-rendering: -webkit-crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}</style></svg>";
-
-    mapping(uint256 => string) public itemName;
-    mapping(uint256 => uint256) public itemMeta;
-    
-    struct EldersInventory {
-           address source;
-           string name;
+    struct EldersInventoryItem {
+           string folder;
+           string name;          
     }
 
-    string[6] public layers;
-    string[9] public attributes;
-    string[4] public displayTypes;
-    bool isInitialized = false;
-    address admin;
+    string public constant header = '<svg id="elf" width="100%" height="100%" version="1.1" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+    string public constant footer = "<style>#elf{shape-rendering: crispedges; image-rendering: -webkit-crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}</style></svg>";
+    
+    string[6] public CLASS;
+    string[6] public LAYERS;
+    string[8] public ATTRIBUTES;
+    string[5] public DISPLAYTYPES;
+    uint256[6] public RACE_CODE;
+    uint256[6] public BODY_CODE;
+    uint256[6] public HEAD_CODE;
+    uint256[6] public PRIMARY_WEAPON_CODE;
+    uint256[6] public SECONDARY_WEAPON_CODE;
+    uint256[6] public ARMOR_CODE;
 
+    //layer code, followed by itemId
+    mapping(uint256 => EldersInventoryItem) public EldersInventory;    
+    
+    bool isInitialized;
+    address admin;
+    string ipfsBase;
     
 function initialize() public {
     admin = msg.sender;
     isInitialized = true;
-    layers = ["Primary Weapon","Hair","Elder Class","Accessories","Abilities","Secondary Weapon"];
-    attributes = ["Attack Points","Health Points","Mana","Race","Aether","Iron","Terra","Frost","Magma"];
-    displayTypes = ["boost_number", "boost_percentage", "date", "number"];
+    CLASS = ["Druid", "Sorceress", "Ranger", "Assassin", "Berserker", "Mauler"];
+    LAYERS = ["Primary Weapon","Race", "Body", "Head", "Armor", "Secondary Weapon"];
+    ATTRIBUTES = ["Strength", "Agility", "Intellegence", "Attack Points","Health Points","Mana"];
+    DISPLAYTYPES = ["boost_number", "boost_percentage", "date", "number", ""];
+    
+    RACE_CODE = [700,800,900,1000,1100,1200];
+    BODY_CODE = [1300,1400,1500,1600,1700,1800];
+    HEAD_CODE = [1900,2000,2100,2200,2300,2400];
+    PRIMARY_WEAPON_CODE = [2500,2600,2700,2800,2900,3000];
+    SECONDARY_WEAPON_CODE =[3100,3200,3300,3400,3500,3600];
+    ARMOR_CODE = [3700,3800,3900,4000,4100,4200];
+
+    ipfsBase = "https://huskies.mypinata.cloud/ipfs/";
+}
+
+function setIPFSBase (string calldata _ipfsBase) public {
+    onlyOwner();
+    ipfsBase = _ipfsBase;
+}
+
+
+function addItem(uint256 [] calldata itemId, string[] memory name, string calldata folder ) public {    
+    onlyOwner();    
+    for(uint i = 0; i < itemId.length; i++) {       
+  
+        EldersInventory[itemId[i]].folder = folder;
+        EldersInventory[itemId[i]].name = name[i];       
+        
+    }    
+
 }
 
  
-function getTokenURI(uint16 id_, uint256 elder)
+function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
         external
         view
         returns (string memory)
     {
+        bytes memory imageSvg = abi.encodePacked('"image": "data:image/svg+xml;base64,', Base64.encode(bytes(getSVG(elder))),'",');
+        bytes memory imagePng = abi.encodePacked('"image": "https://huskies.mypinata.cloud/ipfs/QmSifFzarzzen5Vv4TWWhpN56VksqZrF3Bmuuc4gdGTEv1/4.png",');
+        bytes memory name = abi.encodePacked( '"name":"Elder #', toString(id_),'",');
+        bytes memory description = abi.encodePacked('"description":"Etherna Elves Elders is a collection of 2222 Heroes roaming the Elvenverse in search of the Mires. Play Ethernal Elves to upgrade your abilities and grow your army. !onward",');
         
-        string memory svg = Base64.encode(bytes(getSVG(elder)));
-                
         return
             string(
                 abi.encodePacked(
@@ -54,14 +88,12 @@ function getTokenURI(uint16 id_, uint256 elder)
                     Base64.encode(
                         bytes(
                             abi.encodePacked(
-                                '{"name":"Elder #',
-                                toString(id_),
-                                '", "description":"EthernalElves Elders is a collection of 2222 Elders roaming the metaverse in search of the Mires. These Elves are 100% on-chain. Play EthernalElves to upgrade your abilities and grow your army. !onward", "image": "',
-                                "data:image/svg+xml;base64,",
-                                svg,
-                                '",',
-                                getAttributes(elder),                                                                   
-                                "}"
+                                '{',
+                                name,
+                                description,
+                                isRevealed ? imageSvg : imagePng,                                
+                                isRevealed ? getAttributes(elder) : '"attributes": [{"trait_type":"DNA","value":"',toString(elder), '"}]',                                                                   
+                                '}'
                             )
                         )
                     )
@@ -72,16 +104,17 @@ function getTokenURI(uint16 id_, uint256 elder)
      function getSVG(uint256 elder) public view returns (string memory) {
       
       EldersDataStructures.EldersMeta memory item = EldersDataStructures.getElder(elder);
-      
+      uint256 elderClass = item.elderClass; 
+
       string memory elder =  string(
                 abi.encodePacked(
                     header,
-                    get(uint8(item.primaryWeapon)),
-                    get(uint8(item.primaryWeapon)),
-                    get(uint8(item.primaryWeapon)),
-                    get(uint8(item.primaryWeapon)),
-                    get(uint8(item.primaryWeapon)),
-                    get(uint8(item.primaryWeapon)),                                  
+                    get(PRIMARY_WEAPON_CODE[elderClass], uint(item.primaryWeapon)),
+                    get(RACE_CODE[elderClass], uint(item.race) ),
+                    get(BODY_CODE[elderClass], uint(item.body) ),
+                    get(HEAD_CODE[elderClass], uint(item.head) ),
+                    get(ARMOR_CODE[elderClass], uint(item.armor)),
+                    get(SECONDARY_WEAPON_CODE[elderClass], uint(item.secondaryWeapon)),                                  
                     footer
                 )
             );
@@ -92,78 +125,79 @@ function getTokenURI(uint16 id_, uint256 elder)
      function getAttributes(uint256 elder) internal view returns (string memory) {
         
         EldersDataStructures.EldersMeta memory item = EldersDataStructures.getElder(elder);
-        
         return
             string(
                 abi.encodePacked(
                     '"attributes": [',
-                    getLayerAttribute(0, uint8(item.primaryWeapon)),
+                    string.concat('{"trait_type":"Class","value":"',CLASS[item.elderClass], '"}'),
                     ",",
-                    getLayerAttribute(1, uint8(item.hair)),
+                    getLayerAttributes(elder),                    
                     ",",
-                    getLayerAttribute(2, uint8(item.elderClass)),
-                    ",",
-                    getLayerAttribute(3, uint8(item.accessories)),
-                    ",",
-                    getLayerAttribute(4, uint8(item.abilities)),
-                    ",",
-                    getLayerAttribute(5, uint8(item.secondaryWeapon)),
-                    ",",
-                    getValueAttribute(0, uint8(item.attackPoints), 4),                   
-                    "}]"
+                    getValueAttributes(elder),                 
+                    "]"
                 )
             );
-    }
-
-
-
-
-    function setItemMeta(
-        uint256 id,
-        address source,
-        uint256 attackPoints,
-        uint256 healthPoints,
-        uint256 manaPoints,
-        uint256 layer,
-        uint256 class,
-        uint256 aether,
-        uint256 iron,
-        uint256 terra,
-        uint256 frost,
-        uint256 magma ) public {
-        //onlyowner    
-        itemMeta[id] = EldersDataStructures.setItem(source, attackPoints, healthPoints, manaPoints, layer, class, aether, iron, terra, frost, magma);
-
-    }
-
-    function setItemName(uint256 id, string memory name) public {
-        //onlyowner
-        itemName[id] = name;
-    }
-
-
-    function getItem(uint256 id) public returns(string memory name, uint256 item) {
         
-        //this is for crafting abd c
-        name = itemName[id];
-        item = itemMeta[id];
-       
-       // EldersDataStructures.EldersInventory memory item = EldersDataStructures.getItem(itemMeta[id]);
     }
 
+     function getLayerAttributes(uint256 elder) internal view returns (string memory) {
+        EldersDataStructures.EldersMeta memory item = EldersDataStructures.getElder(elder);       
+        return
+            string(
+                abi.encodePacked(
+                    getLayerAttribute(0, uint8(item.primaryWeapon), PRIMARY_WEAPON_CODE[item.elderClass]),
+                    ",",
+                    getLayerAttribute(1, uint8(item.race), RACE_CODE[item.elderClass]),                    
+                    ",",
+                    getLayerAttribute(2, uint8(item.body), BODY_CODE[item.elderClass]),                    
+                    ",",
+                    getLayerAttribute(3, uint8(item.head), HEAD_CODE[item.elderClass]),                    
+                    ",",
+                    getLayerAttribute(4, uint8(item.armor), ARMOR_CODE[item.elderClass]),
+                    ",",
+                    getLayerAttribute(5, uint8(item.secondaryWeapon), SECONDARY_WEAPON_CODE[item.elderClass])                
+                )
+            );            
+    }
 
-   function getLayerAttribute(uint8 layerId, uint8 id)
+    function getValueAttributes(uint256 elder) internal view returns (string memory) {
+        EldersDataStructures.EldersMeta memory item = EldersDataStructures.getElder(elder);
+        return
+            string(
+                abi.encodePacked(
+                    getValueAttribute(0, uint8(item.strength), 3),                   
+                    ",",
+                    getValueAttribute(1, uint8(item.agility), 3),                   
+                    ",",
+                    getValueAttribute(2, uint8(item.intellegence), 3),                   
+                    ",",
+                    getValueAttribute(3, uint8(item.attackPoints), 0),                   
+                    ",",
+                    getValueAttribute(4, uint8(item.healthPoints), 0),                   
+                    ",",
+                    getValueAttribute(5, uint8(item.mana), 0)
+                )
+            );
+            
+    }
+
+    function getItem(uint256 itemId) external returns(EldersInventoryItem memory item) {
+        return EldersInventory[itemId];
+    }
+
+   function getLayerAttribute(uint256 layerId, uint256 code, uint256 itemId)
         internal
         view
         returns (string memory)
     {
+        uint256 identifier = code + itemId;
         return
             string(
                 abi.encodePacked(
                     '{"trait_type":"',
-                    layers[layerId],
+                    LAYERS[layerId],
                     '","value":"',
-                    itemName[id],
+                    EldersInventory[identifier].name,
                     '"}'                    
                 )
             );
@@ -178,17 +212,15 @@ function getTokenURI(uint16 id_, uint256 elder)
             string(
                 abi.encodePacked(
                     '{"trait_type":"',
-                    attributes[attributeId],
+                    ATTRIBUTES[attributeId],
                     '","value":"',
                     toString(value),
                     '", "display_type":"',
-                    displayTypes[displayType],
+                    DISPLAYTYPES[displayType],
                     '"}'                    
                 )
             );
     }
-
-
 
 /*
 
@@ -207,39 +239,24 @@ function getTokenURI(uint16 id_, uint256 elder)
 █▀█ ██▄ █▄▄ █▀▀ ██▄ █▀▄ ▄█
 */
 
+function get(uint256 code, uint256 itemId) internal view returns (string memory data_)
+{       
+        uint256 identifier = code + itemId;    
 
-function call(address source, bytes memory sig) internal view returns (string memory svg)
-{
-    (bool succ, bytes memory ret) = source.staticcall(sig);
-    require(succ, "failed to get data");
-        
-    svg = abi.decode(ret, (string));
+        string memory folderName = EldersInventory[identifier].folder;
+        string memory fileName = string.concat(toString(identifier), ".png"); 
+        string memory ipfs = string.concat(ipfsBase,folderName,"/",fileName);
 
-}
-
-function get(uint8 itemId) internal view returns (string memory data_)
-{   
-        EldersDataStructures.EldersInventory memory item = EldersDataStructures.getItem(itemId);
-        address source = item.source;
-
-        data_ = wrapTag(call(source, abi.encodeWithSignature(string(abi.encodePacked("elderArt", toString(itemId), "()")), "")));
-         
-        return data_;
-}
-
-
-
-function wrapTag(string memory ipfs) internal pure returns (string memory) {
-        return
-            string(
+        data_ = string(
                 abi.encodePacked(
                     '<image x="1" y="1" width="160" height="160" image-rendering="pixelated" preserveAspectRatio="xMidYMid" href="',
                     ipfs,
                     '"/>'
                 )
             );
+         
+        return data_;
 }
-
 
 function toString(uint256 value) internal pure returns (string memory) {
         // Inspired by OraclizeAPI's implementation - MIT licence
