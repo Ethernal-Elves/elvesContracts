@@ -34,6 +34,16 @@
       "address": "0x00d85F015647cb5837a0f01fc9BE5800b94f0387",
       "txHash": "0x955ed003639482d3cd8cddfa44341251eaa34022b22828af3e89ed3b363aa4e7",
       "kind": "transparent"
+    },
+    {
+      "address": "0x6221DD85A400245F33059F014629f876E4a48AD7",
+      "txHash": "0x864949578510375083b4f04996d4a292fcab2d1bfbaf908c760cf92877c79a94",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1097C576Cadf89F3Bf2f6F5De17C6179cAe87750",
+      "txHash": "0x5981f04f17f37b96fed8efe04d1e71dcf6fbb5c45e728cff95d30b5b50daef28",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -5693,6 +5703,1267 @@
           },
           "t_mapping(t_bytes_memory_ptr,t_uint256)": {
             "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
+    },
+    "b710368ac8fa882c8dd9251180d754981b7f5e393c5a35016cd498947a8a5c08": {
+      "address": "0x43b33b29985384aE35d8d92A516b9c7Ee509C275",
+      "txHash": "0x721ccb05c3ad32241483a7df4557a091a7ef7d2a370969db6e26c75b83a0bb11",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:31"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:32"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:38"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:39"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:41"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:42"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:43"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:44"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_contract(IERC1155Lite)1898",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:16"
+          },
+          {
+            "label": "eldermetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IEldersMetaDataHandler)1791",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:17"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:19"
+          },
+          {
+            "label": "isMintOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:20"
+          },
+          {
+            "label": "isRevealed",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:21"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:22"
+          },
+          {
+            "label": "pvConstant",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:23"
+          },
+          {
+            "label": "baseValues",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:24"
+          },
+          {
+            "label": "uniques",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:25"
+          },
+          {
+            "label": "uniquesCount",
+            "offset": 0,
+            "slot": "48",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:26"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_bytes32",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:27"
+          },
+          {
+            "label": "eldersMeta",
+            "offset": 0,
+            "slot": "50",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:29"
+          },
+          {
+            "label": "elderOwner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:30"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:31"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_array(t_uint256)3_storage)6_storage": {
+            "label": "uint256[3][6]",
+            "numberOfBytes": "576"
+          },
+          "t_array(t_uint256)3_storage": {
+            "label": "uint256[3]",
+            "numberOfBytes": "96"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IERC1155Lite)1898": {
+            "label": "contract IERC1155Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IEldersMetaDataHandler)1791": {
+            "label": "contract IEldersMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "f58acd77c81e60d232e21dbd68f2edc5f99c23d545bd5377b1b3737fd123c6f1": {
+      "address": "0x0d002fEF931d2204816EaaF0AaA75CD1D5BAe971",
+      "txHash": "0x2cecc75f9db3ae15f3585eb31f938c4de872f6dbad4b05e832d25aa3b9dbcb4b",
+      "layout": {
+        "storage": [
+          {
+            "label": "CLASS",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:20"
+          },
+          {
+            "label": "LAYERS",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:21"
+          },
+          {
+            "label": "ATTRIBUTES",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_string_storage)8_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:22"
+          },
+          {
+            "label": "DISPLAYTYPES",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_array(t_string_storage)5_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:23"
+          },
+          {
+            "label": "RACE_CODE",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:24"
+          },
+          {
+            "label": "BODY_CODE",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:25"
+          },
+          {
+            "label": "HEAD_CODE",
+            "offset": 0,
+            "slot": "37",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:26"
+          },
+          {
+            "label": "PRIMARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "43",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:27"
+          },
+          {
+            "label": "SECONDARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:28"
+          },
+          {
+            "label": "ARMOR_CODE",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:29"
+          },
+          {
+            "label": "EldersInventory",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_mapping(t_uint256,t_struct(EldersInventoryItem)5253_storage)",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:32"
+          },
+          {
+            "label": "isInitialized",
+            "offset": 0,
+            "slot": "62",
+            "type": "t_bool",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:34"
+          },
+          {
+            "label": "admin",
+            "offset": 1,
+            "slot": "62",
+            "type": "t_address",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:35"
+          },
+          {
+            "label": "ipfsBase",
+            "offset": 0,
+            "slot": "63",
+            "type": "t_string_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:36"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)5_storage": {
+            "label": "string[5]",
+            "numberOfBytes": "160"
+          },
+          "t_array(t_string_storage)6_storage": {
+            "label": "string[6]",
+            "numberOfBytes": "192"
+          },
+          "t_array(t_string_storage)8_storage": {
+            "label": "string[8]",
+            "numberOfBytes": "256"
+          },
+          "t_array(t_uint256)6_storage": {
+            "label": "uint256[6]",
+            "numberOfBytes": "192"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint256,t_struct(EldersInventoryItem)5253_storage)": {
+            "label": "mapping(uint256 => struct EldersInventoryManager.EldersInventoryItem)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EldersInventoryItem)5253_storage": {
+            "label": "struct EldersInventoryManager.EldersInventoryItem",
+            "members": [
+              {
+                "label": "folder",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "name",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "2b679d68794b7b729b6e068005a4bec887cca74b1f2b23feba3c6b0b2bf12153": {
+      "address": "0x62335173dF44cCD7e81b4d3676682488fA6c9Bc1",
+      "txHash": "0x8cf0421b685bd19f06969f9582e9ba0406080578e57deb07350d58cb6be0b392",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:31"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:32"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:38"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:39"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:41"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:42"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:43"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:44"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_contract(IERC1155Lite)6363",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:16"
+          },
+          {
+            "label": "eldermetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IEldersMetaDataHandler)6256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:17"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:19"
+          },
+          {
+            "label": "isMintOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:20"
+          },
+          {
+            "label": "isRevealed",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:21"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:22"
+          },
+          {
+            "label": "pvConstant",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:23"
+          },
+          {
+            "label": "baseValues",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:24"
+          },
+          {
+            "label": "uniques",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:25"
+          },
+          {
+            "label": "uniquesCount",
+            "offset": 0,
+            "slot": "48",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:26"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_bytes32",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:27"
+          },
+          {
+            "label": "eldersMeta",
+            "offset": 0,
+            "slot": "50",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:29"
+          },
+          {
+            "label": "elderOwner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:30"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:31"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_array(t_uint256)3_storage)6_storage": {
+            "label": "uint256[3][6]",
+            "numberOfBytes": "576"
+          },
+          "t_array(t_uint256)3_storage": {
+            "label": "uint256[3]",
+            "numberOfBytes": "96"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IERC1155Lite)6363": {
+            "label": "contract IERC1155Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IEldersMetaDataHandler)6256": {
+            "label": "contract IEldersMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "1b0e35fa7414f9edd79d073dd1f756ee5120f7c926d9aafe4f3402fa88736c7c": {
+      "address": "0xc866d40D3B7A8B543da4F864440E29933D2A004D",
+      "txHash": "0x54593ed2cd386784523121cd0bfe28f3935c481d0af5052d1079ad49d13d5218",
+      "layout": {
+        "storage": [
+          {
+            "label": "CLASS",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:19"
+          },
+          {
+            "label": "LAYERS",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:20"
+          },
+          {
+            "label": "ATTRIBUTES",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_string_storage)8_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:21"
+          },
+          {
+            "label": "DISPLAYTYPES",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_array(t_string_storage)5_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:22"
+          },
+          {
+            "label": "RACE_CODE",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:23"
+          },
+          {
+            "label": "BODY_CODE",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:24"
+          },
+          {
+            "label": "HEAD_CODE",
+            "offset": 0,
+            "slot": "37",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:25"
+          },
+          {
+            "label": "PRIMARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "43",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:26"
+          },
+          {
+            "label": "SECONDARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:27"
+          },
+          {
+            "label": "ARMOR_CODE",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:28"
+          },
+          {
+            "label": "EldersInventory",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_mapping(t_uint256,t_struct(EldersInventoryItem)5252_storage)",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:31"
+          },
+          {
+            "label": "isInitialized",
+            "offset": 0,
+            "slot": "62",
+            "type": "t_bool",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:33"
+          },
+          {
+            "label": "admin",
+            "offset": 1,
+            "slot": "62",
+            "type": "t_address",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:34"
+          },
+          {
+            "label": "ipfsBase",
+            "offset": 0,
+            "slot": "63",
+            "type": "t_string_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:35"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)5_storage": {
+            "label": "string[5]",
+            "numberOfBytes": "160"
+          },
+          "t_array(t_string_storage)6_storage": {
+            "label": "string[6]",
+            "numberOfBytes": "192"
+          },
+          "t_array(t_string_storage)8_storage": {
+            "label": "string[8]",
+            "numberOfBytes": "256"
+          },
+          "t_array(t_uint256)6_storage": {
+            "label": "uint256[6]",
+            "numberOfBytes": "192"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint256,t_struct(EldersInventoryItem)5252_storage)": {
+            "label": "mapping(uint256 => struct EldersInventoryManager.EldersInventoryItem)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EldersInventoryItem)5252_storage": {
+            "label": "struct EldersInventoryManager.EldersInventoryItem",
+            "members": [
+              {
+                "label": "folder",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "name",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "b71f8c20606e88442b11a75a3ef82a9773286cea2fb83defcd85ae73264423bb": {
+      "address": "0x979DFCf27853df0B9D5a1F445d780aEdEDe7f4F6",
+      "txHash": "0xa79d134a495a85e86542c900b42e8324bbca97770c4961f0dd11f998ac29facf",
+      "layout": {
+        "storage": [
+          {
+            "label": "CLASS",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:19"
+          },
+          {
+            "label": "LAYERS",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:20"
+          },
+          {
+            "label": "ATTRIBUTES",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_string_storage)8_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:21"
+          },
+          {
+            "label": "DISPLAYTYPES",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_array(t_string_storage)5_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:22"
+          },
+          {
+            "label": "RACE_CODE",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:23"
+          },
+          {
+            "label": "BODY_CODE",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:24"
+          },
+          {
+            "label": "HEAD_CODE",
+            "offset": 0,
+            "slot": "37",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:25"
+          },
+          {
+            "label": "PRIMARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "43",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:26"
+          },
+          {
+            "label": "SECONDARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:27"
+          },
+          {
+            "label": "ARMOR_CODE",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:28"
+          },
+          {
+            "label": "EldersInventory",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_mapping(t_uint256,t_struct(EldersInventoryItem)5252_storage)",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:31"
+          },
+          {
+            "label": "isInitialized",
+            "offset": 0,
+            "slot": "62",
+            "type": "t_bool",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:33"
+          },
+          {
+            "label": "admin",
+            "offset": 1,
+            "slot": "62",
+            "type": "t_address",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:34"
+          },
+          {
+            "label": "ipfsBase",
+            "offset": 0,
+            "slot": "63",
+            "type": "t_string_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:35"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)5_storage": {
+            "label": "string[5]",
+            "numberOfBytes": "160"
+          },
+          "t_array(t_string_storage)6_storage": {
+            "label": "string[6]",
+            "numberOfBytes": "192"
+          },
+          "t_array(t_string_storage)8_storage": {
+            "label": "string[8]",
+            "numberOfBytes": "256"
+          },
+          "t_array(t_uint256)6_storage": {
+            "label": "uint256[6]",
+            "numberOfBytes": "192"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint256,t_struct(EldersInventoryItem)5252_storage)": {
+            "label": "mapping(uint256 => struct EldersInventoryManager.EldersInventoryItem)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EldersInventoryItem)5252_storage": {
+            "label": "struct EldersInventoryManager.EldersInventoryItem",
+            "members": [
+              {
+                "label": "folder",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "name",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "79a8864b3c72f3e94ecdfc2a55ac78bfb2e42f819c54d2c77eee6835dbca3f83": {
+      "address": "0x0e5f57d3ce71483417EE1632115dB91BDCe9E38E",
+      "txHash": "0x9d3418bfdc0f1b18f798490da33039a3321faccfcb9e637e1328a96132f2626c",
+      "layout": {
+        "storage": [
+          {
+            "label": "implementation_",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:31"
+          },
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:32"
+          },
+          {
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:38"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:39"
+          },
+          {
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:41"
+          },
+          {
+            "label": "ownerOf",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:42"
+          },
+          {
+            "label": "getApproved",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:43"
+          },
+          {
+            "label": "isApprovedForAll",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ERC721",
+            "src": "contracts\\Elders\\ERC721.sol:44"
+          },
+          {
+            "label": "artifacts",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_contract(IERC1155Lite)6565",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:16"
+          },
+          {
+            "label": "eldermetaDataHandler",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_contract(IEldersMetaDataHandler)6458",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:17"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:19"
+          },
+          {
+            "label": "isMintOpen",
+            "offset": 21,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:20"
+          },
+          {
+            "label": "isRevealed",
+            "offset": 22,
+            "slot": "9",
+            "type": "t_bool",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:21"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:22"
+          },
+          {
+            "label": "pvConstant",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:23"
+          },
+          {
+            "label": "baseValues",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:24"
+          },
+          {
+            "label": "uniques",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_array(t_array(t_uint256)3_storage)6_storage",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:25"
+          },
+          {
+            "label": "uniquesCount",
+            "offset": 0,
+            "slot": "48",
+            "type": "t_uint256",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:26"
+          },
+          {
+            "label": "ketchup",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_bytes32",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:27"
+          },
+          {
+            "label": "eldersMeta",
+            "offset": 0,
+            "slot": "50",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:29"
+          },
+          {
+            "label": "elderOwner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:30"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:31"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "Elders",
+            "src": "contracts\\Elders\\Elders.sol:32"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_array(t_uint256)3_storage)6_storage": {
+            "label": "uint256[3][6]",
+            "numberOfBytes": "576"
+          },
+          "t_array(t_uint256)3_storage": {
+            "label": "uint256[3]",
+            "numberOfBytes": "96"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IERC1155Lite)6565": {
+            "label": "contract IERC1155Lite",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IEldersMetaDataHandler)6458": {
+            "label": "contract IEldersMetaDataHandler",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
             "numberOfBytes": "32"
           },
           "t_mapping(t_uint256,t_uint256)": {

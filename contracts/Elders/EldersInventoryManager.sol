@@ -2,7 +2,6 @@
 pragma solidity 0.8.12;
 //import "hardhat/console.sol"; ///REMOVE BEFORE DEPLOYMENT
 //v 1.0.3
-import "hardhat/console.sol";
 import "./EldersDataStructures.sol";
 import "./Interfaces.sol";
 
@@ -76,8 +75,11 @@ function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
         view
         returns (string memory)
     {
+
+        //
+        //
         bytes memory imageSvg = abi.encodePacked('"image": "data:image/svg+xml;base64,', Base64.encode(bytes(getSVG(elder))),'",');
-        bytes memory imagePng = abi.encodePacked('"image": "https://huskies.mypinata.cloud/ipfs/QmSifFzarzzen5Vv4TWWhpN56VksqZrF3Bmuuc4gdGTEv1/4.png",');
+        bytes memory imagePng = abi.encodePacked('"image": "https://imagedelivery.net/UsEuOeZz7eUzV1E1xlJ0hw/d34b45a8-fe1f-488d-e0d6-3cb6941a0600/public",');
         bytes memory name = abi.encodePacked( '"name":"Elder #', toString(id_),'",');
         bytes memory description = abi.encodePacked('"description":"Etherna Elves Elders is a collection of 2222 Heroes roaming the Elvenverse in search of the Mires. Play Ethernal Elves to upgrade your abilities and grow your army. !onward",');
         

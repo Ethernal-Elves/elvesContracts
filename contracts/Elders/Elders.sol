@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.12;
 
-import "hardhat/console.sol";
+//import "hardhat/console.sol";
 import "./ERC721.sol"; 
 import "./EldersDataStructures.sol";
 import "./Interfaces.sol";
@@ -25,10 +25,11 @@ contract Elders is ERC721 {
     uint256[3][6] public uniques;
     uint256 uniquesCount;
     bytes32 ketchup;
-
+    
     mapping(uint256 => uint256) public eldersMeta; //memory slot for Elder Metadata
-    mapping(uint256 => address) public elderOwner; //memory slot for Owners, Timestamp and Actions
+    mapping(uint256 => address) public elderOwner; //memory slot for Owners, Timestamp and Actions    
     mapping(address => bool)    public auth; //memory slot for Authorized addresses
+    mapping(bytes => uint256)  public usedSignatures; //memory slot for used signatures
 
     function initialize() public {
     
@@ -36,8 +37,7 @@ contract Elders is ERC721 {
        admin                = msg.sender;   
        maxSupply            = 2222; 
        initialized          = true;
-       isMintOpen           = true;
-       validator            = 0x80861814a8775de20F9506CF41932E95f80f7035;
+       validator            = 0x5A5f094437df669a2ec79a99589bB0E7aa9c26Bb;
        pvConstant           = 200;
        baseValues[0]        = [15,20,25];
        baseValues[1]        = [15,20,25];
@@ -45,12 +45,11 @@ contract Elders is ERC721 {
        baseValues[3]        = [20,25,15];
        baseValues[4]        = [25,15,20];
        baseValues[5]        = [25,15,20];
-       isRevealed           = true;
 
     }
 
 
-    function mint(uint256 quantity) external payable  returns (uint256 id) {
+    function mint(uint256 quantity) external returns (uint256 id) {
     
         isPlayer();
         require(isMintOpen, "Minting is closed");
@@ -99,7 +98,7 @@ contract Elders is ERC721 {
             
            
 
-        if(uniqueChance < (uniquesCount + 1) * 25 && uniques[elders.elderClass][uniqueId] == 0) {
+        if(uniqueChance < (uniquesCount + 1) * 50 && uniques[elders.elderClass][uniqueId] == 0) {
 
             uniques[elders.elderClass][uniqueId] = id;
             elders.body     = uniqueId;
@@ -135,21 +134,7 @@ contract Elders is ERC721 {
 
     }
 
-    //////////FOR OFFCHAIN USE ONLY/////////////
-    //uint256 strength,
-                //uint256 agility,
-                //uint256 intellegence,  
-                //uint256 attackPoints,
-                //uint256 healthPoints, 
-                //uint256 mana,
-                //uint256 primaryWeapon, 
-                //uint256 secondaryWeapon,
-                //uint256 armor,
-                //uint256 level,
-                //uint256 head,
-                //uint256 body,
-                //uint256 race,
-                //uint256 elderClass
+
     function generateElderDna(uint256[14] calldata attributes)
     public returns (uint256) {
 
@@ -168,13 +153,34 @@ contract Elders is ERC721 {
 
 
     
-    function stake(uint256 _id) external {
+    function stake(uint256[] calldata _id) external {
 
          isPlayer();
-         isElderOwner(_id);
-         
-         _transfer(msg.sender, address(this), _id);      
-         elderOwner[_id] = msg.sender;
+
+         for(uint256 i = 0; i < _id.length; i++) {
+         isElderOwner(_id[i]);         
+         _transfer(msg.sender, address(this), _id[i]);      
+         elderOwner[_id[i]] = msg.sender;
+         }
+                    
+    }
+
+     function unstake(uint256[] calldata _id, uint256[] calldata elder, bytes[] memory signatures, bytes[] memory authCodes) external {
+
+         isPlayer();
+         address owner = msg.sender;
+
+          for (uint256 index = 0; index < _id.length; index++) {  
+            isElderOwner(_id[index]);
+            require(usedSignatures[signatures[index]] == 0, "Signature already used");   
+            require(_isSignedByValidator(encodeSentinelForSignature(_id[index], owner, elder[index], authCodes[index]),signatures[index]), "incorrect signature");
+            usedSignatures[signatures[index]] = 1;
+
+            eldersMeta[_id[index]] = elder[index];//add new dna from gameplay
+            elderOwner[_id[index]] = address(0);
+            _transfer(address(this), owner, _id[index]);      
+
+            }
                     
     }
 
@@ -251,7 +257,35 @@ contract Elders is ERC721 {
         for (uint256 index = 0; index < adds_.length; index++) {
             auth[adds_[index]] = status;
         }
-    }     
+    }
+
+
+    function encodeSentinelForSignature(uint256 id, address owner, uint256 elder, bytes memory authCode) public pure returns (bytes32) {
+        return keccak256(
+                abi.encodePacked("\x19Ethereum Signed Message:\n32", 
+                    keccak256(
+                            abi.encodePacked(id, owner, elder, authCode))
+                            )
+                        );
+    } 
+
+
+    function _isSignedByValidator(bytes32 _hash, bytes memory _signature) private view returns (bool) {
+                
+                bytes32 r;
+                bytes32 s;
+                uint8 v;
+                    assembly {
+                            r := mload(add(_signature, 0x20))
+                            s := mload(add(_signature, 0x40))
+                            v := byte(0, mload(add(_signature, 0x60)))
+                        }
+                    
+                        address signer = ecrecover(_hash, v, r, s);
+                        return signer == validator;
+  
+            }
+     
 
 
 }
