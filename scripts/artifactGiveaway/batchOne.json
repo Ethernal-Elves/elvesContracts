@@ -1,10 +1,7 @@
 {
     "wallets": [
 
-        {"wallet": "0x0C0938a86301EF94e8a13B1358DD7Fe565E25cb2", "count": 2},
-        {"wallet": "0x96058Fd3a91945Ba5AAbfFA8A898169F61d87a4c", "count": 1},
-        {"wallet": "0xA7a43EA41522eAcdb29E98201E2395df64B9697F", "count": 1},
-        {"wallet": "0xcc8FB9Fb321F6EdaCfbB9d9147429780e170AfeB", "count": 1}
+       
         
         
     ]

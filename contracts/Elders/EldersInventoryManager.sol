@@ -13,7 +13,7 @@ contract EldersInventoryManager {
            string name;          
     }
 
-    string public constant header = '<svg id="elf" width="100%" height="100%" version="1.1" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
+    string public constant header = '<svg id="elf" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">';
     string public constant footer = "<style>#elf{shape-rendering: crispedges; image-rendering: -webkit-crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated; -ms-interpolation-mode: nearest-neighbor;}</style></svg>";
     
     string[6] public CLASS;
@@ -69,20 +69,20 @@ function addItem(uint256 [] calldata itemId, string[] memory name, string callda
 
 }
 
- 
 function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
         external
         view
         returns (string memory)
     {
 
-        //
-        //
-        bytes memory imageSvg = abi.encodePacked('"image": "data:image/svg+xml;base64,', Base64.encode(bytes(getSVG(elder))),'",');
+         string memory docURI =  string.concat('<html><body><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="100%" sandbox="allow-scripts" src="',
+                                    'data:image/svg+xml;base64,', Base64.encode(bytes(getSVG(elder))),'" width="100%"/></body></html>');
+        //bytes memory imageSvg = abi.encodePacked('"image": "data:image/svg+xml;base64,', Base64.encode(bytes(getSVG(elder))),'",');
+         bytes memory imageSvg = abi.encodePacked('"animation_url": "data:text/html;base64,', Base64.encode(bytes(docURI)),'",');
         bytes memory imagePng = abi.encodePacked('"image": "https://imagedelivery.net/UsEuOeZz7eUzV1E1xlJ0hw/d34b45a8-fe1f-488d-e0d6-3cb6941a0600/public",');
         bytes memory name = abi.encodePacked( '"name":"Elder #', toString(id_),'",');
         bytes memory description = abi.encodePacked('"description":"Etherna Elves Elders is a collection of 2222 Heroes roaming the Elvenverse in search of the Mires. Play Ethernal Elves to upgrade your abilities and grow your army. !onward",');
-        
+        string memory dnaString = string.concat('"attributes": [{"trait_type":"DNA","value":"',toString(elder), '"}]');
         return
             string(
                 abi.encodePacked(
@@ -94,7 +94,7 @@ function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
                                 name,
                                 description,
                                 isRevealed ? imageSvg : imagePng,                                
-                                isRevealed ? getAttributes(elder) : '"attributes": [{"trait_type":"DNA","value":"',toString(elder), '"}]',                                                                   
+                                isRevealed ? getAttributes(elder) : dnaString,                                                                   
                                 '}'
                             )
                         )
@@ -167,17 +167,17 @@ function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
         return
             string(
                 abi.encodePacked(
-                    getValueAttribute(0, uint8(item.strength), 3),                   
+                    getValueAttribute(0, uint(item.strength), 3),                   
                     ",",
-                    getValueAttribute(1, uint8(item.agility), 3),                   
+                    getValueAttribute(1, uint(item.agility), 3),                   
                     ",",
-                    getValueAttribute(2, uint8(item.intellegence), 3),                   
+                    getValueAttribute(2, uint(item.intellegence), 3),                   
                     ",",
-                    getValueAttribute(3, uint8(item.attackPoints), 0),                   
+                    getValueAttribute(3, uint(item.attackPoints), 0),                   
                     ",",
-                    getValueAttribute(4, uint8(item.healthPoints), 0),                   
+                    getValueAttribute(4, uint(item.healthPoints), 0),                   
                     ",",
-                    getValueAttribute(5, uint8(item.mana), 0)
+                    getValueAttribute(5, uint(item.mana), 0)
                 )
             );
             
@@ -205,7 +205,7 @@ function getTokenURI(uint16 id_, uint256 elder, bool isRevealed)
             );
     }
 
-    function getValueAttribute(uint8 attributeId, uint8 value, uint8 displayType)
+    function getValueAttribute(uint8 attributeId, uint value, uint8 displayType)
         internal
         view
         returns (string memory)
@@ -247,11 +247,11 @@ function get(uint256 code, uint256 itemId) internal view returns (string memory 
 
         string memory folderName = EldersInventory[identifier].folder;
         string memory fileName = string.concat(toString(identifier), ".png"); 
-        string memory ipfs = string.concat(ipfsBase,folderName,"/",fileName);
+        string memory ipfs = string.concat(ipfsBase,folderName,"/",fileName);      
 
         data_ = string(
                 abi.encodePacked(
-                    '<image x="1" y="1" width="160" height="160" image-rendering="pixelated" preserveAspectRatio="xMidYMid" href="',
+                    '<image href="',
                     ipfs,
                     '"/>'
                 )

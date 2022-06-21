@@ -7,8 +7,8 @@ async function main() {
 
 //npx hardhat run scripts/testnet/upgrade.js --network mumbai
   
-  const contractName = "Elders" //EETest
-  const address = "0x6221dd85a400245f33059f014629f876e4a48ad7" //0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579
+  const contractName = "EldersInventoryManager" //EETest
+  const address = "0x1097c576cadf89f3bf2f6f5de17c6179cae87750" //0x45da7f88a52b84ac6f6d52b083fbf3f9f5c26579
 
   const ContractFactory = await ethers.getContractFactory(contractName);
   const upgraded = await upgrades.upgradeProxy(address, ContractFactory);

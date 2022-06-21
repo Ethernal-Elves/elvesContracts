@@ -299,6 +299,7 @@ describe("Ethernal Elves Contracts", function () {
         ], true);
 
         await ethElves.flipActiveStatus();
+        await elders.flipMint();
         await eBridge.setAddresses(ethElves.address, validator);
         await pBridge.setAddresses(elvesPolygon.address, validator);
 
@@ -410,16 +411,20 @@ describe("Ethernal Elves Contracts", function () {
 
         it("Mint Elders for Artifacts", async function () {
 
-            for(let i=1; i<2200; i++){
+            for(let i=1; i<1200; i++){
             await artifacts.reserve(100000);
-            await elders.mint(1);
-            let response = await elders.getElder(i);
+            const randomNumberBetween1and20 = Math.floor(Math.random() * 20) + 1;
+            await elders.mint(randomNumberBetween1and20);
+            increaseWorldTimeinSeconds(60*i);
+           
+           /* let response = await elders.getElder(i);
             if(parseInt(response.body) <= 12){
                 console.log(
                     "class :", parseInt(response.elderClass),
                     " uniqueId : ",
                     parseInt(response.body), " token: ", i);
             }    
+            */
             //console.log(response)
             
             }

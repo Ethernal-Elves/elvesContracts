@@ -6,6 +6,8 @@ import "./ERC721.sol";
 import "./EldersDataStructures.sol";
 import "./Interfaces.sol";
 
+//VIXED THE ISSUE IN THIS VERION
+
 contract Elders is ERC721 {
 
     function name() external pure returns (string memory) { return "EthernalElves Elders"; }
@@ -30,6 +32,9 @@ contract Elders is ERC721 {
     mapping(uint256 => address) public elderOwner; //memory slot for Owners, Timestamp and Actions    
     mapping(address => bool)    public auth; //memory slot for Authorized addresses
     mapping(bytes => uint256)  public usedSignatures; //memory slot for used signatures
+
+    uint256[5][6] private uniqueBodys;
+    uint256 uniqueBodyCount;
 
     function initialize() public {
     
@@ -70,12 +75,15 @@ contract Elders is ERC721 {
         ////
         for(uint256 i = 0; i < qty; i++) {
         
+        id = uint16(totalSupply + 1);   
+        
         uint256 rand = _rand() + i; 
-        uint256 uniqueChance = rand % 10000;
+        
+        uint256 uniqueChance = uint256(_randomize(rand, "Unique", id)) % 10000;
 
         EldersDataStructures.EldersMeta memory elders;        
         
-        id = uint16(totalSupply + 1);           
+               
 
             elders.elderClass           = uint256(_randomize(rand, "Class", id)) % 6;
             elders.strength             = baseValues[elders.elderClass][0];
@@ -91,18 +99,20 @@ contract Elders is ERC721 {
             elders.armor                = 1;
             elders.level                = 1;
 
-            elders.head                 = uint256((uint256(_randomize(rand, "head", id)) % 15) + 1);            
-            elders.race                 = uint256((uint256(_randomize(rand, "race", id) % 3)) + 1);
+            elders.head                 = uint256((uint256(_randomize(rand, "head", id)) % 16) + 1);            
+            elders.race                 = uint256((uint256(_randomize(rand, "race", id) % 4)) + 1);
 
-            uint256 uniqueId = ((rand % 2) + 1);       
+            uint256 uniqueId = ((rand % 2) + 3);       
             
            
+           
+        if(uniqueChance < (uniqueBodyCount + 1) * 35 && uniqueBodys[elders.elderClass][uniqueId] == 0) {
 
-        if(uniqueChance < (uniquesCount + 1) * 50 && uniques[elders.elderClass][uniqueId] == 0) {
-
-            uniques[elders.elderClass][uniqueId] = id;
+            uniqueBodys[elders.elderClass][uniqueId] = id;
             elders.body     = uniqueId;
-            uniquesCount++;
+            uniqueBodyCount++;
+            //console.log("class: ", elders.elderClass, "body: ", uniqueId);
+            //console.log(id);
 
         }else{
 
@@ -135,14 +145,44 @@ contract Elders is ERC721 {
     }
 
 
-    function generateElderDna(uint256[14] calldata attributes)
-    public returns (uint256) {
+    function generateElderDna(
+                uint256 strength,
+                uint256 agility,
+                uint256 intellegence,
+                uint256 primaryWeapon, 
+                uint256 secondaryWeapon,
+                uint256 armor,
+                uint256 level,
+                uint256 head,
+                uint256 body,
+                uint256 race,
+                uint256 elderClass
+    )
+    external view returns (uint256 elderDNA) {
 
-     return EldersDataStructures.setElder(attributes[0], attributes[1], attributes[2], 
-                                          attributes[3], attributes[4], attributes[5], 
-                                          attributes[6], attributes[7], attributes[8], 
-                                          attributes[9], attributes[10], attributes[11], 
-                                          attributes[12],attributes[13]);    
+        EldersDataStructures.EldersMeta memory elders;             
+
+            elders.strength             = strength;
+            elders.agility              = agility;
+            elders.intellegence         = intellegence;
+            elders.healthPoints         = pvConstant+((((elderClass + strength))*strength)/10);
+            elders.attackPoints         = (agility * 65/100) + (strength * 35/100);
+            elders.mana                 = pvConstant+((((elderClass + intellegence))*intellegence)/10);
+            elders.primaryWeapon        = primaryWeapon;
+            elders.secondaryWeapon      = secondaryWeapon;
+            elders.armor                = armor;
+            elders.level                = level;
+            elders.head                 = head;                   
+            elders.body                 = body;
+            elders.race                 = race;
+            elders.elderClass           = elderClass;
+
+        elderDNA = EldersDataStructures.setElder(  elders.strength, elders.agility, elders.intellegence,  
+                                            elders.attackPoints, elders.healthPoints, elders.mana, 
+                                            elders.primaryWeapon, elders.secondaryWeapon, elders.armor,
+                                            elders.level, elders.head, elders.body, elders.race, 
+                                            elders.elderClass); 
+        return elderDNA;
      
     }
 
