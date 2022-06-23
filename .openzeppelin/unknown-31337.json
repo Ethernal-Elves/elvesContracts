@@ -5691,6 +5691,31 @@
       "kind": "transparent"
     },
     {
+      "address": "0x07882Ae1ecB7429a84f1D53048d35c4bB2056877",
+      "txHash": "0x987a06104390e90828e8883e52a5018c212e300f8c8bfdbe05c26e6d468e419a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x22753E4264FDDc6181dc7cce468904A80a363E44",
+      "txHash": "0x065b20ad5de17428b27a25bb684899219e287bf8ade166f1c9094c104d2c1fc6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c",
+      "txHash": "0x4781ce4cca1fece18b771cd8974a07fcf6ac89e9973ec4c63f4bf983286a246c",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x276C216D241856199A83bf27b2286659e5b877D3",
+      "txHash": "0x826c1653dfc3f05ca0d314d9770f1da769e64ffc6fd1983b80b7c8a489b49e26",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
+      "txHash": "0x0eef7013d7b3fae36daf2bcf34e429693112f6690ea184eea5918862cdb79278",
+      "kind": "transparent"
+    },
+    {
       "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
       "txHash": "0xb4042c70bd8bd7746c33079f8fceed0e058b9fd59b59939c756c0aea19c408fe",
       "kind": "transparent"
@@ -5763,31 +5788,6 @@
     {
       "address": "0xD0141E899a65C95a556fE2B27e5982A6DE7fDD7A",
       "txHash": "0x5e3eabaacb2f0d57122a61d9a7b4afa84e44d56ceab0ecbf1fe7eefa28cf7c2f",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x07882Ae1ecB7429a84f1D53048d35c4bB2056877",
-      "txHash": "0x987a06104390e90828e8883e52a5018c212e300f8c8bfdbe05c26e6d468e419a",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x22753E4264FDDc6181dc7cce468904A80a363E44",
-      "txHash": "0x065b20ad5de17428b27a25bb684899219e287bf8ade166f1c9094c104d2c1fc6",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c",
-      "txHash": "0x4781ce4cca1fece18b771cd8974a07fcf6ac89e9973ec4c63f4bf983286a246c",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x276C216D241856199A83bf27b2286659e5b877D3",
-      "txHash": "0x826c1653dfc3f05ca0d314d9770f1da769e64ffc6fd1983b80b7c8a489b49e26",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
-      "txHash": "0x0eef7013d7b3fae36daf2bcf34e429693112f6690ea184eea5918862cdb79278",
       "kind": "transparent"
     }
   ],
@@ -7551,9 +7551,185 @@
         }
       }
     },
-    "1ae82ed4cbf74be83f9a85c776fc9c09f67a54844c9dbf6169340745f1b6c8e5": {
+    "a054bf85a52cec1c1022f2fe99665c70346e03529775f198faa8dc6f2c60dc24": {
+      "address": "0x9E545E3C0baAB3E08CdfD552C960A1050f373042",
+      "txHash": "0x3f500c10496cc8a9a34881be7296209663356f904b0a26c10efa78d8ed5dfe00",
+      "layout": {
+        "storage": [
+          {
+            "label": "CLASS",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:19"
+          },
+          {
+            "label": "LAYERS",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_array(t_string_storage)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:20"
+          },
+          {
+            "label": "ATTRIBUTES",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_array(t_string_storage)8_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:21"
+          },
+          {
+            "label": "DISPLAYTYPES",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_array(t_string_storage)5_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:22"
+          },
+          {
+            "label": "RACE_CODE",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:23"
+          },
+          {
+            "label": "BODY_CODE",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:24"
+          },
+          {
+            "label": "HEAD_CODE",
+            "offset": 0,
+            "slot": "37",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:25"
+          },
+          {
+            "label": "PRIMARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "43",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:26"
+          },
+          {
+            "label": "SECONDARY_WEAPON_CODE",
+            "offset": 0,
+            "slot": "49",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:27"
+          },
+          {
+            "label": "ARMOR_CODE",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_array(t_uint256)6_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:28"
+          },
+          {
+            "label": "EldersInventory",
+            "offset": 0,
+            "slot": "61",
+            "type": "t_mapping(t_uint256,t_struct(EldersInventoryItem)2084_storage)",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:31"
+          },
+          {
+            "label": "isInitialized",
+            "offset": 0,
+            "slot": "62",
+            "type": "t_bool",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:33"
+          },
+          {
+            "label": "admin",
+            "offset": 1,
+            "slot": "62",
+            "type": "t_address",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:34"
+          },
+          {
+            "label": "ipfsBase",
+            "offset": 0,
+            "slot": "63",
+            "type": "t_string_storage",
+            "contract": "EldersInventoryManager",
+            "src": "contracts\\Elders\\EldersInventoryManager.sol:35"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)5_storage": {
+            "label": "string[5]",
+            "numberOfBytes": "160"
+          },
+          "t_array(t_string_storage)6_storage": {
+            "label": "string[6]",
+            "numberOfBytes": "192"
+          },
+          "t_array(t_string_storage)8_storage": {
+            "label": "string[8]",
+            "numberOfBytes": "256"
+          },
+          "t_array(t_uint256)6_storage": {
+            "label": "uint256[6]",
+            "numberOfBytes": "192"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_uint256,t_struct(EldersInventoryItem)2084_storage)": {
+            "label": "mapping(uint256 => struct EldersInventoryManager.EldersInventoryItem)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EldersInventoryItem)2084_storage": {
+            "label": "struct EldersInventoryManager.EldersInventoryItem",
+            "members": [
+              {
+                "label": "folder",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "name",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "9fec0e21a03c12304f45bbb2ee4e679c0a89e769b1c727f1bc013e312db9fbe0": {
       "address": "0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690",
-      "txHash": "0x0e20c474c9e9384a6122cff6e7736d0558ca3069ab1f82cfba614be2a35f94b1",
+      "txHash": "0xffc9e55e133a45575e13c0b599ca1efe9db9901593f953f77325fbac16d106f3",
       "layout": {
         "storage": [
           {
@@ -7624,7 +7800,7 @@
             "label": "artifacts",
             "offset": 0,
             "slot": "8",
-            "type": "t_contract(IERC1155Lite)3207",
+            "type": "t_contract(IERC1155Lite)3220",
             "contract": "Elders",
             "src": "contracts\\Elders\\Elders.sol:18"
           },
@@ -7632,7 +7808,7 @@
             "label": "eldermetaDataHandler",
             "offset": 0,
             "slot": "9",
-            "type": "t_contract(IEldersMetaDataHandler)3100",
+            "type": "t_contract(IEldersMetaDataHandler)3113",
             "contract": "Elders",
             "src": "contracts\\Elders\\Elders.sol:19"
           },
@@ -7790,11 +7966,11 @@
             "label": "bytes",
             "numberOfBytes": "32"
           },
-          "t_contract(IERC1155Lite)3207": {
+          "t_contract(IERC1155Lite)3220": {
             "label": "contract IERC1155Lite",
             "numberOfBytes": "20"
           },
-          "t_contract(IEldersMetaDataHandler)3100": {
+          "t_contract(IEldersMetaDataHandler)3113": {
             "label": "contract IEldersMetaDataHandler",
             "numberOfBytes": "20"
           },
@@ -7828,182 +8004,6 @@
           },
           "t_bytes_storage": {
             "label": "bytes"
-          }
-        }
-      }
-    },
-    "a054bf85a52cec1c1022f2fe99665c70346e03529775f198faa8dc6f2c60dc24": {
-      "address": "0x9E545E3C0baAB3E08CdfD552C960A1050f373042",
-      "txHash": "0x3f500c10496cc8a9a34881be7296209663356f904b0a26c10efa78d8ed5dfe00",
-      "layout": {
-        "storage": [
-          {
-            "label": "CLASS",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_array(t_string_storage)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:19"
-          },
-          {
-            "label": "LAYERS",
-            "offset": 0,
-            "slot": "6",
-            "type": "t_array(t_string_storage)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:20"
-          },
-          {
-            "label": "ATTRIBUTES",
-            "offset": 0,
-            "slot": "12",
-            "type": "t_array(t_string_storage)8_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:21"
-          },
-          {
-            "label": "DISPLAYTYPES",
-            "offset": 0,
-            "slot": "20",
-            "type": "t_array(t_string_storage)5_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:22"
-          },
-          {
-            "label": "RACE_CODE",
-            "offset": 0,
-            "slot": "25",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:23"
-          },
-          {
-            "label": "BODY_CODE",
-            "offset": 0,
-            "slot": "31",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:24"
-          },
-          {
-            "label": "HEAD_CODE",
-            "offset": 0,
-            "slot": "37",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:25"
-          },
-          {
-            "label": "PRIMARY_WEAPON_CODE",
-            "offset": 0,
-            "slot": "43",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:26"
-          },
-          {
-            "label": "SECONDARY_WEAPON_CODE",
-            "offset": 0,
-            "slot": "49",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:27"
-          },
-          {
-            "label": "ARMOR_CODE",
-            "offset": 0,
-            "slot": "55",
-            "type": "t_array(t_uint256)6_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:28"
-          },
-          {
-            "label": "EldersInventory",
-            "offset": 0,
-            "slot": "61",
-            "type": "t_mapping(t_uint256,t_struct(EldersInventoryItem)2071_storage)",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:31"
-          },
-          {
-            "label": "isInitialized",
-            "offset": 0,
-            "slot": "62",
-            "type": "t_bool",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:33"
-          },
-          {
-            "label": "admin",
-            "offset": 1,
-            "slot": "62",
-            "type": "t_address",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:34"
-          },
-          {
-            "label": "ipfsBase",
-            "offset": 0,
-            "slot": "63",
-            "type": "t_string_storage",
-            "contract": "EldersInventoryManager",
-            "src": "contracts\\Elders\\EldersInventoryManager.sol:35"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)5_storage": {
-            "label": "string[5]",
-            "numberOfBytes": "160"
-          },
-          "t_array(t_string_storage)6_storage": {
-            "label": "string[6]",
-            "numberOfBytes": "192"
-          },
-          "t_array(t_string_storage)8_storage": {
-            "label": "string[8]",
-            "numberOfBytes": "256"
-          },
-          "t_array(t_uint256)6_storage": {
-            "label": "uint256[6]",
-            "numberOfBytes": "192"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_mapping(t_uint256,t_struct(EldersInventoryItem)2071_storage)": {
-            "label": "mapping(uint256 => struct EldersInventoryManager.EldersInventoryItem)",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(EldersInventoryItem)2071_storage": {
-            "label": "struct EldersInventoryManager.EldersInventoryItem",
-            "members": [
-              {
-                "label": "folder",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "name",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
           }
         }
       }

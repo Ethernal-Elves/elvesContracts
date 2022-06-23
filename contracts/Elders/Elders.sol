@@ -196,9 +196,10 @@ contract Elders is ERC721 {
     function stake(uint256[] calldata _id) external {
 
          isPlayer();
-
+          
          for(uint256 i = 0; i < _id.length; i++) {
          isElderOwner(_id[i]);         
+         require(ownerOf[_id[i]] != address(this));
          _transfer(msg.sender, address(this), _id[i]);      
          elderOwner[_id[i]] = msg.sender;
          }
