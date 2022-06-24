@@ -5,7 +5,8 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./PolyElvesERC721.sol"; 
 import "./../DataStructures.sol";
 import "./../Interfaces.sol";
-import "hardhat/console.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+//import "hardhat/console.sol";
 
 /*
 ███████╗████████╗██╗░░██╗███████╗██████╗░███╗░░██╗░█████╗░██╗░░░░░  ███████╗██╗░░░░░██╗░░░██╗███████╗░██████╗
@@ -205,9 +206,7 @@ function decodeSentinelDna(uint256 character) external view returns(DataStructur
 █▀▀ █▄█ █▄█ █▄▄ █ █▄▄   ▀▄▀ █ ██▄ ▀▄▀▄▀ ▄█
 */
 
-    function tokenURI(uint256 _id) external view returns(string memory) {
-    return elfmetaDataHandler.getTokenURI(uint16(_id), sentinels[_id]);
-    }
+  
 
     function attributes(uint256 _id) external view returns(uint hair, uint race, uint accessories, uint sentinelClass, uint weaponTier, uint inventory){
     uint256 character = sentinels[_id];
@@ -425,6 +424,13 @@ function adminSetAccountBalance(address _owner, uint256 _amount) public {
 
             
             
+    }
+
+    function tokenURI(uint256 _id) external view returns(string memory) {
+//    return elfmetaDataHandler.getTokenURI(uint16(_id), sentinels[_id]);
+     string memory tokenURI = 'https://ee-metadata-api.herokuapp.com/api/sentinels/';
+      return string(abi.encodePacked(tokenURI, Strings.toString(_id)));
+
     }
 
     function getAllAccountBalances(address _owner) external returns (uint256 ren_, uint256 moon_, uint256 artifacts_, uint256 scrolls_) {

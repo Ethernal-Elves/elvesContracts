@@ -5,6 +5,8 @@ pragma solidity 0.8.12;
 import "./ERC721.sol"; 
 import "./EldersDataStructures.sol";
 import "./Interfaces.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+
 
 //VIXED THE ISSUE IN THIS VERION
 
@@ -134,7 +136,15 @@ contract Elders is ERC721 {
 
     function tokenURI(uint256 _id) external view returns(string memory) {
 
-      return eldermetaDataHandler.getTokenURI(uint16(_id), eldersMeta[_id], isRevealed);
+      //return eldermetaDataHandler.getTokenURI(uint16(_id), eldersMeta[_id], isRevealed);
+      string memory tokenURI = 'https://ee-metadata-api.herokuapp.com/api/elders/';
+      return string(abi.encodePacked(tokenURI, Strings.toString(_id)));
+
+    }
+
+    function tokenURIOnChain(uint256 _id) external view returns(string memory) {
+
+     return eldermetaDataHandler.getTokenURI(uint16(_id), eldersMeta[_id], isRevealed);     
 
     }
 
