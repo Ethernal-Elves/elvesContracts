@@ -10354,6 +10354,111 @@
           }
         }
       }
+    },
+    "44886f21952bae8c4a6734138cfd29d4ed36bb6650ef2425c3f740ec5aa568fb": {
+      "address": "0x56b05fb7E99583F3ebda53A289CBFd6DDf9E3F59",
+      "txHash": "0xbf1fb604042998a670b7403b3b57ed9c47153f54ec79912175f7c540cae0abf2",
+      "layout": {
+        "storage": [
+          {
+            "label": "admin",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:44"
+          },
+          {
+            "label": "validator",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:44"
+          },
+          {
+            "label": "initialized",
+            "offset": 20,
+            "slot": "1",
+            "type": "t_bool",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:45"
+          },
+          {
+            "label": "usedSignatures",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes_memory_ptr,t_uint256)",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:45"
+          },
+          {
+            "label": "auth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:45"
+          },
+          {
+            "label": "balances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:56"
+          },
+          {
+            "label": "operators",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "contract": "ArtifactsV2",
+            "src": "contracts\\Resources.sol:57"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_uint256)": {
+            "label": "mapping(bytes => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes"
+          }
+        }
+      }
     }
   }
 }

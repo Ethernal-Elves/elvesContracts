@@ -3,6 +3,7 @@ pragma solidity 0.8.7;
 
 //import "hardhat/console.sol";
 import "./Interfaces.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 /*
 
@@ -14,7 +15,7 @@ import "./Interfaces.sol";
 ╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░░╚═╝╚═╝╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░╚═════╝░╚═╝░░
 */
 
-contract Artifacts is IERC1155 {
+contract ArtifactsV2 is IERC1155 {
 
     address admin;
     address validator;
@@ -136,10 +137,10 @@ function initialize() public {
     |__________________________________*/
 
 
-    function getTokenURI(uint256 id_) public view returns (string memory) {
+    function getTokenURI(uint256 _id) public view returns (string memory) {
        
        string memory tokenURI = 'https://ee-metadata-api.herokuapp.com/api/resources/';
-       return string(abi.encodePacked(tokenURI, id_));
+        return string(abi.encodePacked(tokenURI, Strings.toString(_id)));
 
     }
 
